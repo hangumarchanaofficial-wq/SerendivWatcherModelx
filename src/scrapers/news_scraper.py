@@ -99,38 +99,22 @@ class NewsScraper(BaseScraper):
                 self._scrape_article(browser, link, "EconomicTimes.lk", "economy")
     
     def scrape_sunday_times(self, browser):
-        """Scrape Sunday Times Business"""
-        page = browser.new_page()
-        url = self.config['sources']['sunday_times']['business_url']
-        
-        print(f"\n[DEBUG] Loading Sunday Times: {url}")
-        self.safe_goto(page, url, timeout=self.config['scraping']['timeout'])
-        time.sleep(self.config['scraping']['wait_time'])
-        
-        soup = BeautifulSoup(page.content(), "html.parser")
-        page.close()
-        
-        selector = self.config['sources']['sunday_times']['selectors']['articles']
-        print(f"[DEBUG] Using selector: {selector}")
-        
-        links = self.extract_links(soup, selector, url)
-        
-        print(f"[DEBUG] Found {len(links)} Sunday Times articles")
-        if len(links) == 0:
-            print("[DEBUG] No links found! Trying alternative selectors...")
-            # Try alternative selectors
-            alt_links = []
-            for a in soup.find_all('a', href=True):
-                href = a.get('href')
-                if href and '/business-times/' in href and '/251130/' in href:
-                    alt_links.append(href)
-            print(f"[DEBUG] Alternative search found {len(alt_links)} links")
-            links = list(set(alt_links))[:10]  # Take first 10 unique
-        
-        for link in links:
-            print(f"[DEBUG] Scraping: {link}")
-            self._scrape_article(browser, link, "SundayTimes", "business-times")
-    
+            """Scrape Sunday Times Business"""
+            page = browser.new_page()
+            url = self.config['sources']['sunday_times']['business_url']
+            
+            self.safe_goto(page, url, timeout=self.config['scraping']['timeout'])
+            time.sleep(self.config['scraping']['wait_time'])
+            
+            soup = BeautifulSoup(page.content(), "html.parser")
+            page.close()
+            
+            selector = self.config['sources']['sunday_times']['selectors']['articles']
+            links = self.extract_links(soup, selector, url)
+            
+            for link in links:
+                self._scrape_article(browser, link, "SundayTimes", "business-times")
+
     def scrape_lmd(self, browser):
         """Scrape LMD"""
         page = browser.new_page()
@@ -159,21 +143,9 @@ class NewsScraper(BaseScraper):
         title, full_text = self.extract_article_content(soup)
         full_text = self.limit_words(full_text, self.config['scraping']['max_words'])
         
-        # Debug for Sunday Times
-        if "sundaytimes" in url:
-            print(f"[DEBUG ST] Title: '{title[:50] if title else 'EMPTY'}'")
-            print(f"[DEBUG ST] Text length: {len(full_text)} chars")
-            if not title:
-                print("[DEBUG ST] No title found! Trying alternative extraction...")
-                # Try alternative title extraction for Sunday Times
-                title_tag = soup.find("h1") or soup.find("title")
-                title = title_tag.get_text(strip=True) if title_tag else "Untitled"
-                print(f"[DEBUG ST] Alternative title: '{title[:50]}'")
-        
         if self.db.save_article(source, section, title, url, full_text):
             print(f"[{source}] {title[:50]}...")
-        else:
-            print(f"[{source}] FAILED to save: {url}")
+
 
     def run_all(self):
         """Run all scrapers"""
