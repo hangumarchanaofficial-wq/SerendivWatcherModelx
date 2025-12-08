@@ -1,0 +1,42 @@
+sources:
+  daily_mirror:
+    base_url: "https://www.dailymirror.lk"
+    business_url: "https://www.dailymirror.lk/business"
+    selectors:
+      business: ['a[href*="/business-news/"]', 'a[href*="/business/"]']
+      news: ['a[href*="/news-features/"]']
+    
+  the_morning:
+    base_url: "https://www.themorning.lk"
+    news_url: "https://www.themorning.lk/categories/news"
+    selectors:
+      articles: 'a[href^="/articles/"]'
+  
+  ft_lk:
+    base_url: "https://www.ft.lk"
+    business_list: "https://www.ft.lk/business/34"
+    selectors:
+      articles: ['a[href*="/front-page/"]', 'a[href*="/business/"]']
+  
+  economic_times:
+    base_url: "https://economictimes.lk"
+    economy_url: "https://economictimes.lk/index.php/category/economy/"
+    selectors:
+      articles: 'h3 a[href*="/index.php/"]'
+  
+  sunday_times:
+    base_url: "https://www.sundaytimes.lk"
+    business_url: "https://www.sundaytimes.lk/251130/business-times/"
+    selectors:
+      articles: "h2 a"
+  
+  lmd:
+    base_url: "https://lmd.lk"
+    selectors:
+      articles: "h4.entry-title a"
+
+scraping:
+  wait_time: 60
+  timeout: 100000
+  headless: false
+  max_words: 1000
