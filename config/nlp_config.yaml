@@ -1,0 +1,136 @@
+sentiment:
+  positive_threshold: 0.1
+  negative_threshold: -0.1
+
+sectors:
+  tourism: [
+    "tourism", "tourist", "hotel", "travel", "visitor", "resort", "airline",
+    "guesthouse", "homestay", "villa", "hostel", "boutique hotel",
+    "tour operator", "travel agency", "package tour", "tour guide",
+    "destination", "heritage site", "national park", "wildlife safari",
+    "beach resort", "eco tourism", "adventure tourism", "cultural tourism",
+    "MICE", "conference", "inbound", "outbound", "charter flight",
+    "cruise ship", "visa-free", "E-visa", "airport arrival", "occupancy rate",
+    "room night", "bed capacity", "star class hotel", "guest nights",
+    "tourism board", "SLTDA", "hospitality industry", "holidaymaker",
+    "foreign visitor", "backpacker", "travel corridor", "tourism levy",
+    "tourism infrastructure", "destination marketing"
+  ]
+
+  transport: [
+    "transport", "railway", "port", "shipping", "airline", "fuel", "road",
+    "bus", "coach", "public transport", "rail", "train", "expressway",
+    "highway", "bypass", "flyover", "bridge", "logistics", "cargo",
+    "freight", "container", "terminal", "harbour", "seaport", "airport",
+    "runway", "taxi", "three-wheeler", "tuk tuk", "ride hailing",
+    "ride sharing", "fleet", "traffic", "congestion", "bus stand",
+    "bus terminal", "transport hub", "multimodal", "SLTB", "Sri Lanka Railways",
+    "RDA", "road development", "transport policy", "fuel subsidy",
+    "fuel price", "commuter", "mass transit"
+  ]
+  finance: [
+    "bank", "financial", "loan", "credit", "investment", "stock", "finance",
+    "interest rate", "deposit", "savings account", "current account",
+    "fixed deposit", "microfinance", "leasing", "mortgage", "overdraft",
+    "capital market", "stock exchange", "CSE", "bond", "treasury bill",
+    "equity", "share", "dividend", "portfolio", "fund manager",
+    "mutual fund", "unit trust", "insurance", "premium", "pension fund",
+    "central bank", "monetary policy", "liquidity", "non-performing loan",
+    "NPL", "credit card", "debit card", "digital wallet", "fintech",
+    "remittance", "foreign reserve", "sovereign bond", "rating agency",
+    "credit rating", "banking sector", "financial institution", "lending rate"
+  ]
+  energy: [
+    "power", "electricity", "energy", "renewable", "solar", "ceb",
+    "Ceylon Electricity Board", "hydropower", "hydro power", "thermal power",
+    "coal plant", "power plant", "grid", "transmission line", "distribution",
+    "load shedding", "blackout", "power cut", "tariff", "fuel adjustment",
+    "IPP", "independent power producer", "LNG", "natural gas",
+    "oil-fired", "diesel generator", "rooftop solar", "wind farm",
+    "wind power", "biomass", "biofuel", "geothermal", "energy mix",
+    "capacity addition", "megawatt", "kilowatt hour", "kWh",
+    "energy efficiency", "demand side management", "smart meter",
+    "net metering", "power purchase", "renewable target",
+    "sustainable energy", "energy regulator", "PUCSL"
+  ]
+  agriculture: [
+    "tea", "rubber", "coconut", "farm", "agriculture", "crop", "paddy",
+    "rice", "maize", "vegetable", "fruit", "plantation", "smallholder",
+    "estate", "cash crop", "harvest", "yield", "irrigation", "fertilizer",
+    "pesticide", "agrochemical", "seed paddy", "Maha season", "Yala season",
+    "rainfed", "upland", "lowland", "livestock", "dairy", "poultry",
+    "fisheries", "aquaculture", "agribusiness", "extension service",
+    "tractor", "thresher", "combine harvester", "tea smallholder",
+    "rubber tapping", "coconut estate", "paddy field", "granary",
+    "farm gate price", "commodity price", "crop failure", "drought",
+    "monsoon", "agrarian", "plantation company"
+  ]
+  technology: [
+    "technology", "software", "digital", "tech", "cyber", "ai", "data",
+    "IT", "ICT", "cloud", "SaaS", "platform", "application", "app",
+    "startup", "innovation", "R&D", "research and development",
+    "machine learning", "deep learning", "blockchain", "fintech",
+    "edtech", "healthtech", "agritech", "IoT", "internet of things",
+    "5G", "broadband", "fiber optic", "data center", "server",
+    "cybersecurity", "hacking", "ransomware", "digital payment",
+    "e-commerce", "online platform", "social media", "algorithm",
+    "analytics", "big data", "data science", "automation", "robotics",
+    "software engineer", "programmer", "developer", "coding bootcamp"
+  ]
+  manufacturing: [
+    "manufacturing", "factory", "export", "garment", "textile",
+    "assembly line", "production line", "industrial zone",
+    "industrial park", "BOI project", "processing plant", "mill",
+    "refinery", "foundry", "engineering works", "machinery",
+    "automotive parts", "electronics", "component", "OEM",
+    "value addition", "raw material", "supply chain", "outsourcing",
+    "subcontractor", "quality control", "ISO certified", "productivity",
+    "industrial output", "industrial estate", "light industry",
+    "heavy industry", "footwear", "leather", "ceramic", "tile factory",
+    "rubber products", "plastics", "packaging", "food processing",
+    "canning", "export processing zone", "EPZ", "industrial export"
+  ]
+  government: [
+    "government", "ministry", "president", "parliament", "policy", "cabinet",
+    "prime minister", "opposition", "MP", "member of parliament",
+    "governor", "provincial council", "local authority", "municipal council",
+    "urban council", "pradeshiya sabha", "public sector", "civil service",
+    "bureaucracy", "state-owned enterprise", "SOE", "budget",
+    "appropriation bill", "tax", "revenue", "expenditure", "regulation",
+    "act", "ordinance", "gazette", "policy reform", "governance",
+    "anti-corruption", "transparency", "e-government", "public policy",
+    "national plan", "development plan", "five-year plan",
+    "foreign policy", "diplomacy", "cabinet paper", "parliamentary debate",
+    "presidential secretariat", "ministry secretary", "state minister"
+  ]
+  construction: [
+    "construction", "building", "infrastructure", "cement", "housing",
+    "real estate", "apartment", "condominium", "high-rise", "skyscraper",
+    "commercial complex", "office tower", "shopping mall", "industrial building",
+    "warehouse", "road project", "bridge construction", "dam", "irrigation scheme",
+    "water supply project", "sewerage", "urban development", "land reclamation",
+    "property development", "architect", "engineer", "contractor", "subcontractor",
+    "tender", "bid", "procurement", "PPP project", "public private partnership",
+    "BOQ", "building permit", "planning approval", "zoning", "construction site",
+    "labourer", "mason", "scaffolding", "concrete", "steel bar",
+    "infrastructure project", "expressway project", "port city"
+  ]
+
+  healthcare: [
+    "health", "hospital", "medical", "medicine", "pharmaceutical",
+    "clinic", "dispensary", "primary care", "ward", "intensive care",
+    "ICU", "outpatient", "OPD", "inpatient", "surgery", "operation theatre",
+    "doctor", "nurse", "consultant", "specialist", "surgeon",
+    "general practitioner", "GP", "pharmacist", "drug", "vaccine",
+    "immunisation", "epidemic", "pandemic", "infection", "contagious disease",
+    "non-communicable disease", "NCD", "diabetes", "cardiac", "cancer",
+    "oncology", "public health", "MOH", "health ministry", "medical supply",
+    "drug shortage", "health insurance", "private hospital", "teaching hospital",
+    "base hospital", "rural hospital", "laboratory test", "diagnostic centre",
+    "mental health", "telemedicine", "healthcare worker"
+  ]
+
+
+spacy:
+  model: "en_core_web_sm"
+  max_text_length: 50000

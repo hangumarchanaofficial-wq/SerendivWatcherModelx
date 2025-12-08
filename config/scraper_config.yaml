@@ -38,5 +38,5 @@ sources:
 scraping:
   wait_time: 60
   timeout: 100000
-  headless: True
+  headless: false
   max_words: 1000

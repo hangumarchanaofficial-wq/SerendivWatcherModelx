@@ -16,20 +16,36 @@ class NewsScraper(BaseScraper):
         page = browser.new_page()
         url = self.config['sources']['daily_mirror']['business_url']
         
-        self.safe_goto(page, url, timeout=self.config['scraping']['timeout'])
-        time.sleep(self.config['scraping']['wait_time'])
+        print(f"  Loading: {url}")
         
-        soup = BeautifulSoup(page.content(), "html.parser")
+        
+        self.safe_goto(page, url, timeout=self.config['scraping']['timeout'])
+        time.sleep(60)  
+        
+        html = page.content()
+        soup = BeautifulSoup(html, "html.parser")
         page.close()
         
         selectors = self.config['sources']['daily_mirror']['selectors']['business']
-        links = self.extract_links(soup, selectors, url)
         
-        # Filter out the listing page itself
-        links = [l for l in links if l.rstrip("/") != url.rstrip("/")]
+        links = []
+        for sel in selectors:
+            for a in soup.select(sel):
+                href = a.get("href")
+                if not href:
+                    continue
+                full = urljoin(url, href).split("#")[0]
+                if full.rstrip("/") != url.rstrip("/"):
+                    links.append(full)
+        
+        links = list(dict.fromkeys(links))
+        
+        print(f"  Found {len(links)} article links")
         
         for link in links:
             self._scrape_article(browser, link, "DailyMirror", "business")
+
+
     
     def scrape_the_morning(self, browser):
         """Scrape The Morning news"""
@@ -143,8 +159,13 @@ class NewsScraper(BaseScraper):
         title, full_text = self.extract_article_content(soup)
         full_text = self.limit_words(full_text, self.config['scraping']['max_words'])
         
-        if self.db.save_article(source, section, title, url, full_text):
+        # Always show what we're processing
+        status = self.db.save_article(source, section, title, url, full_text)
+        
+        if status:
             print(f"[{source}] {title[:50]}...")
+        else:
+            print(f"[{source}] {title[:50]}... (unchanged)")
 
 
     def run_all(self):
@@ -153,15 +174,37 @@ class NewsScraper(BaseScraper):
             browser = p.chromium.launch(headless=self.config['scraping']['headless'])
             
             try:
-                print("Starting scraping process...")
-                self.scrape_sunday_times(browser)
-                self.scrape_daily_mirror_business(browser)
-                self.scrape_the_morning(browser)
-                self.scrape_ft_lk(browser)
-                self.scrape_economic_times(browser)
-                self.scrape_lmd(browser)
+                print("Starting scraping process...\n")
+                
+                # Run each scraper with individual error handling
+                sources = [
+                    ("Daily Mirror", self.scrape_daily_mirror_business),
+                    ("Sunday Times", self.scrape_sunday_times),
+                    ("The Morning", self.scrape_the_morning),
+                    ("FT.lk", self.scrape_ft_lk),
+                    ("Economic Times", self.scrape_economic_times),
+                    ("LMD", self.scrape_lmd)
+                ]
+                
+                for source_name, scraper_func in sources:
+                    try:
+                        print(f"{'='*60}")
+                        print(f"Scraping {source_name}...")
+                        print(f"{'='*60}")
+                        scraper_func(browser)
+                        print(f"{source_name} completed\n")
+                    except Exception as e:
+                        print(f"{source_name} failed: {e}\n")
+                        continue
+                
                 print("Scraping completed!")
+                
             except Exception as e:
-                print(f"Error during scraping: {e}")
+                print(f"Critical error during scraping: {e}")
             finally:
-                browser.close()
+                # Safely close browser
+                try:
+                    if browser.is_connected():
+                        browser.close()
+                except:
+                    pass  # Browser already closed
