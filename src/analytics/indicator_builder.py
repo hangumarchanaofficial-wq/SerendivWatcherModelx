@@ -2,115 +2,341 @@ from datetime import datetime
 from collections import defaultdict, Counter
 from tinydb import TinyDB
 import json
+import math
+import requests
+import re
 
+# =====================================================================
+# LLM CONFIGURATION
+# =====================================================================
 
-# ---------------------------------------------------------------------
-# Global noise filters
-# ---------------------------------------------------------------------
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+OLLAMA_MODEL = "gemma3:1b"
 
-# Phrases that should never appear as "topics" or sector keywords
-NOISY_TOPICS = {
-    "marketing manager  sales",
-    "marketing manager sales",
-    "this website",
-    "the morning",
-    "the sunday times",
-    "sport",
-    "what",
-    "part",
-    "who",
-    ".",
-    "ceo",
+# =====================================================================
+# COMPREHENSIVE NOISE FILTERING
+# =====================================================================
+
+# English stopwords
+ENGLISH_STOPWORDS = {
+    "that", "this", "these", "those", "they", "them", "their", "there",
+    "what", "which", "who", "whom", "whose", "where", "when", "why", "how",
+    "the", "a", "an", "and", "or", "but", "if", "then", "than",
+    "such", "some", "any", "all", "both", "each", "few", "more", "most",
+    "other", "another", "same", "so", "just", "very", "can", "will",
 }
 
-# Single very-short tokens that are rarely meaningful as topics
-MIN_TOPIC_LENGTH = 3  # characters
+# UI artifacts
+UI_ARTIFACTS = {
+    "mobile apps", "222 reply", "view results", "this browser", "my name",
+    "save my name", "very good article", "internal inquiry rainfall",
+    "digital screen", "our journey", "these initiatives", "aftermath",
+    "excellence", "operational efficiency", "investor confidence",
+    "accessibility", "partnership", "nations", "institutions",
+}
+
+# Website/scraping artifacts
+NOISY_TOPICS = {
+    "marketing manager sales", "this website", "the morning",
+    "the sunday times", "sport", "copyright", "ft.lk copyright", "ft.lk",
+    "fire", "email", "friend", "addition", "the tamil diaspora",
+    "a few sections", "no impact", "the economy", "your old ride",
+}
+
+BAD_KEYWORD_FRAGMENTS = [
+    "copyright", "ft.lk", "ft.", ".lk", "your old", "the next",
+    "this website", "the morning", "sunday times", "daily mirror",
+    "email", "friend", "click", "read more", "subscribe",
+]
+
+# Generic buzzwords
+GENERIC_BUZZWORDS = {
+    "growth", "technology", "government", "officials", "efforts",
+    "logistics", "innovation", "digital", "development",
+    "time", "year", "month", "week", "day", "today", "yesterday",
+}
+
+MIN_TOPIC_LENGTH = 5
+
+# Bad organization names
+BAD_ORG_NAMES = {
+    "INR 2", "YoY", "BBC", "DHS", "U.S. Professor", "Colombos",
+    "Unity Plazas", "Colombo", "Digital", "Group", "Groups", "Bank",
+    "Committee", "Members", "EFF", "State", "COVID-19", "Sri Lanka",
+}
+
+BANNED_ORGANIZATIONS = {
+    "International Aid and Government Alerts Security",
+    "the Board of Directors", "the Management of Onally Holdings PLC",
+    "Capital Goods", "the Central Bank of Sri Lanka", "the World Bank",
+    "the Ceylon Chamber of Commerce", "Charming and Co.",
+    "the Onally Holdings PLC",
+}
+
+# Regex patterns for garbage
+GARBAGE_PATTERNS = [
+    r'^\d+\s+reply$',
+    r'view\s+results?',
+    r'this\s+browser',
+    r'my\s+name',
+    r'save\s+my',
+    r'very\s+good',
+    r'mobile\s+app',
+    r'digital\s+screen',
+    r'internal\s+inquiry',
+]
 
 
 class IndicatorBuilder:
     def __init__(self, db_path: str = "data/raw/articles.json"):
         self.db = TinyDB(db_path)
+        self.llm_model = OLLAMA_MODEL
 
-    # -----------------------------------------------------------------
-    # Helper: filter out publishers / news brands from ORG entities
-    # -----------------------------------------------------------------
+    def set_llm_model(self, model_name: str):
+        """Set the LLM model name to use."""
+        self.llm_model = model_name
+        print(f"LLM model set to: {model_name}")
+
+    # =================================================================
+    # LLM INTEGRATION
+    # =================================================================
+    def _call_ollama(self, prompt: str, temperature: float = 0.2) -> str:
+        """Call Ollama API."""
+        try:
+            payload = {
+                "model": self.llm_model,
+                "prompt": prompt,
+                "stream": False,
+                "temperature": temperature,
+            }
+            
+            response = requests.post(OLLAMA_API_URL, json=payload, timeout=90)
+            response.raise_for_status()
+            
+            result = response.json()
+            return result.get("response", "").strip()
+            
+        except Exception as e:
+            print(f"  Warning: LLM error: {e}")
+            return ""
+
+    def _extract_sector_text(self, sector: str, articles: list, max_words_per_article: int = 500, max_articles: int = 20) -> str:
+        """
+        Extract representative text samples from articles in a sector.
+        """
+        sector_articles = [
+            a for a in articles 
+            if sector in a.get("sectors", [])
+        ]
+        
+        # Sort by recency
+        sector_articles.sort(
+            key=lambda x: x.get("scraped_at", ""),
+            reverse=True
+        )
+        
+        text_samples = []
+        for article in sector_articles[:max_articles]:
+            title = article.get("title", "")
+            text = article.get("text", "")
+            
+            # Combine title + body, take first N words
+            full_text = f"{title}. {text}"
+            words = full_text.split()[:max_words_per_article]
+            sample = " ".join(words)
+            
+            if sample:
+                text_samples.append(sample)
+        
+        return "\n\n---\n\n".join(text_samples)
+
+    def _llm_extract_keywords_from_text(self, sector: str, text_corpus: str, target_count: int = 10) -> list:
+        """Use LLM to extract keywords directly from article text."""
+        if not text_corpus.strip():
+            return []
+        
+        prompt = f"""You are analyzing Sri Lankan business news articles about the {sector} sector.
+
+TASK: Extract the {target_count} most important and specific KEYWORDS or PHRASES that represent key topics, trends, and issues in this sector.
+
+RULES:
+1. Extract multi-word phrases when possible (e.g., "renewable energy", "port expansion")
+2. Focus on sector-specific terminology
+3. Avoid generic words like "growth", "government", "technology", "officials"
+4. Avoid UI artifacts like "click here", "read more", "subscribe", "mobile apps"
+5. Choose terms that business analysts would find valuable
+6. Prioritize economic/business terms over general news terms
+
+SECTOR: {sector}
+
+ARTICLE EXCERPTS:
+{text_corpus[:4000]}
+
+RESPOND WITH: A comma-separated list of EXACTLY {target_count} keywords/phrases. No explanations, no numbering.
+
+FORMAT: keyword1, keyword2, keyword3"""
+
+        response = self._call_ollama(prompt, temperature=0.2)
+        
+        if not response:
+            return []
+        
+        # Parse response
+        keywords = [
+            kw.strip() 
+            for kw in response.replace("\n", ",").split(",") 
+            if kw.strip()
+        ]
+        
+        # Clean numbering if LLM added it
+        keywords = [kw.split(". ", 1)[-1].strip() for kw in keywords]
+        
+        # Final validation
+        valid_keywords = []
+        for kw in keywords:
+            kw_lower = kw.lower()
+            # Skip if it's garbage
+            if kw_lower in ENGLISH_STOPWORDS or kw_lower in UI_ARTIFACTS or kw_lower in GENERIC_BUZZWORDS:
+                continue
+            if len(kw) >= 3:
+                valid_keywords.append(kw)
+            if len(valid_keywords) >= target_count:
+                break
+        
+        return valid_keywords[:target_count]
+
+    def _llm_extract_organizations_from_text(self, sector: str, text_corpus: str, target_count: int = 10) -> list:
+        """Use LLM to extract key organizations directly from article text."""
+        if not text_corpus.strip():
+            return []
+        
+        prompt = f"""You are analyzing Sri Lankan business news articles about the {sector} sector.
+
+TASK: Extract the {target_count} most important ORGANIZATIONS (companies, agencies, institutions) that are key players in this sector.
+
+RULES:
+1. Extract full organization names (e.g., "Central Bank of Sri Lanka", "John Keells Holdings")
+2. Include companies, government agencies, banks, regulatory bodies, industry associations
+3. Exclude news media organizations like newspapers and TV channels
+4. Avoid generic terms like "Government", "Bank", "Committee", "Group"
+5. Focus on organizations with actual business operations or regulatory power
+6. Prefer Sri Lankan organizations unless international ones are explicitly mentioned as key players
+
+SECTOR: {sector}
+
+ARTICLE EXCERPTS:
+{text_corpus[:4000]}
+
+RESPOND WITH: A comma-separated list of EXACTLY {target_count} organization names. No explanations, no numbering.
+
+FORMAT: Organization1, Organization2, Organization3"""
+
+        response = self._call_ollama(prompt, temperature=0.2)
+        
+        if not response:
+            return []
+        
+        # Parse response
+        orgs = [
+            org.strip() 
+            for org in response.replace("\n", ",").split(",") 
+            if org.strip()
+        ]
+        
+        # Clean numbering
+        orgs = [org.split(". ", 1)[-1].strip() for org in orgs]
+        
+        # Validation
+        valid_orgs = []
+        for org in orgs:
+            # Skip banned/generic orgs
+            if org in BANNED_ORGANIZATIONS or org in BAD_ORG_NAMES:
+                continue
+            if self._is_publisher(org):
+                continue
+            if len(org) >= 3:
+                valid_orgs.append(org)
+            if len(valid_orgs) >= target_count:
+                break
+        
+        return valid_orgs[:target_count]
+
+    # =================================================================
+    # HELPER: Publisher detection
+    # =================================================================
     def _is_publisher(self, org: str) -> bool:
-        """
-        Heuristic filter to remove news publishers and media brands
-        from organization lists, so 'Key Players' show businesses
-        rather than newspapers/websites.
-        """
+        """Filter news publishers."""
         if not org:
             return False
 
         o = org.lower().strip()
 
-        bad_fragments = [
-            "times",          # sunday times, daily times, etc.
-            "mirror",         # daily mirror
-            "news",
-            "newspapers",
-            "sunday",
-            "daily",
-            "lmd",
-            "ft.lk",
-            "ft.",
-            "dailymirror",
-            "sundaytimes",
-            "the morning",
-            "morningweb",
-            "chameendwijeya",
-            "wnl",            # Wijeya Newspapers Ltd / WNL
-            "publishers",
-            "macroentertainment",
-            "print ads",
-            "advertising",
-            ".lk",
+        media_indicators = [
+            "times", "mirror", "news", "newspapers", "newspaper",
+            "sunday", "daily", "lmd", "ft.lk", "ft.", "dailymirror",
+            "sundaytimes", "the morning", "morningweb", "morning lk",
+            "wnl", "wijeya", "publishers", "publishing",
+            "macroentertainment", "print ads", "advertising", ".lk",
+            "media", "press", "gazette", "observer", "herald",
+            "journalist", "editorial", "taj samudra",
         ]
 
-        return any(fragment in o for fragment in bad_fragments)
+        return any(indicator in o for indicator in media_indicators)
 
-    # -----------------------------------------------------------------
-    # Helper: normalize and filter topic/keyword text
-    # -----------------------------------------------------------------
+    # =================================================================
+    # HELPER: Keyword cleaning (for national indicators)
+    # =================================================================
     def _clean_topic(self, text: str) -> str | None:
-        """
-        Normalize a topic/keyword string and filter out noise.
-        Returns cleaned string or None if it should be dropped.
-        """
+        """Clean keyword for national-level indicators."""
         if not text:
             return None
 
-        t = " ".join(text.split()).lower().strip()  # collapse spaces
+        t = " ".join(text.split()).lower().strip()
 
         if len(t) < MIN_TOPIC_LENGTH:
             return None
 
-        if t in NOISY_TOPICS:
+        if t in NOISY_TOPICS or t in ENGLISH_STOPWORDS or t in GENERIC_BUZZWORDS or t in UI_ARTIFACTS:
+            return None
+
+        if any(frag in t for frag in BAD_KEYWORD_FRAGMENTS):
+            return None
+
+        for pattern in GARBAGE_PATTERNS:
+            if re.search(pattern, t, re.IGNORECASE):
+                return None
+
+        if t.replace(" ", "").isdigit():
+            return None
+
+        if len(set(t.replace(" ", ""))) <= 2:
             return None
 
         return t
 
-    # -----------------------------------------------------------------
-    # Helper: Top topics (national level)
-    # -----------------------------------------------------------------
-    def build_top_topics(self, max_topics: int = 10):
-        """
-        Aggregate top topics across all articles using NLP keywords.
+    def _clean_organization(self, org: str) -> str | None:
+        """Clean organization names."""
+        if not org or len(org) < 2:
+            return None
 
-        Returns a list:
-        [
-            {
-                "topic": "<phrase>",
-                "count": <int>,
-                "top_sectors": [
-                    {"sector": "tourism", "count": 12},
-                    ...
-                ]
-            },
-            ...
-        ]
-        """
+        org = org.strip()
+
+        if org in BANNED_ORGANIZATIONS or org in BAD_ORG_NAMES:
+            return None
+
+        if self._is_publisher(org):
+            return None
+
+        if len(org.split()) == 1 and org.lower() in {"government", "parliament", "cabinet", "treasury", "group", "groups", "state", "bank"}:
+            return None
+
+        return org
+
+    # =================================================================
+    # HELPER: Build national top topics
+    # =================================================================
+    def build_top_topics(self, max_topics: int = 10):
+        """Aggregate top topics across all articles."""
         articles = self.db.all()
 
         topic_counts = Counter()
@@ -136,135 +362,95 @@ class IndicatorBuilder:
                 {"sector": s, "count": c}
                 for s, c in sector_counts.most_common(3)
             ]
-            top_topics.append(
-                {
-                    "topic": topic,
-                    "count": count,
-                    "top_sectors": top_sectors,
-                }
-            )
+            top_topics.append({
+                "topic": topic,
+                "count": count,
+                "top_sectors": top_sectors,
+            })
 
         return top_topics
 
-    # -----------------------------------------------------------------
-    # 1) National Activity Indicators
-    # -----------------------------------------------------------------
+    # =================================================================
+    # 1) NATIONAL ACTIVITY INDICATORS
+    # =================================================================
     def build_national_indicators(self):
-        """Build National Activity Indicators."""
+        """Build national-level activity indicators."""
         articles = self.db.all()
 
-        # Overall sentiment
-        sentiments = [
-            a.get("sentiment_score", 0)
-            for a in articles
-            if "sentiment_score" in a
-        ]
+        sentiments = [a.get("sentiment_score", 0) for a in articles if "sentiment_score" in a]
         avg_sentiment = sum(sentiments) / len(sentiments) if sentiments else 0
 
-        # Sentiment distribution
         sentiment_dist = defaultdict(int)
         for article in articles:
-            label = article.get("sentiment_label", "neutral")
-            sentiment_dist[label] += 1
+            sentiment_dist[article.get("sentiment_label", "neutral")] += 1
 
-        # Top sectors mentioned
         sector_counts = defaultdict(int)
         for article in articles:
-            sectors = article.get("sectors", [])
-            for sector in sectors:
+            for sector in article.get("sectors", []):
                 sector_counts[sector] += 1
-        top_sectors = sorted(
-            sector_counts.items(), key=lambda x: x[1], reverse=True
-        )[:5]
+        top_sectors = sorted(sector_counts.items(), key=lambda x: x[1], reverse=True)[:5]
 
-        # Top organizations mentioned (exclude publishers)
         org_counts = defaultdict(int)
         for article in articles:
-            entities = article.get("entities", {})
-            orgs = entities.get("ORG", [])
-            for org in orgs:
-                if not self._is_publisher(org):
-                    org_counts[org] += 1
-        top_orgs = sorted(
-            org_counts.items(), key=lambda x: x[1], reverse=True
-        )[:10]
+            for org in article.get("entities", {}).get("ORG", []):
+                cleaned = self._clean_organization(org)
+                if cleaned:
+                    org_counts[cleaned] += 1
+        top_orgs = sorted(org_counts.items(), key=lambda x: x[1], reverse=True)[:10]
 
-        # Top locations mentioned
         location_counts = defaultdict(int)
         for article in articles:
             entities = article.get("entities", {})
-            locs = entities.get("GPE", []) + entities.get("LOC", [])
-            for loc in locs:
+            for loc in entities.get("GPE", []) + entities.get("LOC", []):
                 location_counts[loc] += 1
-        top_locations = sorted(
-            location_counts.items(), key=lambda x: x[1], reverse=True
-        )[:10]
+        top_locations = sorted(location_counts.items(), key=lambda x: x[1], reverse=True)[:10]
 
-        # Top topics across all articles
         top_topics = self.build_top_topics(max_topics=10)
 
         return {
             "overall_sentiment": round(avg_sentiment, 3),
             "sentiment_distribution": dict(sentiment_dist),
             "total_articles": len(articles),
-            "top_sectors": [
-                {"sector": s, "count": c} for s, c in top_sectors
-            ],
-            "top_organizations": [
-                {"org": o, "count": c} for o, c in top_orgs
-            ],
-            "top_locations": [
-                {"location": l, "count": c} for l, c in top_locations
-            ],
+            "top_sectors": [{"sector": s, "count": c} for s, c in top_sectors],
+            "top_organizations": [{"org": o, "count": c} for o, c in top_orgs],
+            "top_locations": [{"location": l, "count": c} for l, c in top_locations],
             "top_topics": top_topics,
             "timestamp": datetime.utcnow().isoformat(),
         }
 
-    # -----------------------------------------------------------------
-    # 2) Operational Environment Indicators (per sector)
-    # -----------------------------------------------------------------
-    def build_sector_indicators(self):
-        """Build sector-specific indicators."""
+    # =================================================================
+    # 2) LLM-ENHANCED SECTOR INDICATORS (FROM TEXT)
+    # =================================================================
+    def build_sector_indicators(self, use_llm: bool = True):
+        """
+        Build sector indicators using LLM to directly extract from article text.
+        """
         articles = self.db.all()
 
         sector_data = defaultdict(
             lambda: {
                 "article_count": 0,
                 "sentiment_scores": [],
-                "top_keywords": defaultdict(int),
-                "top_orgs": defaultdict(int),
             }
         )
 
+        # First pass: collect basic stats
         for article in articles:
             sectors = article.get("sectors", [])
             sentiment = article.get("sentiment_score", 0)
-            keywords = article.get("keywords", [])
-            orgs_raw = article.get("entities", {}).get("ORG", [])
-
-            # Filter out publishers for key players
-            orgs = [o for o in orgs_raw if not self._is_publisher(o)]
 
             for sector in sectors:
-                sector_data[sector]["article_count"] += 1
-                sector_data[sector]["sentiment_scores"].append(sentiment)
+                sdata = sector_data[sector]
+                sdata["article_count"] += 1
+                sdata["sentiment_scores"].append(sentiment)
 
-                # Top 5 cleaned keywords per article
-                for keyword in keywords[:5]:
-                    kw_clean = self._clean_topic(keyword)
-                    if not kw_clean:
-                        continue
-                    sector_data[sector]["top_keywords"][kw_clean] += 1
-
-                for org in orgs:
-                    sector_data[sector]["top_orgs"][org] += 1
-
-        # Calculate averages and format
         sector_indicators = {}
 
         for sector, data in sector_data.items():
+            print(f"\nProcessing sector: {sector}")
+            
             scores = data["sentiment_scores"]
-            avg_sentiment = sum(scores) / len(scores) if scores else 0
+            avg_sentiment = sum(scores) / len(scores) if scores else 0.0
 
             if avg_sentiment > 0.1:
                 sentiment_label = "positive"
@@ -273,37 +459,39 @@ class IndicatorBuilder:
             else:
                 sentiment_label = "neutral"
 
-            top_keywords = sorted(
-                data["top_keywords"].items(),
-                key=lambda x: x[1],
-                reverse=True,
-            )[:10]
-
-            top_orgs = sorted(
-                data["top_orgs"].items(),
-                key=lambda x: x[1],
-                reverse=True,
-            )[:5]
+            # Extract text corpus from sector articles
+            if use_llm and data["article_count"] > 0:
+                print(f"  Extracting article text for LLM analysis...")
+                text_corpus = self._extract_sector_text(sector, articles, max_words_per_article=500, max_articles=15)
+                
+                print(f"  LLM extracting keywords from {len(text_corpus)} chars of text...")
+                keywords = self._llm_extract_keywords_from_text(sector, text_corpus, target_count=10)
+                
+                print(f"  LLM extracting organizations from text...")
+                orgs = self._llm_extract_organizations_from_text(sector, text_corpus, target_count=10)
+                
+                # Format without counts (LLM extracted, not counted)
+                top_keywords = [{"keyword": kw} for kw in keywords]
+                top_orgs = [{"org": org} for org in orgs]
+            else:
+                top_keywords = []
+                top_orgs = []
 
             sector_indicators[sector] = {
                 "article_count": data["article_count"],
                 "avg_sentiment": round(avg_sentiment, 3),
                 "sentiment_label": sentiment_label,
-                "top_keywords": [
-                    {"keyword": k, "count": c} for k, c in top_keywords
-                ],
-                "top_organizations": [
-                    {"org": o, "count": c} for o, c in top_orgs
-                ],
+                "top_keywords": top_keywords,
+                "top_organizations": top_orgs,
             }
 
         return sector_indicators
 
-    # -----------------------------------------------------------------
-    # 3) Risk & Opportunity Insights
-    # -----------------------------------------------------------------
+    # =================================================================
+    # 3) RISK & OPPORTUNITY INSIGHTS
+    # =================================================================
     def detect_risks_opportunities(self):
-        """Detect risks and opportunities at article level."""
+        """Detect risks and opportunities using sentiment analysis."""
         articles = self.db.all()
 
         risks = []
@@ -315,67 +503,42 @@ class IndicatorBuilder:
             title = article.get("title", "")
             url = article.get("url", "")
 
-            # Risk: strong negative sentiment
             if sentiment < -0.3:
-                risks.append(
-                    {
-                        "title": title,
-                        "url": url,
-                        "sectors": sectors,
-                        "sentiment": round(sentiment, 3),
-                        "severity": "high"
-                        if sentiment < -0.5
-                        else "medium",
-                        "type": "negative_sentiment",
-                    }
-                )
+                risks.append({
+                    "title": title,
+                    "url": url,
+                    "sectors": sectors,
+                    "sentiment": round(sentiment, 3),
+                    "severity": "high" if sentiment < -0.5 else "medium",
+                    "type": "negative_sentiment",
+                })
 
-            # Opportunity: strong positive sentiment
             if sentiment > 0.3:
-                opportunities.append(
-                    {
-                        "title": title,
-                        "url": url,
-                        "sectors": sectors,
-                        "sentiment": round(sentiment, 3),
-                        "impact": "high"
-                        if sentiment > 0.5
-                        else "medium",
-                        "type": "positive_sentiment",
-                    }
-                )
+                opportunities.append({
+                    "title": title,
+                    "url": url,
+                    "sectors": sectors,
+                    "sentiment": round(sentiment, 3),
+                    "impact": "high" if sentiment > 0.5 else "medium",
+                    "type": "positive_sentiment",
+                })
 
-        # Sort by severity/impact
-        risks.sort(key=lambda x: x["sentiment"])  # most negative first
-        opportunities.sort(
-            key=lambda x: x["sentiment"], reverse=True
-        )  # most positive first
+        risks.sort(key=lambda x: x["sentiment"])
+        opportunities.sort(key=lambda x: x["sentiment"], reverse=True)
 
         return {
-            "risks": risks[:10],               # Top 10 risks
-            "opportunities": opportunities[:10],  # Top 10 opportunities
+            "risks": risks[:10],
+            "opportunities": opportunities[:10],
             "total_risks": len(risks),
             "total_opportunities": len(opportunities),
         }
 
-    # -----------------------------------------------------------------
-    # Save all indicators
-    # -----------------------------------------------------------------
-    def save_indicators(
-        self,
-        output_path: str = "data/indicators/",
-        national: dict | None = None,
-        sectors: dict | None = None,
-        insights: dict | None = None,
-    ):
-        """
-        Generate (if needed) and save all indicators.
-
-        Allows passing precomputed national / sector / insights dicts
-        so the values printed in the CLI match exactly what is saved.
-        """
+    # =================================================================
+    # SAVE ALL INDICATORS
+    # =================================================================
+    def save_indicators(self, output_path: str = "data/indicators/", national=None, sectors=None, insights=None):
+        """Generate and save all indicators to JSON files."""
         import os
-
         os.makedirs(output_path, exist_ok=True)
 
         if national is None:
@@ -387,17 +550,9 @@ class IndicatorBuilder:
 
         with open(f"{output_path}national_indicators.json", "w") as f:
             json.dump(national, f, indent=2)
-
         with open(f"{output_path}sector_indicators.json", "w") as f:
             json.dump(sectors, f, indent=2)
-
-        with open(
-            f"{output_path}risk_opportunity_insights.json", "w"
-        ) as f:
+        with open(f"{output_path}risk_opportunity_insights.json", "w") as f:
             json.dump(insights, f, indent=2)
 
-        return {
-            "national": national,
-            "sectors": sectors,
-            "insights": insights,
-        }
+        return {"national": national, "sectors": sectors, "insights": insights}

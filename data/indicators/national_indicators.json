@@ -1,241 +1,277 @@
 {
-  "overall_sentiment": 0.106,
+  "overall_sentiment": 0.101,
   "sentiment_distribution": {
-    "positive": 136,
-    "neutral": 149,
-    "negative": 3
+    "positive": 103,
+    "neutral": 122,
+    "negative": 1
   },
-  "total_articles": 288,
+  "total_articles": 226,
   "top_sectors": [
     {
-      "sector": "technology",
-      "count": 283
-    },
-    {
-      "sector": "transport",
-      "count": 265
+      "sector": "finance",
+      "count": 55
     },
     {
       "sector": "government",
-      "count": 248
+      "count": 38
     },
     {
-      "sector": "finance",
-      "count": 180
+      "sector": "technology",
+      "count": 35
     },
     {
-      "sector": "construction",
-      "count": 152
+      "sector": "transport",
+      "count": 23
+    },
+    {
+      "sector": "agriculture",
+      "count": 19
     }
   ],
   "top_organizations": [
-    {
-      "org": "Taj Samudra",
-      "count": 27
-    },
-    {
-      "org": "INR 2",
-      "count": 19
-    },
-    {
-      "org": "International Aid and Government Alerts SriLankan Airlines",
-      "count": 19
-    },
-    {
-      "org": "Government",
-      "count": 13
-    },
     {
       "org": "IMF",
       "count": 12
     },
     {
-      "org": "Colombo",
-      "count": 11
-    },
-    {
       "org": "SME",
-      "count": 9
+      "count": 7
     },
     {
-      "org": "Group",
-      "count": 8
+      "org": "The Ceylon Chamber of Commerce",
+      "count": 7
     },
     {
-      "org": "Cabinet",
-      "count": 8
+      "org": "the Colombo Stock Exchange",
+      "count": 6
     },
     {
-      "org": "Parliament",
-      "count": 8
+      "org": "the Disaster Management Centre",
+      "count": 6
+    },
+    {
+      "org": "First Capital Research",
+      "count": 4
+    },
+    {
+      "org": "SEC",
+      "count": 4
+    },
+    {
+      "org": "Dissanayake",
+      "count": 4
+    },
+    {
+      "org": "Governments",
+      "count": 4
+    },
+    {
+      "org": "International Monetary Fund IMF",
+      "count": 4
     }
   ],
   "top_locations": [
     {
       "location": "Sri Lanka",
-      "count": 128
-    },
-    {
-      "location": "Sri Lankas",
-      "count": 34
+      "count": 131
     },
     {
       "location": "London",
       "count": 32
     },
     {
-      "location": "Ankumbura",
-      "count": 28
-    },
-    {
       "location": "Floods",
-      "count": 28
+      "count": 29
     },
     {
-      "location": "US",
-      "count": 22
+      "location": "Sri Lankas",
+      "count": 26
     },
     {
       "location": "India",
-      "count": 22
+      "count": 18
     },
     {
       "location": "Sri Lankan",
-      "count": 19
-    },
-    {
-      "location": "China",
       "count": 17
     },
     {
-      "location": "AI",
+      "location": "US",
+      "count": 16
+    },
+    {
+      "location": "Colombo",
       "count": 15
+    },
+    {
+      "location": "China",
+      "count": 14
+    },
+    {
+      "location": "South Asia",
+      "count": 6
     }
   ],
   "top_topics": [
     {
-      "topic": "sri lankas",
-      "count": 44,
+      "topic": "the country",
+      "count": 59,
       "top_sectors": [
         {
-          "sector": "technology",
-          "count": 44
-        },
-        {
-          "sector": "transport",
-          "count": 43
+          "sector": "finance",
+          "count": 13
         },
         {
           "sector": "government",
-          "count": 26
+          "count": 12
+        },
+        {
+          "sector": "technology",
+          "count": 9
         }
       ]
     },
     {
-      "topic": "the government",
-      "count": 43,
+      "topic": "91,wijerama mawatha",
+      "count": 42,
       "top_sectors": [
         {
-          "sector": "transport",
-          "count": 43
-        },
-        {
-          "sector": "technology",
-          "count": 43
-        },
-        {
           "sector": "government",
-          "count": 43
+          "count": 11
+        },
+        {
+          "sector": "transport",
+          "count": 10
+        },
+        {
+          "sector": "agriculture",
+          "count": 6
         }
       ]
     },
     {
-      "topic": "timely insights",
+      "topic": "all rights",
       "count": 38,
       "top_sectors": [
         {
+          "sector": "government",
+          "count": 11
+        },
+        {
           "sector": "transport",
-          "count": 38
+          "count": 10
         },
         {
-          "sector": "technology",
-          "count": 38
-        },
-        {
-          "sector": "construction",
-          "count": 23
+          "sector": "agriculture",
+          "count": 5
         }
       ]
     },
     {
-      "topic": "people",
-      "count": 23,
+      "topic": "the sunday morning",
+      "count": 35,
       "top_sectors": [
         {
           "sector": "transport",
-          "count": 23
-        },
-        {
-          "sector": "technology",
-          "count": 23
-        },
-        {
-          "sector": "finance",
-          "count": 20
-        }
-      ]
-    },
-    {
-      "topic": "technology",
-      "count": 22,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 22
-        },
-        {
-          "sector": "technology",
-          "count": 22
+          "count": 10
         },
         {
           "sector": "government",
-          "count": 22
+          "count": 9
+        },
+        {
+          "sector": "general",
+          "count": 5
         }
       ]
     },
     {
-      "topic": "investment",
-      "count": 22,
+      "topic": "the due courtesy",
+      "count": 31,
       "top_sectors": [
         {
-          "sector": "finance",
-          "count": 22
-        },
-        {
           "sector": "technology",
-          "count": 22
+          "count": 8
         },
         {
           "sector": "government",
-          "count": 22
+          "count": 7
+        },
+        {
+          "sector": "finance",
+          "count": 6
         }
       ]
     },
     {
-      "topic": "pilots",
-      "count": 20,
+      "topic": "disaster damage",
+      "count": 29,
       "top_sectors": [
         {
-          "sector": "tourism",
-          "count": 20
+          "sector": "finance",
+          "count": 12
         },
         {
-          "sector": "transport",
-          "count": 20
+          "sector": "government",
+          "count": 4
         },
         {
           "sector": "technology",
-          "count": 20
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "all the content",
+      "count": 29,
+      "top_sectors": [
+        {
+          "sector": "technology",
+          "count": 7
+        },
+        {
+          "sector": "government",
+          "count": 7
+        },
+        {
+          "sector": "finance",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "topic": "the time",
+      "count": 21,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 8
+        },
+        {
+          "sector": "agriculture",
+          "count": 5
+        },
+        {
+          "sector": "technology",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "topic": "todays",
+      "count": 19,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 8
+        },
+        {
+          "sector": "agriculture",
+          "count": 4
+        },
+        {
+          "sector": "technology",
+          "count": 2
         }
       ]
     },
@@ -244,55 +280,19 @@
       "count": 19,
       "top_sectors": [
         {
-          "sector": "technology",
-          "count": 19
+          "sector": "finance",
+          "count": 8
         },
         {
-          "sector": "government",
-          "count": 19
-        },
-        {
-          "sector": "transport",
-          "count": 14
-        }
-      ]
-    },
-    {
-      "topic": "friend",
-      "count": 19,
-      "top_sectors": [
-        {
-          "sector": "technology",
-          "count": 19
-        },
-        {
-          "sector": "government",
-          "count": 19
-        },
-        {
-          "sector": "transport",
-          "count": 14
-        }
-      ]
-    },
-    {
-      "topic": "the sunday morning",
-      "count": 19,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 19
+          "sector": "agriculture",
+          "count": 4
         },
         {
           "sector": "technology",
-          "count": 19
-        },
-        {
-          "sector": "construction",
-          "count": 11
+          "count": 2
         }
       ]
     }
   ],
-  "timestamp": "2025-12-09T01:02:00.336762"
+  "timestamp": "2025-12-09T12:06:43.199816"
 }

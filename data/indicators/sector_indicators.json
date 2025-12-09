@@ -1,699 +1,728 @@
 {
-  "tourism": {
-    "article_count": 83,
-    "avg_sentiment": 0.116,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "sri lankans",
-        "count": 9
-      },
-      {
-        "keyword": "landslides",
-        "count": 9
-      },
-      {
-        "keyword": "222 reply",
-        "count": 7
-      },
-      {
-        "keyword": "people",
-        "count": 6
-      },
-      {
-        "keyword": "massive landslide",
-        "count": 4
-      },
-      {
-        "keyword": "a project",
-        "count": 4
-      },
-      {
-        "keyword": "it hub",
-        "count": 4
-      },
-      {
-        "keyword": "technology",
-        "count": 4
-      },
-      {
-        "keyword": "japan",
-        "count": 4
-      },
-      {
-        "keyword": "hatton national bank",
-        "count": 3
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 27
-      },
-      {
-        "org": "INR 2",
-        "count": 19
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 19
-      },
-      {
-        "org": "Colombos",
-        "count": 6
-      },
-      {
-        "org": "Colombo",
-        "count": 6
-      }
-    ]
-  },
-  "transport": {
-    "article_count": 265,
-    "avg_sentiment": 0.1,
-    "sentiment_label": "neutral",
-    "top_keywords": [
-      {
-        "keyword": "sri lankas",
-        "count": 37
-      },
-      {
-        "keyword": "people",
-        "count": 16
-      },
-      {
-        "keyword": "the company",
-        "count": 13
-      },
-      {
-        "keyword": "landslides",
-        "count": 12
-      },
-      {
-        "keyword": "the due courtesy",
-        "count": 11
-      },
-      {
-        "keyword": "sri lankans",
-        "count": 9
-      },
-      {
-        "keyword": "japan",
-        "count": 8
-      },
-      {
-        "keyword": "the government",
-        "count": 8
-      },
-      {
-        "keyword": "222 reply",
-        "count": 7
-      },
-      {
-        "keyword": "the partnership",
-        "count": 7
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 27
-      },
-      {
-        "org": "INR 2",
-        "count": 19
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 19
-      },
-      {
-        "org": "Government",
-        "count": 13
-      },
-      {
-        "org": "IMF",
-        "count": 12
-      }
-    ]
-  },
   "finance": {
-    "article_count": 180,
-    "avg_sentiment": 0.11,
+    "article_count": 55,
+    "avg_sentiment": 0.1,
     "sentiment_label": "positive",
     "top_keywords": [
       {
-        "keyword": "people",
-        "count": 14
+        "keyword": "Debt overhang"
       },
       {
-        "keyword": "sri lankas",
-        "count": 12
+        "keyword": "Climate change"
       },
       {
-        "keyword": "tax",
-        "count": 8
+        "keyword": "Sustainable development"
       },
       {
-        "keyword": "the due courtesy",
-        "count": 8
+        "keyword": "IMF"
       },
       {
-        "keyword": "landslides",
-        "count": 7
+        "keyword": "Green bonds"
       },
       {
-        "keyword": "the company",
-        "count": 7
+        "keyword": "Debt-for-climate"
       },
       {
-        "keyword": "competitiveness",
-        "count": 7
+        "keyword": "Carbon credits"
       },
       {
-        "keyword": "sri lankans",
-        "count": 6
+        "keyword": "Alternative financing"
       },
       {
-        "keyword": "the partnership",
-        "count": 6
+        "keyword": "Fiscal reforms"
       },
       {
-        "keyword": "the government",
-        "count": 6
+        "keyword": "Structural adjustments"
       }
     ],
     "top_organizations": [
       {
-        "org": "Taj Samudra",
-        "count": 17
+        "org": "Government of Sri Lanka"
       },
       {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 13
+        "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "INR 2",
-        "count": 12
+        "org": "United Nations Economic and Social Commission for Asia and the Pacific"
       },
       {
-        "org": "IMF",
-        "count": 11
+        "org": "Securities and Exchange Commission"
       },
       {
-        "org": "Government",
-        "count": 9
-      }
-    ]
-  },
-  "energy": {
-    "article_count": 115,
-    "avg_sentiment": 0.112,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "sri lankas",
-        "count": 11
+        "org": "National Budget"
       },
       {
-        "keyword": "people",
-        "count": 9
+        "org": "IMF"
       },
       {
-        "keyword": "competitiveness",
-        "count": 6
+        "org": "Green Bonds"
       },
       {
-        "keyword": "reliability",
-        "count": 6
+        "org": "World Bank"
       },
       {
-        "keyword": "organisations",
-        "count": 5
+        "org": "CBSL"
       },
       {
-        "keyword": "the company",
-        "count": 5
-      },
-      {
-        "keyword": "years",
-        "count": 5
-      },
-      {
-        "keyword": "reforms",
-        "count": 5
-      },
-      {
-        "keyword": "parents",
-        "count": 4
-      },
-      {
-        "keyword": "landslides",
-        "count": 4
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 10
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 7
-      },
-      {
-        "org": "INR 2",
-        "count": 6
-      },
-      {
-        "org": "SME",
-        "count": 6
-      },
-      {
-        "org": "Group",
-        "count": 5
-      }
-    ]
-  },
-  "technology": {
-    "article_count": 283,
-    "avg_sentiment": 0.107,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "sri lankas",
-        "count": 38
-      },
-      {
-        "keyword": "people",
-        "count": 16
-      },
-      {
-        "keyword": "the company",
-        "count": 13
-      },
-      {
-        "keyword": "landslides",
-        "count": 12
-      },
-      {
-        "keyword": "the due courtesy",
-        "count": 11
-      },
-      {
-        "keyword": "sri lankans",
-        "count": 9
-      },
-      {
-        "keyword": "japan",
-        "count": 8
-      },
-      {
-        "keyword": "tax",
-        "count": 8
-      },
-      {
-        "keyword": "the government",
-        "count": 8
-      },
-      {
-        "keyword": "222 reply",
-        "count": 7
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 27
-      },
-      {
-        "org": "INR 2",
-        "count": 19
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 19
-      },
-      {
-        "org": "Government",
-        "count": 13
-      },
-      {
-        "org": "IMF",
-        "count": 12
-      }
-    ]
-  },
-  "manufacturing": {
-    "article_count": 122,
-    "avg_sentiment": 0.094,
-    "sentiment_label": "neutral",
-    "top_keywords": [
-      {
-        "keyword": "people",
-        "count": 8
-      },
-      {
-        "keyword": "the company",
-        "count": 8
-      },
-      {
-        "keyword": "sri lankas",
-        "count": 8
-      },
-      {
-        "keyword": "tax",
-        "count": 7
-      },
-      {
-        "keyword": "the due courtesy",
-        "count": 7
-      },
-      {
-        "keyword": "reforms",
-        "count": 6
-      },
-      {
-        "keyword": "landslides",
-        "count": 5
-      },
-      {
-        "keyword": "japan",
-        "count": 5
-      },
-      {
-        "keyword": "september",
-        "count": 5
-      },
-      {
-        "keyword": "years",
-        "count": 5
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 13
-      },
-      {
-        "org": "IMF",
-        "count": 10
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 9
-      },
-      {
-        "org": "Government",
-        "count": 9
-      },
-      {
-        "org": "INR 2",
-        "count": 8
+        "org": "Colonial Resources Group"
       }
     ]
   },
   "government": {
-    "article_count": 248,
-    "avg_sentiment": 0.113,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "sri lankas",
-        "count": 21
-      },
-      {
-        "keyword": "people",
-        "count": 15
-      },
-      {
-        "keyword": "the company",
-        "count": 11
-      },
-      {
-        "keyword": "landslides",
-        "count": 10
-      },
-      {
-        "keyword": "the due courtesy",
-        "count": 10
-      },
-      {
-        "keyword": "sri lankans",
-        "count": 9
-      },
-      {
-        "keyword": "tax",
-        "count": 8
-      },
-      {
-        "keyword": "the government",
-        "count": 8
-      },
-      {
-        "keyword": "222 reply",
-        "count": 7
-      },
-      {
-        "keyword": "japan",
-        "count": 7
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 27
-      },
-      {
-        "org": "INR 2",
-        "count": 19
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 19
-      },
-      {
-        "org": "Government",
-        "count": 13
-      },
-      {
-        "org": "IMF",
-        "count": 12
-      }
-    ]
-  },
-  "construction": {
-    "article_count": 152,
-    "avg_sentiment": 0.093,
+    "article_count": 38,
+    "avg_sentiment": 0.077,
     "sentiment_label": "neutral",
     "top_keywords": [
       {
-        "keyword": "sri lankas",
-        "count": 17
+        "keyword": "illegal buying"
       },
       {
-        "keyword": "people",
-        "count": 12
+        "keyword": "gem exports"
       },
       {
-        "keyword": "sri lankans",
-        "count": 9
+        "keyword": "tax evasion"
       },
       {
-        "keyword": "landslides",
-        "count": 8
+        "keyword": "foreign nationals"
       },
       {
-        "keyword": "222 reply",
-        "count": 7
+        "keyword": "customs"
       },
       {
-        "keyword": "the company",
-        "count": 7
+        "keyword": "Ministry of Finance"
       },
       {
-        "keyword": "the government",
-        "count": 6
+        "keyword": "Economic Stabilization"
       },
       {
-        "keyword": "reforms",
-        "count": 6
-      },
-      {
-        "keyword": "technology",
-        "count": 5
-      },
-      {
-        "keyword": "japan",
-        "count": 5
+        "keyword": "Sustainable Development"
       }
     ],
     "top_organizations": [
       {
-        "org": "Taj Samudra",
-        "count": 27
+        "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "INR 2",
-        "count": 19
+        "org": "Ministry of Finance"
       },
       {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 19
+        "org": "Economic Stabilization"
       },
       {
-        "org": "Colombo",
-        "count": 10
+        "org": "and National Policies"
       },
       {
-        "org": "Government",
-        "count": 10
-      }
-    ]
-  },
-  "healthcare": {
-    "article_count": 134,
-    "avg_sentiment": 0.115,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "people",
-        "count": 11
+        "org": "Sri Lanka Customs"
       },
       {
-        "keyword": "sri lankas",
-        "count": 9
+        "org": "Gems and Jewellery Authority"
       },
       {
-        "keyword": "japan",
-        "count": 6
+        "org": "MoF"
       },
       {
-        "keyword": "organisations",
-        "count": 6
+        "org": "Ministry of Finance"
       },
       {
-        "keyword": "reforms",
-        "count": 6
+        "org": "Economic Stabilization"
       },
       {
-        "keyword": "competitiveness",
-        "count": 6
-      },
-      {
-        "keyword": "tax",
-        "count": 5
-      },
-      {
-        "keyword": "september",
-        "count": 5
-      },
-      {
-        "keyword": "the company",
-        "count": 5
-      },
-      {
-        "keyword": "years",
-        "count": 5
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Taj Samudra",
-        "count": 15
-      },
-      {
-        "org": "INR 2",
-        "count": 10
-      },
-      {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 9
-      },
-      {
-        "org": "IMF",
-        "count": 7
-      },
-      {
-        "org": "the World Bank",
-        "count": 6
+        "org": "and National Policies"
       }
     ]
   },
   "agriculture": {
-    "article_count": 134,
-    "avg_sentiment": 0.11,
+    "article_count": 19,
+    "avg_sentiment": 0.108,
     "sentiment_label": "positive",
     "top_keywords": [
       {
-        "keyword": "sri lankas",
-        "count": 15
+        "keyword": "inflation"
       },
       {
-        "keyword": "222 reply",
-        "count": 6
+        "keyword": "agriculture"
       },
       {
-        "keyword": "people",
-        "count": 6
+        "keyword": "tariffs"
       },
       {
-        "keyword": "technology",
-        "count": 6
+        "keyword": "foreign exchange"
       },
       {
-        "keyword": "the government",
-        "count": 5
+        "keyword": "central bank"
       },
       {
-        "keyword": "years",
-        "count": 5
+        "keyword": "rice"
       },
       {
-        "keyword": "livestock",
-        "count": 5
+        "keyword": "coffee"
       },
       {
-        "keyword": "reforms",
-        "count": 5
+        "keyword": "economy"
       },
       {
-        "keyword": "a project",
-        "count": 4
-      },
-      {
-        "keyword": "it hub",
-        "count": 4
+        "keyword": "market"
       }
     ],
     "top_organizations": [
       {
-        "org": "Taj Samudra",
-        "count": 14
+        "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "INR 2",
-        "count": 9
+        "org": "Lanka Coffee Association"
       },
       {
-        "org": "International Aid and Government Alerts SriLankan Airlines",
-        "count": 9
+        "org": "John Keells Holdings"
       },
       {
-        "org": "IMF",
-        "count": 7
+        "org": "M. Robertson & Co"
       },
       {
-        "org": "SME",
-        "count": 6
+        "org": "Elpitiya Plantations"
+      },
+      {
+        "org": "First Capital"
+      },
+      {
+        "org": "Dimantha Mathew"
+      },
+      {
+        "org": "Colombo Coffee Company"
+      },
+      {
+        "org": "Muditha Peiris"
+      },
+      {
+        "org": "PwC Sri Lanka"
+      }
+    ]
+  },
+  "technology": {
+    "article_count": 35,
+    "avg_sentiment": 0.109,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "proof of concept"
+      },
+      {
+        "keyword": "digital currency"
+      },
+      {
+        "keyword": "central bank"
+      },
+      {
+        "keyword": "blockchain"
+      },
+      {
+        "keyword": "cryptocurrency"
+      },
+      {
+        "keyword": "CBDC"
+      },
+      {
+        "keyword": "Sri Lanka"
+      },
+      {
+        "keyword": "Governor"
+      },
+      {
+        "keyword": "pilot"
+      },
+      {
+        "keyword": "policy"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Threadworks"
+      },
+      {
+        "org": "Velona Group"
+      },
+      {
+        "org": "Central Bank of Sri Lanka"
+      },
+      {
+        "org": "Sri Lanka Customs"
+      },
+      {
+        "org": "Ministry of Finance"
+      },
+      {
+        "org": "Sri Lanka Central Bank"
+      },
+      {
+        "org": "National Payments Agency"
+      },
+      {
+        "org": "Sri Lankan Banks"
+      },
+      {
+        "org": "Arista"
+      },
+      {
+        "org": "Velona Cuddles"
+      }
+    ]
+  },
+  "transport": {
+    "article_count": 23,
+    "avg_sentiment": 0.098,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "CARAT Sri Lanka"
+      },
+      {
+        "keyword": "Maritime Security"
+      },
+      {
+        "keyword": "Indo-Pacific"
+      },
+      {
+        "keyword": "Navy"
+      },
+      {
+        "keyword": "Sri Lanka Navy"
+      },
+      {
+        "keyword": "Exercise"
+      },
+      {
+        "keyword": "Fleet Anti-Terrorism Security Team"
+      },
+      {
+        "keyword": "Mobility Planning"
+      },
+      {
+        "keyword": "Toyota Tsusho Corporation"
+      },
+      {
+        "keyword": "Trincomalee"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Toyota Lanka"
+      },
+      {
+        "org": "Toyota Tsusho Corporation"
+      },
+      {
+        "org": "Mobility Planning Department"
+      },
+      {
+        "org": "Nobuhiko Murakami"
+      }
+    ]
+  },
+  "construction": {
+    "article_count": 5,
+    "avg_sentiment": 0.117,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "MRP"
+      },
+      {
+        "keyword": "tile"
+      },
+      {
+        "keyword": "cement"
+      },
+      {
+        "keyword": "consumer"
+      },
+      {
+        "keyword": "tariffs"
+      },
+      {
+        "keyword": "investment"
+      },
+      {
+        "keyword": "exports"
+      },
+      {
+        "keyword": "CAA"
+      },
+      {
+        "keyword": "port"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Central Bank of Sri Lanka"
+      },
+      {
+        "org": "Ceylon Chamber of Commerce"
+      },
+      {
+        "org": "China Harbour Engineering Company"
+      },
+      {
+        "org": "Lanka Printers"
+      },
+      {
+        "org": "UDC"
+      },
+      {
+        "org": "Sri Lanka Shipping Corporation"
+      },
+      {
+        "org": "National Flood Response and Relief Agency"
+      },
+      {
+        "org": "Sri Lankan Investment Promotion Agency"
+      },
+      {
+        "org": "Sri Lankan Tourism Development Corporation"
+      },
+      {
+        "org": "Ministry of Trade"
+      }
+    ]
+  },
+  "tourism": {
+    "article_count": 15,
+    "avg_sentiment": 0.126,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Bally\u2019s Colombo"
+      },
+      {
+        "keyword": "30th anniversary"
+      },
+      {
+        "keyword": "entertainment hub"
+      },
+      {
+        "keyword": "Sri Lanka tourism"
+      },
+      {
+        "keyword": "leisure destination"
+      },
+      {
+        "keyword": "Colombo development"
+      },
+      {
+        "keyword": "Galore Development"
+      },
+      {
+        "keyword": "tourism industry"
+      },
+      {
+        "keyword": "entertainment sector"
+      },
+      {
+        "keyword": "event planning"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Doola River Edge"
+      },
+      {
+        "org": "Bally\u2019s Colombo"
+      },
+      {
+        "org": "Tourism Sri Lanka"
+      },
+      {
+        "org": "Government of Sri Lanka"
+      },
+      {
+        "org": "Ministry of Tourism"
+      },
+      {
+        "org": "Sri Lankan Banks"
+      },
+      {
+        "org": "Sri Lankan Tourism Board"
+      },
+      {
+        "org": "Udawalwe Elephant Transit Home"
+      },
+      {
+        "org": "Sri Lankan Hospitality Association"
+      },
+      {
+        "org": "Tourism Sri Lanka"
+      }
+    ]
+  },
+  "healthcare": {
+    "article_count": 6,
+    "avg_sentiment": 0.145,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Triple Bottom Line"
+      },
+      {
+        "keyword": "Sri Lanka"
+      },
+      {
+        "keyword": "Healthcare"
+      },
+      {
+        "keyword": "Sustainability"
+      },
+      {
+        "keyword": "CSR"
+      },
+      {
+        "keyword": "NIMH"
+      },
+      {
+        "keyword": "Disaster"
+      },
+      {
+        "keyword": "Mental Health"
+      },
+      {
+        "keyword": "Food"
+      },
+      {
+        "keyword": "Regulations"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Nestl\u00e9 Lanka"
+      },
+      {
+        "org": "Ceylon Chamber of Commerce"
+      },
+      {
+        "org": "Colombo North Teaching Hospital"
+      },
+      {
+        "org": "Ministry of Public Health"
+      },
+      {
+        "org": "National Institute of Mental Health"
+      },
+      {
+        "org": "Sri Lankan Dairy Farmers Association"
+      },
+      {
+        "org": "Sri Lankan Coconut Growers Association"
+      },
+      {
+        "org": "John Keells Holdings"
+      },
+      {
+        "org": "Kurunegala Dairy Factory"
+      },
+      {
+        "org": "Sri Lankan Government"
+      }
+    ]
+  },
+  "energy": {
+    "article_count": 12,
+    "avg_sentiment": 0.099,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "Mannar"
+      },
+      {
+        "keyword": "Renewable energy"
+      },
+      {
+        "keyword": "Dispatch database"
+      },
+      {
+        "keyword": "Power plants"
+      },
+      {
+        "keyword": "Transparency"
+      },
+      {
+        "keyword": "Data visualization"
+      },
+      {
+        "keyword": "PUCSL"
+      },
+      {
+        "keyword": "USAID"
+      },
+      {
+        "keyword": "Electricity distribution"
+      },
+      {
+        "keyword": "Grid management"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Central Bank of Sri Lanka"
+      },
+      {
+        "org": "National Shrine of Our Lady of Madhu"
+      },
+      {
+        "org": "Public Utilities Commission of Sri Lanka"
+      },
+      {
+        "org": "John Keells Holdings"
+      },
+      {
+        "org": "Vavuniya Sugar Factory"
+      },
+      {
+        "org": "MP Charles Nirmalanathan"
+      },
+      {
+        "org": "MP Selvam Adekkalanathan"
+      },
+      {
+        "org": "Brian Udaigwe"
+      },
+      {
+        "org": "Vatican Apostolic Nuncio of Sri Lanka"
+      },
+      {
+        "org": "USAID"
       }
     ]
   },
   "general": {
-    "article_count": 4,
-    "avg_sentiment": 0.0,
+    "article_count": 11,
+    "avg_sentiment": 0.084,
     "sentiment_label": "neutral",
-    "top_keywords": [],
-    "top_organizations": []
+    "top_keywords": [
+      {
+        "keyword": "Swastha Amurtha"
+      },
+      {
+        "keyword": "Herbal Health Care"
+      },
+      {
+        "keyword": "Sri Lankan Market"
+      },
+      {
+        "keyword": "Ride-Hailing"
+      },
+      {
+        "keyword": "Mobility"
+      },
+      {
+        "keyword": "Economic Impact"
+      },
+      {
+        "keyword": "Ayurveda"
+      },
+      {
+        "keyword": "Kummin"
+      },
+      {
+        "keyword": "Japanese Consumers"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Link Natural Products"
+      },
+      {
+        "org": "Uber"
+      },
+      {
+        "org": "Sri Lankan Government"
+      },
+      {
+        "org": "Ministry of Industries and Entrepreneurship Development"
+      },
+      {
+        "org": "Public First"
+      },
+      {
+        "org": "Akanksha Singh"
+      },
+      {
+        "org": "Uber Eats"
+      },
+      {
+        "org": "Google"
+      },
+      {
+        "org": "Sri Lankan Banks"
+      },
+      {
+        "org": "Uber"
+      }
+    ]
+  },
+  "manufacturing": {
+    "article_count": 7,
+    "avg_sentiment": 0.102,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Sri Lankan manufacturing"
+      },
+      {
+        "keyword": "yarn"
+      },
+      {
+        "keyword": "textiles"
+      },
+      {
+        "keyword": "Benin"
+      },
+      {
+        "keyword": "investment"
+      },
+      {
+        "keyword": "AGOA"
+      },
+      {
+        "keyword": "COMPLAST"
+      },
+      {
+        "keyword": "circular economy"
+      },
+      {
+        "keyword": "sustainability"
+      },
+      {
+        "keyword": "export"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Central Bank of Sri Lanka"
+      },
+      {
+        "org": "John Keells Holdings"
+      },
+      {
+        "org": "Sri Lanka High Commission in Kenya"
+      },
+      {
+        "org": "COMPLAST 2023 Pioneers"
+      },
+      {
+        "org": "Sri Lanka Advanced Circular Economy"
+      },
+      {
+        "org": "Ben Nevis"
+      },
+      {
+        "org": "Ceylon Rubber & Plastics"
+      },
+      {
+        "org": "Sri Lanka High Commission in Nairobi"
+      },
+      {
+        "org": "UNEP"
+      },
+      {
+        "org": "African Growth and Opportunity Act (AGOA)"
+      }
+    ]
   }
 }

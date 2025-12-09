@@ -5,25 +5,9 @@
       "title": "Devastation",
       "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
       "sectors": [
-        "agriculture",
-        "technology",
-        "government"
+        "agriculture"
       ],
       "sentiment": 0.458,
-      "impact": "medium",
-      "type": "positive_sentiment"
-    },
-    {
-      "title": "SAMPATH BANK",
-      "url": "https://lmd.lk/sampath-bank-131/",
-      "sectors": [
-        "transport",
-        "finance",
-        "energy",
-        "technology",
-        "government"
-      ],
-      "sentiment": 0.408,
       "impact": "medium",
       "type": "positive_sentiment"
     },
@@ -31,11 +15,7 @@
       "title": "NDB recognised at CMA Excellence awards",
       "url": "https://www.sundaytimes.lk/251130/business-times/ndb-recognised-at-cma-excellence-awards-622233.html",
       "sectors": [
-        "transport",
-        "finance",
-        "technology",
-        "government",
-        "healthcare"
+        "finance"
       ],
       "sentiment": 0.385,
       "impact": "medium",
@@ -45,26 +25,9 @@
       "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
       "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
       "sectors": [
-        "transport",
-        "finance",
-        "agriculture",
-        "technology",
-        "healthcare"
+        "finance"
       ],
       "sentiment": 0.37,
-      "impact": "medium",
-      "type": "positive_sentiment"
-    },
-    {
-      "title": "CROCODILE ELEVATES SHOPPING EXPERIENCE AT UPGRADED STORE AT ONE GALLE FACE MALL",
-      "url": "https://lmd.lk/crocodile-elevates-shopping-experience-at-upgraded-store-at-one-galle-face-mall/",
-      "sectors": [
-        "tourism",
-        "transport",
-        "finance",
-        "technology"
-      ],
-      "sentiment": 0.362,
       "impact": "medium",
       "type": "positive_sentiment"
     },
@@ -72,7 +35,6 @@
       "title": "SL Tax Dept. extends deadline for filing of tax returns",
       "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
       "sectors": [
-        "technology",
         "government"
       ],
       "sentiment": 0.356,
@@ -83,12 +45,7 @@
       "title": "Bay of Bengal countries mark World Fisheries Day",
       "url": "https://www.sundaytimes.lk/251130/business-times/bay-of-bengal-countries-mark-world-fisheries-day-622229.html",
       "sectors": [
-        "transport",
-        "finance",
-        "agriculture",
-        "technology",
-        "manufacturing",
-        "government"
+        "agriculture"
       ],
       "sentiment": 0.352,
       "impact": "medium",
@@ -98,9 +55,6 @@
       "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
       "url": "https://www.sundaytimes.lk/251130/business-times/citrus-leisure-indira-cancer-trust-to-help-critically-ill-children-622217.html",
       "sectors": [
-        "finance",
-        "technology",
-        "government",
         "healthcare"
       ],
       "sentiment": 0.349,
@@ -108,28 +62,36 @@
       "type": "positive_sentiment"
     },
     {
-      "title": "TOMORROW\u2019S WORLD",
-      "url": "https://lmd.lk/tomorrows-world-dec-2025/",
+      "title": "Doola River Edge Celebrates the Spirit of the Season with Festive Cake-Mixing Ceremony 2025",
+      "url": "https://economictimes.lk/index.php/2025/12/09/doola-river-edge-celebrates-the-spirit-of-the-season-with-festive-cake-mixing-ceremony-2025/",
       "sectors": [
-        "technology",
-        "government"
+        "tourism"
       ],
-      "sentiment": 0.349,
+      "sentiment": 0.343,
       "impact": "medium",
       "type": "positive_sentiment"
     },
     {
-      "title": "SRI LANKAN OVERSEAS",
-      "url": "https://lmd.lk/sri-lankan-overseas-nov-2025/",
+      "title": "Nestl\u00e9 Lanka Recognized at the Best Corporate Citizen Sustainability Awards 2025",
+      "url": "https://economictimes.lk/index.php/2025/12/09/nestle-lanka-recognized-at-the-best-corporate-citizen-sustainability-awards-2025/",
       "sectors": [
-        "technology",
-        "government"
+        "healthcare"
       ],
-      "sentiment": 0.349,
+      "sentiment": 0.332,
+      "impact": "medium",
+      "type": "positive_sentiment"
+    },
+    {
+      "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
+      "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.328,
       "impact": "medium",
       "type": "positive_sentiment"
     }
   ],
   "total_risks": 0,
-  "total_opportunities": 15
+  "total_opportunities": 9
 }
