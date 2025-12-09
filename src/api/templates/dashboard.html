@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SerendivWatcher | National Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo-icon"><i class="fa-solid fa-chart-network"></i></div>
+            <span>SerendivWatcher</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-label">Intelligence Hub</div>
+            <a href="/" class="nav-item {% if active_page == 'overview' %}active{% endif %}">
+                <i class="fa-solid fa-grid-2"></i> <span>Overview</span>
+            </a>
+            <a href="/sectors" class="nav-item {% if active_page == 'sectors' %}active{% endif %}">
+                <i class="fa-solid fa-layer-group"></i> <span>Sector Analysis</span>
+            </a>
+            <a href="/risks" class="nav-item {% if active_page == 'risks' %}active{% endif %}">
+                <i class="fa-solid fa-shield-exclamation"></i> <span>Risk Monitor</span>
+            </a>
+        </nav>
+    
+        <div class="sidebar-footer">
+            <div class="live-indicator">
+                <div class="pulse-dot"></div>
+                <span>Live Monitoring</span>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">AD</div>
+                <div class="user-info">
+                    <span class="name">Admin User</span>
+                    
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+
+    <main class="main-content">
+        
+        <header class="top-bar">
+            <div class="breadcrumbs">
+                <span class="text-muted">Dashboard</span> / <span class="text-primary">National Overview</span>
+            </div>
+            <div class="header-actions">
+                <span class="last-updated">
+                    <i class="fa-regular fa-clock"></i> 
+                    05:15 AM
+                </span>
+                <button class="btn-secondary"><i class="fa-solid fa-bell"></i> Alerts</button>
+                
+            </div>
+        </header>
+
+        <!-- OUTPUT 1: NATIONAL ACTIVITY INDICATORS -->
+        <section class="section-header">
+            <h2><i class="fa-solid fa-flag"></i> National Activity Indicators</h2>
+            <p class="section-desc">Major events, developments, and topics gaining traction in Sri Lanka's business environment</p>
+        </section>
+
+        <section class="metrics-grid">
+            <div class="card metric-card card-premium">
+                <div class="metric-icon sentiment-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="metric-body">
+                    <span class="metric-label">National Sentiment</span>
+                    {% set sentiment = data.national_indicators.overall_sentiment if data.national_indicators else 0 %}
+                    <h2 class="metric-value {% if sentiment > 0.1 %}text-success{% elif sentiment < -0.1 %}text-danger{% else %}text-neutral{% endif %}">
+                        {{ "%.3f"|format(sentiment) }}
+                    </h2>
+                    <div class="sentiment-bar">
+                        <div class="sentiment-fill {% if sentiment > 0 %}sentiment-positive{% else %}sentiment-negative{% endif %}" 
+                             style="width: {{ ((sentiment + 1) / 2 * 100)|int }}%;"></div>
+                    </div>
+                    <span class="badge {% if sentiment > 0 %}badge-success-soft{% else %}badge-neutral{% endif %}">
+                        {% if sentiment > 0.1 %}Positive Market{% elif sentiment < -0.1 %}Caution Advised{% else %}Neutral Outlook{% endif %}
+                    </span>
+                </div>
+            </div>
+
+            <div class="card metric-card card-premium">
+                <div class="metric-icon volume-icon">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <div class="metric-body">
+                    <span class="metric-label">Intelligence Volume</span>
+                    <h2 class="metric-value">{{ data.national_indicators.total_articles if data.national_indicators else 0 }}</h2>
+                    <p class="metric-desc">Articles analyzed</p>
+                    <span class="badge badge-info-soft">5 Sources Active</span>
+                </div>
+            </div>
+
+            <div class="card metric-card card-premium border-left-danger">
+                <div class="metric-icon risk-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="metric-body">
+                    <span class="metric-label">Active Risks</span>
+                    <h2 class="metric-value text-danger">{{ data.risk_opportunity_insights.total_risks if data.risk_opportunity_insights else 0 }}</h2>
+                    <p class="metric-desc">
+                        Critical: <strong>{{ (data.risk_opportunity_insights.risks | selectattr('severity', 'equalto', 'high') | list | length) if data.risk_opportunity_insights else 0 }}</strong>
+                    </p>
+                    <div class="risk-donut">
+                        <svg width="60" height="60">
+                            <circle cx="30" cy="30" r="22" stroke="#fee2e2" stroke-width="6" fill="none"/>
+                            <circle cx="30" cy="30" r="22" stroke="#ef4444" stroke-width="6" fill="none" 
+                                    stroke-dasharray="138" stroke-dashoffset="35" transform="rotate(-90 30 30)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card metric-card card-premium border-left-success">
+                <div class="metric-icon opportunity-icon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div class="metric-body">
+                    <span class="metric-label">Growth Opportunities</span>
+                    <h2 class="metric-value text-success">{{ data.risk_opportunity_insights.total_opportunities if data.risk_opportunity_insights else 0 }}</h2>
+                    <p class="metric-desc">
+                        High Impact: <strong>{{ (data.risk_opportunity_insights.opportunities | selectattr('impact', 'equalto', 'high') | list | length) if data.risk_opportunity_insights else 0 }}</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Sectors Activity -->
+        <div class="dashboard-split">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3><i class="fa-solid fa-chart-column"></i> Sector Activity Breakdown</h3>
+                        <p class="text-muted text-xs">Real-time article distribution by business sector</p>
+                    </div>
+                    <div class="chart-controls">
+                        <button class="btn-xs active" data-chart="bar">Bar</button>
+                        <button class="btn-xs" data-chart="radar">Radar</button>
+                        <button class="btn-xs" data-chart="doughnut">Pie</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="sectorChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-cubes"></i> Sector Clusters</h3>
+                    <p class="text-muted text-xs">Performance grouping by sentiment</p>
+                </div>
+                <div class="cluster-list">
+                    {% if data.sector_clusters and data.sector_clusters.clusters %}
+                        {% for cluster in data.sector_clusters.clusters %}
+                        <div class="cluster-card {% if cluster.avg_sentiment > 0.2 %}cluster-success{% elif cluster.avg_sentiment < -0.1 %}cluster-danger{% else %}cluster-neutral{% endif %}">
+                            <div class="cluster-header">
+                                <span class="cluster-label">{{ cluster.label }}</span>
+                                <span class="cluster-sentiment">{{ "%.2f"|format(cluster.avg_sentiment) }}</span>
+                            </div>
+                            <div class="cluster-sectors">
+                                {% for sector in cluster.sectors[:3] %}
+                                <span class="sector-tag">{{ sector.sector }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="cluster-meta">{{ cluster.sectors|length }} sectors</div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Organizations & Locations -->
+        <div class="dashboard-split">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-building"></i> Top Organizations</h3>
+                </div>
+                <div class="entity-list">
+                    {% if data.national_indicators and data.national_indicators.top_organizations %}
+                        {% for org in data.national_indicators.top_organizations[:8] %}
+                        <div class="entity-item">
+                            <div class="entity-avatar">{{ org.org[:2]|upper }}</div>
+                            <div class="entity-info">
+                                <div class="entity-name">{{ org.org }}</div>
+                                <div class="entity-count">{{ org.count }} mentions</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-location-dot"></i> Top Locations</h3>
+                </div>
+                <div class="entity-list">
+                    {% if data.national_indicators and data.national_indicators.top_locations %}
+                        {% for loc in data.national_indicators.top_locations[:8] %}
+                        <div class="entity-item">
+                            <div class="entity-avatar location">
+                                <i class="fa-solid fa-map-pin"></i>
+                            </div>
+                            <div class="entity-info">
+                                <div class="entity-name">{{ loc.location }}</div>
+                                <div class="entity-count">{{ loc.count }} mentions</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Anomaly Detection -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fa-solid fa-radar text-warning"></i> Anomaly Detection Engine</h3>
+                <button class="btn-secondary btn-sm"><i class="fa-solid fa-sliders"></i> Configure</button>
+            </div>
+            <div class="anomaly-grid">
+                {% if data.anomalies and data.anomalies.anomalies %}
+                    {% for anomaly in data.anomalies.anomalies[:6] %}
+                    <div class="anomaly-card-compact">
+                        <div class="anomaly-badge {% if 'negative' in anomaly.anomaly_type %}badge-danger{% else %}badge-success{% endif %}">
+                            <i class="fa-solid fa-bolt"></i> {{ anomaly.anomaly_type|replace('_', ' ')|title }}
+                        </div>
+                        <div class="anomaly-title">{{ anomaly.title[:80] }}...</div>
+                        <div class="anomaly-footer">
+                            <span class="z-score">Z-Score: {{ "%.2f"|format(anomaly.z_score) }}</span>
+                            <span class="source">{{ anomaly.source }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Footer Stats -->
+        <footer class="dashboard-footer">
+            <div class="footer-stat">
+                <i class="fa-solid fa-database"></i>
+                <span>{{ data.national_indicators.total_articles if data.national_indicators else 0 }} Data Points</span>
+            </div>
+            <div class="footer-stat">
+                <i class="fa-solid fa-server"></i>
+                <span>5 Sources Active</span>
+            </div>
+            <div class="footer-stat">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Updated 2 min ago</span>
+            </div>
+            <div class="footer-stat">
+                <i class="fa-solid fa-shield-check"></i>
+                <span>System Healthy</span>
+            </div>
+        </footer>
+    </main>
+
+    <script type="text/javascript">
+        // @ts-ignore - Jinja2 template syntax
+        
+        window.dashboardData = {{ data | tojson | safe }};
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    </body>
+</html>
+    

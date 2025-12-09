@@ -1,0 +1,110 @@
+{
+  "top_correlations": [
+    {
+      "sector1": "technology",
+      "sector2": "transport",
+      "co_occurrence_count": 264,
+      "avg_sentiment": 0.099,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "government",
+      "sector2": "technology",
+      "co_occurrence_count": 247,
+      "avg_sentiment": 0.112,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "government",
+      "sector2": "transport",
+      "co_occurrence_count": 232,
+      "avg_sentiment": 0.103,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "finance",
+      "sector2": "technology",
+      "co_occurrence_count": 179,
+      "avg_sentiment": 0.109,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "finance",
+      "sector2": "transport",
+      "co_occurrence_count": 173,
+      "avg_sentiment": 0.109,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "finance",
+      "sector2": "government",
+      "co_occurrence_count": 166,
+      "avg_sentiment": 0.109,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "construction",
+      "sector2": "technology",
+      "co_occurrence_count": 152,
+      "avg_sentiment": 0.093,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "construction",
+      "sector2": "transport",
+      "co_occurrence_count": 150,
+      "avg_sentiment": 0.093,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "construction",
+      "sector2": "government",
+      "co_occurrence_count": 140,
+      "avg_sentiment": 0.095,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "agriculture",
+      "sector2": "technology",
+      "co_occurrence_count": 134,
+      "avg_sentiment": 0.11,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "healthcare",
+      "sector2": "technology",
+      "co_occurrence_count": 133,
+      "avg_sentiment": 0.114,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "agriculture",
+      "sector2": "transport",
+      "co_occurrence_count": 132,
+      "avg_sentiment": 0.107,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "healthcare",
+      "sector2": "transport",
+      "co_occurrence_count": 129,
+      "avg_sentiment": 0.112,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "agriculture",
+      "sector2": "government",
+      "co_occurrence_count": 126,
+      "avg_sentiment": 0.109,
+      "correlation_strength": "strong"
+    },
+    {
+      "sector1": "government",
+      "sector2": "healthcare",
+      "co_occurrence_count": 124,
+      "avg_sentiment": 0.116,
+      "correlation_strength": "strong"
+    }
+  ],
+  "total_correlations": 45
+}

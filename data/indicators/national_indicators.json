@@ -1,0 +1,298 @@
+{
+  "overall_sentiment": 0.106,
+  "sentiment_distribution": {
+    "positive": 136,
+    "neutral": 149,
+    "negative": 3
+  },
+  "total_articles": 288,
+  "top_sectors": [
+    {
+      "sector": "technology",
+      "count": 283
+    },
+    {
+      "sector": "transport",
+      "count": 265
+    },
+    {
+      "sector": "government",
+      "count": 248
+    },
+    {
+      "sector": "finance",
+      "count": 180
+    },
+    {
+      "sector": "construction",
+      "count": 152
+    }
+  ],
+  "top_organizations": [
+    {
+      "org": "Taj Samudra",
+      "count": 27
+    },
+    {
+      "org": "INR 2",
+      "count": 19
+    },
+    {
+      "org": "International Aid and Government Alerts SriLankan Airlines",
+      "count": 19
+    },
+    {
+      "org": "Government",
+      "count": 13
+    },
+    {
+      "org": "IMF",
+      "count": 12
+    },
+    {
+      "org": "Colombo",
+      "count": 11
+    },
+    {
+      "org": "SME",
+      "count": 9
+    },
+    {
+      "org": "Group",
+      "count": 8
+    },
+    {
+      "org": "Cabinet",
+      "count": 8
+    },
+    {
+      "org": "Parliament",
+      "count": 8
+    }
+  ],
+  "top_locations": [
+    {
+      "location": "Sri Lanka",
+      "count": 128
+    },
+    {
+      "location": "Sri Lankas",
+      "count": 34
+    },
+    {
+      "location": "London",
+      "count": 32
+    },
+    {
+      "location": "Ankumbura",
+      "count": 28
+    },
+    {
+      "location": "Floods",
+      "count": 28
+    },
+    {
+      "location": "US",
+      "count": 22
+    },
+    {
+      "location": "India",
+      "count": 22
+    },
+    {
+      "location": "Sri Lankan",
+      "count": 19
+    },
+    {
+      "location": "China",
+      "count": 17
+    },
+    {
+      "location": "AI",
+      "count": 15
+    }
+  ],
+  "top_topics": [
+    {
+      "topic": "sri lankas",
+      "count": 44,
+      "top_sectors": [
+        {
+          "sector": "technology",
+          "count": 44
+        },
+        {
+          "sector": "transport",
+          "count": 43
+        },
+        {
+          "sector": "government",
+          "count": 26
+        }
+      ]
+    },
+    {
+      "topic": "the government",
+      "count": 43,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 43
+        },
+        {
+          "sector": "technology",
+          "count": 43
+        },
+        {
+          "sector": "government",
+          "count": 43
+        }
+      ]
+    },
+    {
+      "topic": "timely insights",
+      "count": 38,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 38
+        },
+        {
+          "sector": "technology",
+          "count": 38
+        },
+        {
+          "sector": "construction",
+          "count": 23
+        }
+      ]
+    },
+    {
+      "topic": "people",
+      "count": 23,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 23
+        },
+        {
+          "sector": "technology",
+          "count": 23
+        },
+        {
+          "sector": "finance",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "topic": "technology",
+      "count": 22,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 22
+        },
+        {
+          "sector": "technology",
+          "count": 22
+        },
+        {
+          "sector": "government",
+          "count": 22
+        }
+      ]
+    },
+    {
+      "topic": "investment",
+      "count": 22,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 22
+        },
+        {
+          "sector": "technology",
+          "count": 22
+        },
+        {
+          "sector": "government",
+          "count": 22
+        }
+      ]
+    },
+    {
+      "topic": "pilots",
+      "count": 20,
+      "top_sectors": [
+        {
+          "sector": "tourism",
+          "count": 20
+        },
+        {
+          "sector": "transport",
+          "count": 20
+        },
+        {
+          "sector": "technology",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "topic": "affordable options",
+      "count": 19,
+      "top_sectors": [
+        {
+          "sector": "technology",
+          "count": 19
+        },
+        {
+          "sector": "government",
+          "count": 19
+        },
+        {
+          "sector": "transport",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "topic": "friend",
+      "count": 19,
+      "top_sectors": [
+        {
+          "sector": "technology",
+          "count": 19
+        },
+        {
+          "sector": "government",
+          "count": 19
+        },
+        {
+          "sector": "transport",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "topic": "the sunday morning",
+      "count": 19,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 19
+        },
+        {
+          "sector": "technology",
+          "count": 19
+        },
+        {
+          "sector": "construction",
+          "count": 11
+        }
+      ]
+    }
+  ],
+  "timestamp": "2025-12-09T01:02:00.336762"
+}

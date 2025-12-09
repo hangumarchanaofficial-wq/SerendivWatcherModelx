@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SerendivWatcher | Sector Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo-icon"><i class="fa-solid fa-chart-network"></i></div>
+            <span>SerendivWatcher</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-label">Intelligence Hub</div>
+            <a href="/" class="nav-item {% if active_page == 'overview' %}active{% endif %}">
+                <i class="fa-solid fa-grid-2"></i> <span>Overview</span>
+            </a>
+            <a href="/sectors" class="nav-item {% if active_page == 'sectors' %}active{% endif %}">
+                <i class="fa-solid fa-layer-group"></i> <span>Sector Analysis</span>
+            </a>
+            <a href="/risks" class="nav-item {% if active_page == 'risks' %}active{% endif %}">
+                <i class="fa-solid fa-shield-exclamation"></i> <span>Risk Monitor</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="live-indicator">
+                <div class="pulse-dot"></div>
+                <span>Live Monitoring</span>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">AD</div>
+                <div class="user-info">
+                    <span class="name">Admin User</span>
+                    <span class="role">Premium Access</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-bar">
+            <div class="breadcrumbs">
+                <span class="text-muted">Dashboard</span> / <span class="text-primary">Sector Analysis</span>
+            </div>
+            <div class="header-actions">
+                <span class="last-updated">
+                    <i class="fa-regular fa-clock"></i> 
+                    05:15 AM
+                </span>
+                <button class="btn-secondary"><i class="fa-solid fa-bell"></i> Alerts</button>
+            </div>
+        </header>
+
+        <!-- OUTPUT 2: OPERATIONAL ENVIRONMENT INDICATORS -->
+        <section class="section-header">
+            <h2><i class="fa-solid fa-layer-group"></i> Operational Environment Indicators</h2>
+            <p class="section-desc">Sector-specific conditions affecting business operations and customer behavior</p>
+        </section>
+
+        <!-- Sector Cards Grid -->
+        <div class="sector-grid">
+            {% if data.sector_indicators %}
+                {% for sector_name, sector_data in data.sector_indicators.items() %}
+                <div class="card sector-card">
+                    <div class="sector-card-header">
+                        <div class="sector-info">
+                            <h3>{{ sector_name|title }}</h3>
+                            <span class="article-count">{{ sector_data.article_count }} articles</span>
+                        </div>
+                        <div class="sentiment-badge {% if sector_data.avg_sentiment > 0.1 %}badge-success{% elif sector_data.avg_sentiment < -0.1 %}badge-danger{% else %}badge-neutral{% endif %}">
+                            {{ sector_data.sentiment_label|title }}
+                        </div>
+                    </div>
+                    
+                    <div class="sector-sentiment-score">
+                        <span class="score-label">Sentiment Score</span>
+                        <div class="score-value {% if sector_data.avg_sentiment > 0 %}text-success{% else %}text-danger{% endif %}">
+                            {{ "%.3f"|format(sector_data.avg_sentiment) }}
+                        </div>
+                        <div class="sentiment-bar-mini">
+                            <div class="sentiment-fill-mini {% if sector_data.avg_sentiment > 0 %}sentiment-positive{% else %}sentiment-negative{% endif %}" 
+                                 style="width: {{ ((sector_data.avg_sentiment + 1) / 2 * 100)|int }}%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="sector-keywords">
+                        <span class="keywords-label">Top Keywords</span>
+                        <div class="keyword-tags">
+                            {% for kw in sector_data.top_keywords[:5] %}
+                            <span class="keyword-tag">{{ kw.keyword }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% if sector_data.top_organizations %}
+                    <div class="sector-orgs">
+                        <span class="orgs-label">Key Players</span>
+                        <div class="org-pills-container">
+                            {% for org in sector_data.top_organizations[:3] %}
+                            <span class="org-pill" title="{{ org.org }}">
+                                {{ org.org[:35] }}{% if org.org|length > 35 %}...{% endif %}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <p>No sector data available</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Sentiment Velocity Analysis -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fa-solid fa-gauge-high"></i> Sentiment Velocity Analysis</h3>
+                <p class="text-muted text-xs">Rate of sentiment change across sectors</p>
+            </div>
+            <div class="velocity-grid">
+                {% if data.sentiment_velocity and data.sentiment_velocity.sector_velocities %}
+                    {% for velocity in data.sentiment_velocity.sector_velocities[:6] %}
+                    <div class="velocity-card">
+                        <div class="velocity-header">
+                            <span class="sector-name">{{ velocity.sector|title }}</span>
+                            <span class="velocity-badge {% if velocity.velocity > 0.1 %}badge-success{% elif velocity.velocity < -0.1 %}badge-danger{% else %}badge-neutral{% endif %}">
+                                {% if velocity.velocity > 0 %}↗{% else %}↘{% endif %} {{ "%.3f"|format(velocity.velocity|abs) }}
+                            </span>
+                        </div>
+                        <div class="velocity-bar-container">
+                            <div class="velocity-bar {% if velocity.velocity > 0 %}velocity-positive{% else %}velocity-negative{% endif %}" 
+                                 style="width: {{ (velocity.velocity|abs * 200)|int }}%;"></div>
+                        </div>
+                        <div class="velocity-meta">
+                            <span>Current: {{ "%.2f"|format(velocity.current_sentiment) }}</span>
+                            <span class="trend-badge">{{ velocity.trend|title }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <p>No velocity data available</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Sector Correlations -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fa-solid fa-diagram-project"></i> Sector Correlations</h3>
+                <p class="text-muted text-xs">Sectors frequently mentioned together</p>
+            </div>
+            <div class="correlation-grid">
+                {% if data.sector_correlations and data.sector_correlations.top_correlations %}
+                    {% for corr in data.sector_correlations.top_correlations[:8] %}
+                    <div class="correlation-card">
+                        <div class="correlation-sectors">
+                            <span class="sector-badge">{{ corr.sector1|title }}</span>
+                            <i class="fa-solid fa-arrows-left-right"></i>
+                            <span class="sector-badge">{{ corr.sector2|title }}</span>
+                        </div>
+                        <div class="correlation-stats">
+                            <span class="co-occurrence">{{ corr.co_occurrence_count }} co-occurrences</span>
+                            <span class="correlation-strength badge badge-info-soft">{{ corr.correlation_strength|title }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fa-solid fa-link"></i>
+                        <p>No correlation data available</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Footer Stats -->
+        <footer class="dashboard-footer">
+            <div class="footer-stat">
+                <i class="fa-solid fa-database"></i>
+                <span>{{ data.sector_indicators|length if data.sector_indicators else 0 }} Sectors Tracked</span>
+            </div>
+            <div class="footer-stat">
+                <i class="fa-solid fa-server"></i>
+                <span>5 Sources Active</span>
+            </div>
+            <div class="footer-stat">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Updated 2 min ago</span>
+            </div>
+            <div class="footer-stat">
+                <i class="fa-solid fa-shield-check"></i>
+                <span>System Healthy</span>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const dashboardData = {{ data | tojson | safe }};
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+{
+  "tourism": {
+    "article_count": 83,
+    "avg_sentiment": 0.116,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "sri lankans",
+        "count": 9
+      },
+      {
+        "keyword": "landslides",
+        "count": 9
+      },
+      {
+        "keyword": "222 reply",
+        "count": 7
+      },
+      {
+        "keyword": "people",
+        "count": 6
+      },
+      {
+        "keyword": "massive landslide",
+        "count": 4
+      },
+      {
+        "keyword": "a project",
+        "count": 4
+      },
+      {
+        "keyword": "it hub",
+        "count": 4
+      },
+      {
+        "keyword": "technology",
+        "count": 4
+      },
+      {
+        "keyword": "japan",
+        "count": 4
+      },
+      {
+        "keyword": "hatton national bank",
+        "count": 3
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 27
+      },
+      {
+        "org": "INR 2",
+        "count": 19
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 19
+      },
+      {
+        "org": "Colombos",
+        "count": 6
+      },
+      {
+        "org": "Colombo",
+        "count": 6
+      }
+    ]
+  },
+  "transport": {
+    "article_count": 265,
+    "avg_sentiment": 0.1,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "sri lankas",
+        "count": 37
+      },
+      {
+        "keyword": "people",
+        "count": 16
+      },
+      {
+        "keyword": "the company",
+        "count": 13
+      },
+      {
+        "keyword": "landslides",
+        "count": 12
+      },
+      {
+        "keyword": "the due courtesy",
+        "count": 11
+      },
+      {
+        "keyword": "sri lankans",
+        "count": 9
+      },
+      {
+        "keyword": "japan",
+        "count": 8
+      },
+      {
+        "keyword": "the government",
+        "count": 8
+      },
+      {
+        "keyword": "222 reply",
+        "count": 7
+      },
+      {
+        "keyword": "the partnership",
+        "count": 7
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 27
+      },
+      {
+        "org": "INR 2",
+        "count": 19
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 19
+      },
+      {
+        "org": "Government",
+        "count": 13
+      },
+      {
+        "org": "IMF",
+        "count": 12
+      }
+    ]
+  },
+  "finance": {
+    "article_count": 180,
+    "avg_sentiment": 0.11,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "people",
+        "count": 14
+      },
+      {
+        "keyword": "sri lankas",
+        "count": 12
+      },
+      {
+        "keyword": "tax",
+        "count": 8
+      },
+      {
+        "keyword": "the due courtesy",
+        "count": 8
+      },
+      {
+        "keyword": "landslides",
+        "count": 7
+      },
+      {
+        "keyword": "the company",
+        "count": 7
+      },
+      {
+        "keyword": "competitiveness",
+        "count": 7
+      },
+      {
+        "keyword": "sri lankans",
+        "count": 6
+      },
+      {
+        "keyword": "the partnership",
+        "count": 6
+      },
+      {
+        "keyword": "the government",
+        "count": 6
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 17
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 13
+      },
+      {
+        "org": "INR 2",
+        "count": 12
+      },
+      {
+        "org": "IMF",
+        "count": 11
+      },
+      {
+        "org": "Government",
+        "count": 9
+      }
+    ]
+  },
+  "energy": {
+    "article_count": 115,
+    "avg_sentiment": 0.112,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "sri lankas",
+        "count": 11
+      },
+      {
+        "keyword": "people",
+        "count": 9
+      },
+      {
+        "keyword": "competitiveness",
+        "count": 6
+      },
+      {
+        "keyword": "reliability",
+        "count": 6
+      },
+      {
+        "keyword": "organisations",
+        "count": 5
+      },
+      {
+        "keyword": "the company",
+        "count": 5
+      },
+      {
+        "keyword": "years",
+        "count": 5
+      },
+      {
+        "keyword": "reforms",
+        "count": 5
+      },
+      {
+        "keyword": "parents",
+        "count": 4
+      },
+      {
+        "keyword": "landslides",
+        "count": 4
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 10
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 7
+      },
+      {
+        "org": "INR 2",
+        "count": 6
+      },
+      {
+        "org": "SME",
+        "count": 6
+      },
+      {
+        "org": "Group",
+        "count": 5
+      }
+    ]
+  },
+  "technology": {
+    "article_count": 283,
+    "avg_sentiment": 0.107,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "sri lankas",
+        "count": 38
+      },
+      {
+        "keyword": "people",
+        "count": 16
+      },
+      {
+        "keyword": "the company",
+        "count": 13
+      },
+      {
+        "keyword": "landslides",
+        "count": 12
+      },
+      {
+        "keyword": "the due courtesy",
+        "count": 11
+      },
+      {
+        "keyword": "sri lankans",
+        "count": 9
+      },
+      {
+        "keyword": "japan",
+        "count": 8
+      },
+      {
+        "keyword": "tax",
+        "count": 8
+      },
+      {
+        "keyword": "the government",
+        "count": 8
+      },
+      {
+        "keyword": "222 reply",
+        "count": 7
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 27
+      },
+      {
+        "org": "INR 2",
+        "count": 19
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 19
+      },
+      {
+        "org": "Government",
+        "count": 13
+      },
+      {
+        "org": "IMF",
+        "count": 12
+      }
+    ]
+  },
+  "manufacturing": {
+    "article_count": 122,
+    "avg_sentiment": 0.094,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "people",
+        "count": 8
+      },
+      {
+        "keyword": "the company",
+        "count": 8
+      },
+      {
+        "keyword": "sri lankas",
+        "count": 8
+      },
+      {
+        "keyword": "tax",
+        "count": 7
+      },
+      {
+        "keyword": "the due courtesy",
+        "count": 7
+      },
+      {
+        "keyword": "reforms",
+        "count": 6
+      },
+      {
+        "keyword": "landslides",
+        "count": 5
+      },
+      {
+        "keyword": "japan",
+        "count": 5
+      },
+      {
+        "keyword": "september",
+        "count": 5
+      },
+      {
+        "keyword": "years",
+        "count": 5
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 13
+      },
+      {
+        "org": "IMF",
+        "count": 10
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 9
+      },
+      {
+        "org": "Government",
+        "count": 9
+      },
+      {
+        "org": "INR 2",
+        "count": 8
+      }
+    ]
+  },
+  "government": {
+    "article_count": 248,
+    "avg_sentiment": 0.113,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "sri lankas",
+        "count": 21
+      },
+      {
+        "keyword": "people",
+        "count": 15
+      },
+      {
+        "keyword": "the company",
+        "count": 11
+      },
+      {
+        "keyword": "landslides",
+        "count": 10
+      },
+      {
+        "keyword": "the due courtesy",
+        "count": 10
+      },
+      {
+        "keyword": "sri lankans",
+        "count": 9
+      },
+      {
+        "keyword": "tax",
+        "count": 8
+      },
+      {
+        "keyword": "the government",
+        "count": 8
+      },
+      {
+        "keyword": "222 reply",
+        "count": 7
+      },
+      {
+        "keyword": "japan",
+        "count": 7
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 27
+      },
+      {
+        "org": "INR 2",
+        "count": 19
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 19
+      },
+      {
+        "org": "Government",
+        "count": 13
+      },
+      {
+        "org": "IMF",
+        "count": 12
+      }
+    ]
+  },
+  "construction": {
+    "article_count": 152,
+    "avg_sentiment": 0.093,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "sri lankas",
+        "count": 17
+      },
+      {
+        "keyword": "people",
+        "count": 12
+      },
+      {
+        "keyword": "sri lankans",
+        "count": 9
+      },
+      {
+        "keyword": "landslides",
+        "count": 8
+      },
+      {
+        "keyword": "222 reply",
+        "count": 7
+      },
+      {
+        "keyword": "the company",
+        "count": 7
+      },
+      {
+        "keyword": "the government",
+        "count": 6
+      },
+      {
+        "keyword": "reforms",
+        "count": 6
+      },
+      {
+        "keyword": "technology",
+        "count": 5
+      },
+      {
+        "keyword": "japan",
+        "count": 5
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 27
+      },
+      {
+        "org": "INR 2",
+        "count": 19
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 19
+      },
+      {
+        "org": "Colombo",
+        "count": 10
+      },
+      {
+        "org": "Government",
+        "count": 10
+      }
+    ]
+  },
+  "healthcare": {
+    "article_count": 134,
+    "avg_sentiment": 0.115,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "people",
+        "count": 11
+      },
+      {
+        "keyword": "sri lankas",
+        "count": 9
+      },
+      {
+        "keyword": "japan",
+        "count": 6
+      },
+      {
+        "keyword": "organisations",
+        "count": 6
+      },
+      {
+        "keyword": "reforms",
+        "count": 6
+      },
+      {
+        "keyword": "competitiveness",
+        "count": 6
+      },
+      {
+        "keyword": "tax",
+        "count": 5
+      },
+      {
+        "keyword": "september",
+        "count": 5
+      },
+      {
+        "keyword": "the company",
+        "count": 5
+      },
+      {
+        "keyword": "years",
+        "count": 5
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 15
+      },
+      {
+        "org": "INR 2",
+        "count": 10
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 9
+      },
+      {
+        "org": "IMF",
+        "count": 7
+      },
+      {
+        "org": "the World Bank",
+        "count": 6
+      }
+    ]
+  },
+  "agriculture": {
+    "article_count": 134,
+    "avg_sentiment": 0.11,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "sri lankas",
+        "count": 15
+      },
+      {
+        "keyword": "222 reply",
+        "count": 6
+      },
+      {
+        "keyword": "people",
+        "count": 6
+      },
+      {
+        "keyword": "technology",
+        "count": 6
+      },
+      {
+        "keyword": "the government",
+        "count": 5
+      },
+      {
+        "keyword": "years",
+        "count": 5
+      },
+      {
+        "keyword": "livestock",
+        "count": 5
+      },
+      {
+        "keyword": "reforms",
+        "count": 5
+      },
+      {
+        "keyword": "a project",
+        "count": 4
+      },
+      {
+        "keyword": "it hub",
+        "count": 4
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Taj Samudra",
+        "count": 14
+      },
+      {
+        "org": "INR 2",
+        "count": 9
+      },
+      {
+        "org": "International Aid and Government Alerts SriLankan Airlines",
+        "count": 9
+      },
+      {
+        "org": "IMF",
+        "count": 7
+      },
+      {
+        "org": "SME",
+        "count": 6
+      }
+    ]
+  },
+  "general": {
+    "article_count": 4,
+    "avg_sentiment": 0.0,
+    "sentiment_label": "neutral",
+    "top_keywords": [],
+    "top_organizations": []
+  }
+}

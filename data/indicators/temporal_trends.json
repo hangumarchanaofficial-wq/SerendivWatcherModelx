@@ -1,0 +1,26 @@
+{
+  "timeline": [
+    {
+      "date": "2025-12-08",
+      "avg_sentiment": 0.106,
+      "article_count": 288,
+      "top_sectors": [
+        [
+          "technology",
+          283
+        ],
+        [
+          "transport",
+          265
+        ],
+        [
+          "government",
+          248
+        ]
+      ]
+    }
+  ],
+  "trend": "insufficient_data",
+  "trend_strength": 0,
+  "total_days": 1
+}
