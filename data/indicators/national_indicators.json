@@ -1,124 +1,141 @@
 {
-  "overall_sentiment": 0.1,
+  "overall_sentiment": 0.094,
   "sentiment_distribution": {
-    "positive": 104,
-    "neutral": 128,
-    "negative": 1
+    "neutral": 103,
+    "positive": 66
   },
-  "total_articles": 233,
-  "positive_articles": 104,
-  "negative_articles": 1,
-  "neutral_articles": 128,
+  "total_articles": 169,
+  "positive_articles": 66,
+  "negative_articles": 0,
+  "neutral_articles": 103,
   "top_sectors": [
     {
       "sector": "finance",
-      "count": 58
-    },
-    {
-      "sector": "technology",
-      "count": 40
+      "count": 48
     },
     {
       "sector": "government",
-      "count": 38
+      "count": 28
     },
     {
       "sector": "transport",
-      "count": 22
+      "count": 23
     },
     {
-      "sector": "agriculture",
-      "count": 19
+      "sector": "technology",
+      "count": 21
+    },
+    {
+      "sector": "tourism",
+      "count": 16
     }
   ],
   "top_organizations": [
     {
       "org": "aj Samudra",
-      "count": 12
+      "count": 14
     },
     {
-      "org": "IMF",
-      "count": 10
+      "org": "post-Ditwah",
+      "count": 11
     },
     {
-      "org": "Colombo Stock Exchange CSE",
+      "org": "Governments",
       "count": 9
     },
     {
       "org": "Ceylon Chamber of Commerce",
-      "count": 9
+      "count": 7
     },
     {
-      "org": "reasury",
-      "count": 8
+      "org": "Colombo Stock Exchange CSE",
+      "count": 5
+    },
+    {
+      "org": "Peoples Bank",
+      "count": 5
     },
     {
       "org": "International Monetary Fund IMF",
-      "count": 8
+      "count": 5
     },
     {
-      "org": "Central Bank",
-      "count": 7
+      "org": "World Bank",
+      "count": 4
     },
     {
-      "org": "Disaster Management Centre",
-      "count": 7
+      "org": "reasury",
+      "count": 4
     },
     {
-      "org": "Colombo Stock Exchange",
-      "count": 6
-    },
-    {
-      "org": "Governments",
-      "count": 6
+      "org": "Commercial Bank",
+      "count": 4
     }
   ],
   "top_locations": [
     {
       "location": "Sri Lanka",
-      "count": 188
+      "count": 143
     },
     {
       "location": "London",
-      "count": 31
+      "count": 30
     },
     {
       "location": "India",
-      "count": 20
+      "count": 15
     },
     {
       "location": "US",
-      "count": 16
-    },
-    {
-      "location": "China",
-      "count": 16
+      "count": 13
     },
     {
       "location": "Colombo",
-      "count": 16
+      "count": 13
     },
     {
-      "location": "South Asia",
+      "location": "China",
+      "count": 8
+    },
+    {
+      "location": "UK",
       "count": 7
     },
     {
       "location": "Japan",
-      "count": 7
-    },
-    {
-      "location": "UK",
       "count": 6
     },
     {
-      "location": "Bangladesh",
+      "location": "South Asia",
       "count": 6
+    },
+    {
+      "location": "Kurunegala",
+      "count": 5
     }
   ],
   "top_topics": [
     {
-      "topic": "sri lanka",
-      "count": 56,
+      "topic": "the sunday morning",
+      "count": 43,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 14
+        },
+        {
+          "sector": "government",
+          "count": 13
+        },
+        {
+          "sector": "tourism",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "topic": "40 countries",
+      "count": 28,
       "top_sectors": [
         {
           "sector": "finance",
@@ -126,151 +143,7 @@
         },
         {
           "sector": "technology",
-          "count": 10
-        },
-        {
-          "sector": "transport",
-          "count": 7
-        }
-      ]
-    },
-    {
-      "topic": "sri lankas",
-      "count": 46,
-      "top_sectors": [
-        {
-          "sector": "government",
-          "count": 12
-        },
-        {
-          "sector": "transport",
-          "count": 11
-        },
-        {
-          "sector": "agriculture",
-          "count": 6
-        }
-      ]
-    },
-    {
-      "topic": "current affairs",
-      "count": 34,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 10
-        },
-        {
-          "sector": "government",
-          "count": 8
-        },
-        {
-          "sector": "agriculture",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "topic": "by staff writer",
-      "count": 32,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 10
-        },
-        {
-          "sector": "government",
-          "count": 9
-        },
-        {
-          "sector": "agriculture",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "topic": "the sunday morning",
-      "count": 30,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 7
-        },
-        {
-          "sector": "government",
-          "count": 6
-        },
-        {
-          "sector": "agriculture",
-          "count": 5
-        }
-      ]
-    },
-    {
-      "topic": "the event",
-      "count": 23,
-      "top_sectors": [
-        {
-          "sector": "finance",
-          "count": 7
-        },
-        {
-          "sector": "agriculture",
-          "count": 5
-        },
-        {
-          "sector": "tourism",
           "count": 3
-        }
-      ]
-    },
-    {
-      "topic": "all rights",
-      "count": 23,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 6
-        },
-        {
-          "sector": "government",
-          "count": 5
-        },
-        {
-          "sector": "agriculture",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "topic": "tuesday dec",
-      "count": 23,
-      "top_sectors": [
-        {
-          "sector": "government",
-          "count": 6
-        },
-        {
-          "sector": "finance",
-          "count": 5
-        },
-        {
-          "sector": "technology",
-          "count": 5
-        }
-      ]
-    },
-    {
-      "topic": "mr channa jayasinghe",
-      "count": 22,
-      "top_sectors": [
-        {
-          "sector": "government",
-          "count": 6
-        },
-        {
-          "sector": "finance",
-          "count": 6
         },
         {
           "sector": "transport",
@@ -279,23 +152,149 @@
       ]
     },
     {
-      "topic": "politics",
-      "count": 20,
+      "topic": "current affairs",
+      "count": 28,
       "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 10
+        },
         {
           "sector": "government",
           "count": 5
+        },
+        {
+          "sector": "tourism",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "next few days",
+      "count": 27,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 14
+        },
+        {
+          "sector": "technology",
+          "count": 3
+        },
+        {
+          "sector": "transport",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "topic": "todays",
+      "count": 26,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 9
+        },
+        {
+          "sector": "technology",
+          "count": 6
+        },
+        {
+          "sector": "tourism",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "topic": "our selection",
+      "count": 19,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 8
         },
         {
           "sector": "agriculture",
           "count": 4
         },
         {
+          "sector": "technology",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "topic": "the daily morning",
+      "count": 18,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 7
+        },
+        {
+          "sector": "government",
+          "count": 3
+        },
+        {
+          "sector": "finance",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "topic": "sri lankas",
+      "count": 16,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 6
+        },
+        {
+          "sector": "government",
+          "count": 3
+        },
+        {
+          "sector": "technology",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "topic": "place",
+      "count": 15,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 4
+        },
+        {
           "sector": "transport",
           "count": 3
+        },
+        {
+          "sector": "construction",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "topic": "timely insights",
+      "count": 14,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 6
+        },
+        {
+          "sector": "government",
+          "count": 2
+        },
+        {
+          "sector": "finance",
+          "count": 2
         }
       ]
     }
   ],
-  "timestamp": "2025-12-10T14:32:19.331765"
+  "timestamp": "2025-12-10T17:16:18.306872"
 }

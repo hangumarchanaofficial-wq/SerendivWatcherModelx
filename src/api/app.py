@@ -1,6 +1,10 @@
 from flask import Flask, render_template, jsonify, request
 import json
 import os
+import requests  # For Ollama
+import chromadb  # For Vector Search
+from sentence_transformers import SentenceTransformer # For Embeddings
+from tinydb import TinyDB, Query
 
 from article_loader import (
     load_sector_articles,
@@ -15,9 +19,24 @@ from insight_generator import (
     summarize_single_article,
 )
 from title_insight_generator import generate_title_insights
-from tinydb import TinyDB
 
 app = Flask(__name__)
+
+# --- GLOBAL SETUP FOR AI ---
+# Load model once at startup to avoid delays on every request
+print("Loading AI models...")
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Connect to Vector Database
+vector_db_path = os.path.join(os.getcwd(), "data", "vector_db")
+chroma_client = chromadb.PersistentClient(path=vector_db_path)
+
+try:
+    collection = chroma_client.get_collection(name="serendiv_news")
+    print("Vector DB connection successful.")
+except ValueError:
+    print("Vector DB collection not found. Please run 'python scripts/build_vector_db.py' first.")
+    collection = None
 
 
 # ------------ Data loading (JSON indicators) ------------
@@ -115,6 +134,10 @@ def sector_detail(sector_name):
         insights=insights,
     )
 
+@app.route("/chatbot")
+def chatbot_page():
+    return render_template("chatbot.html")
+
 
 # ------------ JSON APIs ------------
 
@@ -145,8 +168,6 @@ def api_sector_insights(sector_name):
 def api_article_summary(article_id):
     """
     Return LLM summary for a single article (used when title is clicked).
-
-    article_id here is the URL (we declare it as <path:...> to allow slashes).
     """
     print(f"[APP] /api/article/<id>/summary called with id={article_id}")
     article = load_article_by_id(article_id)
@@ -160,8 +181,7 @@ def api_article_summary(article_id):
 @app.route("/api/title-insights")
 def api_title_insights():
     """
-    Return LLM-powered high-level insights based ONLY on article title
-    (and optional sector). Used by the side chat panel.
+    Return LLM-powered high-level insights based ONLY on article title.
     """
     title = request.args.get("title", "").strip()
     sector = request.args.get("sector", "").strip() or None
@@ -176,6 +196,107 @@ def api_title_insights():
         return jsonify({"error": "Failed to generate title-based insights"}), 500
 
     return jsonify({"insights": insights})
+
+
+@app.route("/api/chat-with-data", methods=["POST"])
+def chat_with_data():
+    """
+    Semantic Search Endpoint (RAG).
+    Uses Vector DB to find meaning-matched articles.
+    """
+    data = request.json
+    user_question = data.get("message", "").strip()
+    
+    if not user_question:
+        return jsonify({"response": "Please ask a question."})
+
+    # 1. IMMEDIATE GREETING CHECK (Save resources)
+    greetings = ["hi", "hello", "hey", "good morning", "greetings"]
+    clean_q = ''.join(e for e in user_question.lower() if e.isalnum() or e.isspace())
+    if clean_q in greetings:
+        return jsonify({"response": "Hello! I am Serendiv AI. I have analyzed the latest news in our database. How can I help you today?"})
+
+    # 2. VECTOR SEARCH (Semantic Search)
+    relevant_texts = []
+    
+    if collection:
+        try:
+            # Convert user question to numbers (vector)
+            query_vector = embedding_model.encode([user_question]).tolist()
+            
+            # Ask ChromaDB for the 5 closest matches
+            results = collection.query(
+                query_embeddings=query_vector,
+                n_results=5
+            )
+            
+            # Chroma returns a list of lists. We grab the first (and only) query result.
+            if results['documents'] and results['documents'][0]:
+                for i, doc in enumerate(results['documents'][0]):
+                    meta = results['metadatas'][0][i]
+                    # Format context for the LLM
+                    snippet = f"Source: {meta['source']} ({meta['date']})\nTitle: {meta['title']}\nExcerpt: {doc[:500]}..."
+                    relevant_texts.append(snippet)
+        except Exception as e:
+            print(f"Vector search error: {e}")
+            # Fallback (optional): Could implement keyword search here if vector fails
+            pass
+    else:
+        return jsonify({"error": "Database not ready. Please check backend logs."}), 500
+
+    # 3. PROMPT ENGINEERING
+    if relevant_texts:
+        context_block = "\n\n".join(relevant_texts)
+        
+        prompt = f"""You are 'Serendiv AI', a senior Business Analyst for Sri Lanka.
+        
+        USER QUESTION: "{user_question}"
+
+        LATEST INTELLIGENCE (Context):
+        {context_block}
+
+        INSTRUCTIONS:
+        1. Answer the question using the context above.
+        2. Synthesize the information; don't just list articles.
+        3. If the context doesn't fully answer the question, say so, but offer what you do know from the text.
+        4. Be professional and concise.
+
+        ANSWER:"""
+    else:
+        # Fallback for general questions (No relevant news found)
+        prompt = f"""You are 'Serendiv AI', a senior Business Analyst.
+
+        USER QUESTION: "{user_question}"
+
+        SYSTEM NOTE: No specific news articles matched this query in the database.
+
+        INSTRUCTIONS:
+        1. If this is a general business question (e.g. "What is inflation?"), answer it using your general knowledge.
+        2. If asking about a specific recent event (e.g. "Did the strike end today?"), apologize and state that you don't have that specific report in the database yet.
+        3. Do NOT make up fake news.
+
+        ANSWER:"""
+
+    # 4. CALL OLLAMA
+    try:
+        ollama_resp = requests.post(
+            "http://localhost:11434/api/generate",
+            json={
+                "model": "gemma3:1b", 
+                "prompt": prompt,
+                "stream": False,
+                "temperature": 0.3
+            },
+            timeout=60
+        )
+        ollama_resp.raise_for_status()
+        answer = ollama_resp.json().get("response", "").strip()
+        
+        return jsonify({"response": answer})
+
+    except Exception as e:
+        print(f"Chat Error: {e}")
+        return jsonify({"error": "Failed to connect to AI engine."}), 500
 
 
 @app.route("/api/debug/db")
@@ -206,3 +327,4 @@ if __name__ == "__main__":
     print("=" * 60 + "\n")
 
     app.run(debug=True, port=5000)
+    

@@ -13,6 +13,13 @@ if __name__ == "__main__":
     print(f"{'='*60}\n")
     
     db = DatabaseManager("data/raw/articles.json")
+
+    # --- NEW: CLEANUP STEP ---
+    # This removes articles older than 3 days before adding new ones.
+    print("Cleaning up old articles...")
+    removed_count = db.cleanup_old_articles(retention_days=3)
+    print(f"Removed {removed_count} old articles.\n")
+    # -------------------------
     
     # Get stats before
     stats_before = db.get_stats()

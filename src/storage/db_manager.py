@@ -1,8 +1,7 @@
 import os
 from tinydb import TinyDB, Query
-from datetime import datetime
+from datetime import datetime, timedelta
 import hashlib
-
 
 class DatabaseManager:
     def __init__(self, db_path="data/raw/articles.json"):
@@ -18,7 +17,40 @@ class DatabaseManager:
     def _generate_content_hash(self, text):
         """Generate hash of article content to detect changes"""
         return hashlib.md5(text.encode('utf-8')).hexdigest()
-    
+
+    # --- NEW METHOD TO CLEAN UP OLD DATA ---
+    def cleanup_old_articles(self, retention_days=3):
+        """
+        Remove articles older than 'retention_days'.
+        """
+        if not self.db:
+            return 0
+
+        Article = Query()
+        cutoff_date = datetime.utcnow() - timedelta(days=retention_days)
+        cutoff_iso = cutoff_date.isoformat()
+
+        # We look at 'scraped_at' or 'updated_at' to decide age
+        # Logic: If 'updated_at' exists, use it; otherwise use 'scraped_at'
+        # To simplify for TinyDB query, we can remove items where scraped_at < cutoff
+        
+        # Note: TinyDB remove operations can be slow on large datasets.
+        # This implementation removes docs where 'scraped_at' is older than the cutoff.
+        # You might want to use 'updated_at' if you want to keep recently updated old articles.
+        
+        def is_old(doc_date):
+            if not doc_date: return True
+            return doc_date < cutoff_iso
+
+        # Perform removal
+        removed_ids = self.db.remove(Article.scraped_at.test(is_old))
+        
+        count = len(removed_ids)
+        if count > 0:
+            print(f"[DB] Cleaned up {count} articles older than {retention_days} days.")
+        
+        return count
+
     def save_article(self, source, section, title, url, full_text):
         """Save or update article in database only if content changed"""
         if not url or not title:
@@ -76,7 +108,6 @@ class DatabaseManager:
     
     def get_recent_articles(self, hours=6):
         """Get articles scraped/updated in last N hours"""
-        from datetime import timedelta
         cutoff = datetime.utcnow() - timedelta(hours=hours)
         
         Article = Query()
@@ -101,26 +132,29 @@ class DatabaseManager:
             "updated_articles": len([a for a in articles if a.get("update_count", 0) > 0])
         }
 
-    
-
     def get_articles_by_sector(self, sector, limit=10):
         """Get top articles for a specific sector"""
-        articles = self.db.table('articles').all()
+        # Note: If accessing 'articles' table, ensure your scraping logic puts them there.
+        # Standard TinyDB uses '_default' table unless specified. 
+        # Assuming simple usage:
+        articles = self.db.all() 
+        
         sector_articles = [
             a for a in articles 
-            if a.get('sector', '').lower() == sector.lower()
+            if a.get('sector', '').lower() == sector.lower() or 
+               (isinstance(a.get('sectors'), list) and sector.lower() in [s.lower() for s in a.get('sectors')])
         ]
-        # Sort by published date (most recent first)
-        sector_articles.sort(key=lambda x: x.get('published_date', ''), reverse=True)
+        # Sort by published date/scraped date (most recent first)
+        sector_articles.sort(key=lambda x: x.get('scraped_at', ''), reverse=True)
         return sector_articles[:limit]
 
     def get_article_by_url(self, url):
         """Get a single article by URL"""
         Article = Query()
-        return self.db.table('articles').get(Article.url == url)
-
+        return self.db.get(Article.url == url)
     
     def close(self):
         """Close database connection"""
         if self.db:
             self.db.close()
+            

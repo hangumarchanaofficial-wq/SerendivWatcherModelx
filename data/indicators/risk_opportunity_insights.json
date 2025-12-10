@@ -68,28 +68,6 @@
       "source": "SundayTimes"
     },
     {
-      "title": "Doola River Edge Celebrates the Spirit of the Season with Festive Cake-Mixing Ceremony 2025",
-      "url": "https://economictimes.lk/index.php/2025/12/09/doola-river-edge-celebrates-the-spirit-of-the-season-with-festive-cake-mixing-ceremony-2025/",
-      "sectors": [
-        "tourism"
-      ],
-      "sentiment": 0.343,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "EconomicTimes.lk"
-    },
-    {
-      "title": "Nestl\u00e9 Lanka Recognized at the Best Corporate Citizen Sustainability Awards 2025",
-      "url": "https://economictimes.lk/index.php/2025/12/09/nestle-lanka-recognized-at-the-best-corporate-citizen-sustainability-awards-2025/",
-      "sectors": [
-        "healthcare"
-      ],
-      "sentiment": 0.332,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "EconomicTimes.lk"
-    },
-    {
       "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
       "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
       "sectors": [
@@ -99,6 +77,17 @@
       "impact": "medium",
       "type": "positive_sentiment",
       "source": "SundayTimes"
+    },
+    {
+      "title": "Great Place to Work Sri Lanka announces Best Workplaces for Women 2025",
+      "url": "https://www.dailymirror.lk/business-news/Great-Place-to-Work-Sri-Lanka-announces-Best-Workplaces-for-Women-2025/273-327384",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.319,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "DailyMirror"
     },
     {
       "title": "People\u2019s Bank achieves pre-tax profit of Rs.43.7 b in 9mths\u201925",
@@ -112,17 +101,6 @@
       "source": "SundayTimes"
     },
     {
-      "title": "Toyota Lanka Hosts High-Level Delegation from Toyota Tsusho Corporation",
-      "url": "https://economictimes.lk/index.php/2025/04/23/toyota-lanka-hosts-high-level-delegation-from-toyota-tsusho-corporation/",
-      "sectors": [
-        "transport"
-      ],
-      "sentiment": 0.262,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "EconomicTimes.lk"
-    },
-    {
       "title": "CBL Foods International wins global award",
       "url": "https://www.sundaytimes.lk/251130/business-times/cbl-foods-international-wins-global-award-622242.html",
       "sectors": [
@@ -132,17 +110,6 @@
       "impact": "low",
       "type": "positive_sentiment",
       "source": "SundayTimes"
-    },
-    {
-      "title": "The Sri Lanka Coffee Festival returns: Celebrating the Artistry and Essence of Coffee",
-      "url": "https://economictimes.lk/index.php/2023/05/27/the-sri-lanka-coffee-festival-returns-celebrating-the-artistry-and-essence-of-coffee/",
-      "sectors": [
-        "tourism"
-      ],
-      "sentiment": 0.253,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "EconomicTimes.lk"
     },
     {
       "title": "Mrs India Pride of the Nation makes international debut in Sri Lanka",
@@ -167,17 +134,6 @@
       "source": "SundayTimes"
     },
     {
-      "title": "Velona Cuddles Bamboo Nappies Set to Revolutionize Baby Care in Australia",
-      "url": "https://economictimes.lk/index.php/2023/08/10/velona-cuddles-bamboo-nappies-set-to-revolutionize-baby-care-in-australia/",
-      "sectors": [
-        "technology"
-      ],
-      "sentiment": 0.237,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "EconomicTimes.lk"
-    },
-    {
       "title": "Australia to support Sri Lanka tourism promo",
       "url": "https://www.sundaytimes.lk/251130/business-times/australia-to-support-sri-lanka-tourism-promo-622265.html",
       "sectors": [
@@ -187,17 +143,6 @@
       "impact": "low",
       "type": "positive_sentiment",
       "source": "SundayTimes"
-    },
-    {
-      "title": "Corporate Earnings Nosedives to a 3-Year Low, but the banking sector posted a remarkable growth",
-      "url": "https://economictimes.lk/index.php/2023/09/11/corporate-earnings-nosedives-to-a-3-year-low-but-the-banking-sector-posted-a-remarkable-growth/",
-      "sectors": [
-        "finance"
-      ],
-      "sentiment": 0.232,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "EconomicTimes.lk"
     },
     {
       "title": "People\u2019s Bank helps in digital tickets on buses",
@@ -211,19 +156,74 @@
       "source": "SundayTimes"
     },
     {
-      "title": "EKHO Ella among world\u2019s top 1% hotels",
-      "url": "https://www.dailymirror.lk/business-news/EKHO-Ella-among-worlds-top-1-hotels/273-327208",
+      "title": "IWS Logistics Boosts Efficiency and Sustainability with KALMAR DCU80 from DIMO",
+      "url": "https://economictimes.lk/index.php/2025/05/20/iws-logistics-boosts-efficiency-and-sustainability-with-kalmar-dcu80-from-dimo/",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.225,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "ACL cables bullish on growth in SL/abroad",
+      "url": "https://www.sundaytimes.lk/251130/business-times/acl-cables-bullish-on-growth-in-slabroad-622267.html",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.223,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "Jetstar to launch Australia\u2019s only low-cost direct flights to SL",
+      "url": "https://www.ft.lk/front-page/Jetstar-to-launch-Australia-s-only-low-cost-direct-flights-to-SL/44-785387",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.193,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "FT.lk"
+    },
+    {
+      "title": "Cargills Bank\u2019s Rs. 313 m post-tax profit in Jan-Sept 2025",
+      "url": "https://www.sundaytimes.lk/251130/business-times/cargills-banks-rs-313-m-post-tax-profit-in-jan-sept-2025-622240.html",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.189,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "Sri Lanka must prioritise sustainable destination management as global tourism trends shift: Expert",
+      "url": "https://www.ft.lk/front-page/Sri-Lanka-must-prioritise-sustainable-destination-management-as-global-tourism-trends-shift-Expert/44-785458",
       "sectors": [
         "tourism"
       ],
-      "sentiment": 0.229,
+      "sentiment": 0.189,
       "impact": "low",
       "type": "positive_sentiment",
-      "source": "DailyMirror"
+      "source": "FT.lk"
+    },
+    {
+      "title": "Weather crisis: Some tourists to postpone trips to Sri Lanka",
+      "url": "https://www.sundaytimes.lk/251130/business-times/weather-crisis-some-tourists-to-postpone-trips-to-sri-lanka-622271.html",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.181,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     }
   ],
   "total_risks": 0,
-  "total_opportunities": 54,
+  "total_opportunities": 31,
   "top_risks": [],
   "top_opportunities": [
     {
@@ -282,5 +282,5 @@
       "source": "SundayTimes"
     }
   ],
-  "timestamp": "2025-12-10T14:33:29.863901"
+  "timestamp": "2025-12-10T17:17:27.072344"
 }

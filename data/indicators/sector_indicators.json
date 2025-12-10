@@ -1,724 +1,691 @@
 {
-  "finance": {
-    "article_count": 58,
-    "avg_sentiment": 0.098,
-    "sentiment_label": "neutral",
-    "top_keywords": [
-      {
-        "keyword": "Debt"
-      },
-      {
-        "keyword": "CSE"
-      },
-      {
-        "keyword": "delisting"
-      },
-      {
-        "keyword": "Asian Development Bank"
-      },
-      {
-        "keyword": "stabilization"
-      },
-      {
-        "keyword": "IMF"
-      },
-      {
-        "keyword": "crisis"
-      },
-      {
-        "keyword": "borrowing"
-      },
-      {
-        "keyword": "policy-based"
-      },
-      {
-        "keyword": "recovery"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Nestl\u00e9 Lanka"
-      },
-      {
-        "org": "Sri Lanka Insurance Corporation"
-      },
-      {
-        "org": "EPF"
-      },
-      {
-        "org": "Foreign Funds"
-      },
-      {
-        "org": "PGP Glass Ceylon PLC"
-      },
-      {
-        "org": "Bank of Ceylon"
-      },
-      {
-        "org": "Property Development PLC"
-      },
-      {
-        "org": "AIA"
-      },
-      {
-        "org": "ADB"
-      },
-      {
-        "org": "Asian Development Bank"
-      }
-    ]
-  },
-  "government": {
-    "article_count": 38,
-    "avg_sentiment": 0.078,
-    "sentiment_label": "neutral",
-    "top_keywords": [
-      {
-        "keyword": "illegal buying"
-      },
-      {
-        "keyword": "gems"
-      },
-      {
-        "keyword": "foreign nationals"
-      },
-      {
-        "keyword": "tax"
-      },
-      {
-        "keyword": "customs"
-      },
-      {
-        "keyword": "finance"
-      },
-      {
-        "keyword": "Ministry"
-      },
-      {
-        "keyword": "economy"
-      },
-      {
-        "keyword": "sustainability"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Central Bank of Sri Lanka"
-      },
-      {
-        "org": "Ministry of Finance"
-      },
-      {
-        "org": "Economic Stabilization"
-      },
-      {
-        "org": "and National Policies"
-      },
-      {
-        "org": "Sri Lanka Customs"
-      },
-      {
-        "org": "Gem and Jewellery Authority"
-      },
-      {
-        "org": "MoF"
-      },
-      {
-        "org": "Sri Lanka Customs"
-      },
-      {
-        "org": "Ministry of Finance"
-      },
-      {
-        "org": "Economic Stabilization"
-      }
-    ]
-  },
-  "agriculture": {
-    "article_count": 19,
-    "avg_sentiment": 0.108,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "inflation"
-      },
-      {
-        "keyword": "agriculture"
-      },
-      {
-        "keyword": "tariffs"
-      },
-      {
-        "keyword": "foreign exchange"
-      },
-      {
-        "keyword": "economy"
-      },
-      {
-        "keyword": "rice"
-      },
-      {
-        "keyword": "coffee"
-      },
-      {
-        "keyword": "rainfall"
-      },
-      {
-        "keyword": "market"
-      },
-      {
-        "keyword": "policy"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Central Bank of Sri Lanka"
-      },
-      {
-        "org": "Lanka Coffee Association"
-      },
-      {
-        "org": "John Keells Holdings"
-      },
-      {
-        "org": "M. Robertson & Co"
-      },
-      {
-        "org": "Elpitiya Plantations"
-      },
-      {
-        "org": "First Capital"
-      },
-      {
-        "org": "Dimantha Mathew"
-      },
-      {
-        "org": "Muditha Peiris"
-      },
-      {
-        "org": "Colombo Coffee Company"
-      },
-      {
-        "org": "Ashane Perera"
-      }
-    ]
-  },
-  "technology": {
-    "article_count": 40,
-    "avg_sentiment": 0.094,
-    "sentiment_label": "neutral",
-    "top_keywords": [
-      {
-        "keyword": "Velona Cuddles"
-      },
-      {
-        "keyword": "Bamboo Nappies"
-      },
-      {
-        "keyword": "Australian"
-      },
-      {
-        "keyword": "baby care"
-      },
-      {
-        "keyword": "sustainable"
-      },
-      {
-        "keyword": "eco-conscious"
-      },
-      {
-        "keyword": "diapering"
-      },
-      {
-        "keyword": "product line"
-      },
-      {
-        "keyword": "Threadworks"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Velona Cuddles"
-      },
-      {
-        "org": "Threadworks"
-      }
-    ]
-  },
   "transport": {
-    "article_count": 22,
-    "avg_sentiment": 0.103,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "CARAT Sri Lanka"
-      },
-      {
-        "keyword": "Maritime Security"
-      },
-      {
-        "keyword": "Indo-Pacific"
-      },
-      {
-        "keyword": "Navy Exercise"
-      },
-      {
-        "keyword": "Navy"
-      },
-      {
-        "keyword": "Sri Lanka Navy"
-      },
-      {
-        "keyword": "Maritime Operations"
-      },
-      {
-        "keyword": "Fleet Anti-Terrorism"
-      },
-      {
-        "keyword": "Mobility Planning"
-      },
-      {
-        "keyword": "Toyota Tsusho Corporation"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Toyota Lanka"
-      },
-      {
-        "org": "Toyota Tsusho Corporation"
-      },
-      {
-        "org": "Mobility Planning Department"
-      },
-      {
-        "org": "Nissan Motor Corporation"
-      },
-      {
-        "org": "Honda Motor Co."
-      },
-      {
-        "org": "Mitsubishi Motors Corporation"
-      },
-      {
-        "org": "Suzuki Motor Corporation"
-      },
-      {
-        "org": "Mazda Motor Corporation"
-      },
-      {
-        "org": "Yamaha Motor Corporation"
-      },
-      {
-        "org": "Mitsubishi Heavy Industries"
-      }
-    ]
-  },
-  "construction": {
-    "article_count": 4,
-    "avg_sentiment": 0.136,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "MRP"
-      },
-      {
-        "keyword": "tiles"
-      },
-      {
-        "keyword": "cement"
-      },
-      {
-        "keyword": "bathroom accessories"
-      },
-      {
-        "keyword": "CAA"
-      },
-      {
-        "keyword": "imports"
-      },
-      {
-        "keyword": "producers"
-      },
-      {
-        "keyword": "consumer protection"
-      },
-      {
-        "keyword": "reclamation"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Central Bank of Sri Lanka"
-      },
-      {
-        "org": "Ceylon Chamber of Commerce"
-      },
-      {
-        "org": "China Harbour Engineering Company"
-      },
-      {
-        "org": "Sri Lanka Export Development Agency"
-      },
-      {
-        "org": "UDC Holdings"
-      },
-      {
-        "org": "Lanka Developers Private Limited"
-      },
-      {
-        "org": "Sri Lanka Tourism Development Corporation"
-      },
-      {
-        "org": "National Planning and Economic Development Agency"
-      },
-      {
-        "org": "Ministry of Trade"
-      },
-      {
-        "org": "Commerce"
-      }
-    ]
-  },
-  "tourism": {
-    "article_count": 16,
-    "avg_sentiment": 0.134,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "Sri Lankan Coffee"
-      },
-      {
-        "keyword": "Specialty Coffee"
-      },
-      {
-        "keyword": "Galle Development"
-      },
-      {
-        "keyword": "Coffee Festival"
-      },
-      {
-        "keyword": "LCA"
-      },
-      {
-        "keyword": "Investment"
-      },
-      {
-        "keyword": "Rural Coffee"
-      },
-      {
-        "keyword": "Australian Support"
-      },
-      {
-        "keyword": "Barista Championship"
-      },
-      {
-        "keyword": "Development Authority"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Lanka Coffee Association"
-      },
-      {
-        "org": "Australia\u2019s Market Development Facility"
-      },
-      {
-        "org": "Jetwing Hotels"
-      },
-      {
-        "org": "Colombo Coffee Company"
-      },
-      {
-        "org": "Temple Grounds"
-      },
-      {
-        "org": "Soul Coffee"
-      },
-      {
-        "org": "Rinosh Nasar"
-      },
-      {
-        "org": "Lanka Coffee Association"
-      },
-      {
-        "org": "Australian High Commissioner to Sri Lanka"
-      },
-      {
-        "org": "Paul Stephens"
-      }
-    ]
-  },
-  "healthcare": {
-    "article_count": 6,
-    "avg_sentiment": 0.145,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "Triple Bottom Line"
-      },
-      {
-        "keyword": "Sri Lankan healthcare"
-      },
-      {
-        "keyword": "Corporate Citizen"
-      },
-      {
-        "keyword": "Disaster Relief"
-      },
-      {
-        "keyword": "Sustainability"
-      },
-      {
-        "keyword": "Government regulations"
-      },
-      {
-        "keyword": "Patient care"
-      },
-      {
-        "keyword": "Medical assistance"
-      },
-      {
-        "keyword": "Mental health"
-      },
-      {
-        "keyword": "Community impact"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Nestl\u00e9 Lanka"
-      },
-      {
-        "org": "Ceylon Chamber of Commerce"
-      },
-      {
-        "org": "Colombo North Teaching Hospital"
-      },
-      {
-        "org": "Ministry of Public Health"
-      },
-      {
-        "org": "Sri Lanka Dairy Farmers Association"
-      },
-      {
-        "org": "Government of Sri Lanka"
-      },
-      {
-        "org": "Kurunegala Dairy Factory"
-      },
-      {
-        "org": "National Institute of Mental Health"
-      },
-      {
-        "org": "Sri Lanka Ministry of Finance"
-      },
-      {
-        "org": "Sri Lankan Coconut Farmers Association"
-      }
-    ]
-  },
-  "energy": {
-    "article_count": 13,
-    "avg_sentiment": 0.101,
-    "sentiment_label": "positive",
-    "top_keywords": [
-      {
-        "keyword": "Renewable energy"
-      },
-      {
-        "keyword": "solar"
-      },
-      {
-        "keyword": "investment"
-      },
-      {
-        "keyword": "grid infrastructure"
-      },
-      {
-        "keyword": "green energy"
-      },
-      {
-        "keyword": "wind"
-      },
-      {
-        "keyword": "power grids"
-      },
-      {
-        "keyword": "Mannar"
-      },
-      {
-        "keyword": "rail"
-      }
-    ],
-    "top_organizations": [
-      {
-        "org": "Central Bank of Sri Lanka"
-      },
-      {
-        "org": "World Energy Investment"
-      },
-      {
-        "org": "International Energy Agency"
-      },
-      {
-        "org": "John Keells Holdings"
-      },
-      {
-        "org": "Ember"
-      },
-      {
-        "org": "Reuters"
-      },
-      {
-        "org": "National Shrine of Our Lady of Madhu"
-      },
-      {
-        "org": "Mannar Development Authority"
-      },
-      {
-        "org": "Inflation Reduction Act"
-      },
-      {
-        "org": "Thalaimannar"
-      }
-    ]
-  },
-  "general": {
-    "article_count": 10,
-    "avg_sentiment": 0.078,
+    "article_count": 23,
+    "avg_sentiment": 0.062,
     "sentiment_label": "neutral",
     "top_keywords": [
       {
-        "keyword": "climate change"
+        "keyword": "KALMAR DCU80"
       },
       {
-        "keyword": "heat stress"
+        "keyword": "Empty Container Handler"
+      },
+      {
+        "keyword": "Container Yards"
+      },
+      {
+        "keyword": "Lifting Capacity"
       },
       {
         "keyword": "Sri Lanka"
       },
       {
-        "keyword": "Department of Meteorology"
+        "keyword": "DIMO"
       },
       {
-        "keyword": "Nelli"
+        "keyword": "Efficiency"
       },
       {
-        "keyword": "Rasakinda"
+        "keyword": "Sustainability"
       },
       {
-        "keyword": "heat waves"
+        "keyword": "Private Depot"
       },
       {
-        "keyword": "island"
-      },
-      {
-        "keyword": "urban heat island"
-      },
-      {
-        "keyword": "global warming"
+        "keyword": "Container Handling"
       }
     ],
     "top_organizations": [
       {
-        "org": "Central Bank of Sri Lanka"
+        "org": "DIMO"
       },
       {
-        "org": "Department of Meteorology"
+        "org": "KALMAR"
       },
       {
-        "org": "Lareef Zubair"
-      },
-      {
-        "org": "Foundation for Environment"
-      },
-      {
-        "org": "Climate"
-      },
-      {
-        "org": "and Technology (FECT)"
-      },
-      {
-        "org": "The Heat Stress"
-      },
-      {
-        "org": "Sri Lankans"
-      },
-      {
-        "org": "Erandathie Lokupitiya"
-      },
-      {
-        "org": "Natural Products"
+        "org": "IWS Logistics"
       }
     ]
   },
-  "manufacturing": {
+  "energy": {
     "article_count": 7,
-    "avg_sentiment": 0.111,
+    "avg_sentiment": 0.056,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "Renewable energy"
+      },
+      {
+        "keyword": "Sri Lanka"
+      },
+      {
+        "keyword": "grid capacity"
+      },
+      {
+        "keyword": "World Bank"
+      },
+      {
+        "keyword": "financing"
+      },
+      {
+        "keyword": "green energy"
+      },
+      {
+        "keyword": "wind project"
+      },
+      {
+        "keyword": "IDA"
+      },
+      {
+        "keyword": "infrastructure"
+      },
+      {
+        "keyword": "investment"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "National Environmental Caucus"
+      },
+      {
+        "org": "World Bank"
+      },
+      {
+        "org": "Sri Lanka Sustainable Energy Authority"
+      },
+      {
+        "org": "Ministry of Finance"
+      },
+      {
+        "org": "Finance Ministry External Resources Department"
+      },
+      {
+        "org": "Sri Lanka Treasury Secretary"
+      },
+      {
+        "org": "International Development Association (IDA)"
+      },
+      {
+        "org": "World Bank Division Director for Maldives and Sri Lanka"
+      },
+      {
+        "org": "Ceylon Electr"
+      },
+      {
+        "org": "Sislen"
+      }
+    ]
+  },
+  "finance": {
+    "article_count": 48,
+    "avg_sentiment": 0.104,
     "sentiment_label": "positive",
     "top_keywords": [
       {
-        "keyword": "Sri Lankan apparel exports"
+        "keyword": "three-wheeler drivers"
       },
       {
-        "keyword": "yarn industry"
+        "keyword": "tuk-tuk service"
       },
       {
-        "keyword": "textile mills"
+        "keyword": "financial solutions"
       },
       {
-        "keyword": "investment terms"
+        "keyword": "Orient Finance"
       },
       {
-        "keyword": "AGOA"
+        "keyword": "leasing plan"
+      },
+      {
+        "keyword": "Sharia"
+      },
+      {
+        "keyword": "Ijarah Tuk Leasing"
+      },
+      {
+        "keyword": "life insurance"
+      },
+      {
+        "keyword": "regional transport"
+      },
+      {
+        "keyword": "economic impact"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "John Keells Holdings"
+      },
+      {
+        "org": "Asia Securities"
+      },
+      {
+        "org": "CT Smith Securities"
+      },
+      {
+        "org": "Investment One"
+      },
+      {
+        "org": "Lanka Finance Corporation"
+      },
+      {
+        "org": "Sri Lanka Asset Management"
+      },
+      {
+        "org": "Flourish Investments"
+      },
+      {
+        "org": "GBC Capital"
+      },
+      {
+        "org": "Wise Securities"
+      },
+      {
+        "org": "Ceylon Investments"
+      }
+    ]
+  },
+  "tourism": {
+    "article_count": 16,
+    "avg_sentiment": 0.12,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Cyclone Ditwah"
+      },
+      {
+        "keyword": "tourism"
+      },
+      {
+        "keyword": "hotels"
+      },
+      {
+        "keyword": "Sri Lanka"
+      },
+      {
+        "keyword": "resorts"
+      },
+      {
+        "keyword": "stamps"
+      },
+      {
+        "keyword": "visitors"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Cinnamon Life at COD"
+      },
+      {
+        "org": "Sun Siyam Group of Maldives"
+      },
+      {
+        "org": "Sri Lanka Tourism Board"
+      },
+      {
+        "org": "Dilan"
+      },
+      {
+        "org": "Chameen Dayarathne"
+      },
+      {
+        "org": "Sri Lanka Tourism Board"
+      },
+      {
+        "org": "Al-Habib Bin Rizvi & Associates"
+      },
+      {
+        "org": "Sri Lanka Tourism"
+      },
+      {
+        "org": "Sri Lanka Tourism Development Authority"
+      },
+      {
+        "org": "Dubai Tourism"
+      }
+    ]
+  },
+  "construction": {
+    "article_count": 5,
+    "avg_sentiment": 0.065,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "EXCON 2025"
+      },
+      {
+        "keyword": "construction equipment"
+      },
+      {
+        "keyword": "Sri Lanka"
       },
       {
         "keyword": "port expansion"
       },
       {
-        "keyword": "power tariff"
+        "keyword": "CII"
       },
       {
-        "keyword": "employment"
+        "keyword": "Bharatmala"
       },
       {
-        "keyword": "competitiveness"
+        "keyword": "infrastructure"
       },
       {
-        "keyword": "economic growth"
+        "keyword": "government investment"
+      },
+      {
+        "keyword": "Sri Lankan CE"
+      },
+      {
+        "keyword": "green construction"
       }
     ],
     "top_organizations": [
       {
-        "org": "Central Bank of Sri Lanka"
+        "org": "LAUGFS Rubber"
       },
       {
-        "org": "Sri Lanka Apparel Association Forum (JAAF)"
+        "org": "OTR Enterprise Solutions"
       },
       {
-        "org": "Sri Lanka High Commissioner in Kenya"
+        "org": "CII"
       },
       {
-        "org": "Benin"
+        "org": "Excon 2025"
       },
       {
-        "org": "Sri Lanka Ministry of Economy"
+        "org": "CII"
       },
       {
-        "org": "Sri Lankan Textile Mills"
+        "org": "Integral Place"
+      },
+      {
+        "org": "Dilan"
+      },
+      {
+        "org": "Life Online"
+      },
+      {
+        "org": "Chameen Dayarathne"
+      },
+      {
+        "org": "Sri Lankan Construction Industry Association"
+      }
+    ]
+  },
+  "technology": {
+    "article_count": 21,
+    "avg_sentiment": 0.122,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Holistic leadership"
+      },
+      {
+        "keyword": "Corporate stability"
+      },
+      {
+        "keyword": "Talent retention"
+      },
+      {
+        "keyword": "Psychological steadiness"
+      },
+      {
+        "keyword": "Leadership DNA"
+      },
+      {
+        "keyword": "Strategic decision-making"
+      },
+      {
+        "keyword": "Human values"
+      },
+      {
+        "keyword": "Mental health"
+      },
+      {
+        "keyword": "Entrepreneurship"
+      },
+      {
+        "keyword": "Regional growth"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "JXG"
+      },
+      {
+        "org": "Lankadeepa"
+      },
+      {
+        "org": "Edu"
+      },
+      {
+        "org": "Middleast Lankadeepa"
+      },
+      {
+        "org": "Life Online"
+      },
+      {
+        "org": "SLT\u2011Mobitel"
+      }
+    ]
+  },
+  "healthcare": {
+    "article_count": 4,
+    "avg_sentiment": 0.142,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Cyclone Ditwah"
+      },
+      {
+        "keyword": "eye diseases"
+      },
+      {
+        "keyword": "hygiene practices"
+      },
+      {
+        "keyword": "reproductive health"
+      },
+      {
+        "keyword": "mental health"
+      },
+      {
+        "keyword": "Sri Lanka"
+      },
+      {
+        "keyword": "Uluru"
+      },
+      {
+        "keyword": "Make-A-Wish"
+      },
+      {
+        "keyword": "citrus leisure"
+      },
+      {
+        "keyword": "Indira cancer trust"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Eye diseases spread likely in shelters"
+      },
+      {
+        "org": "College of Ophthalmologists"
+      },
+      {
+        "org": "Morning is Sri Lanka"
+      },
+      {
+        "org": "Australia"
+      },
+      {
+        "org": "United Nations Population Fund"
+      },
+      {
+        "org": "Citrus Leisure"
+      },
+      {
+        "org": "Indira Cancer Trust"
+      },
+      {
+        "org": "Make-A-Wish Sri Lanka"
+      }
+    ]
+  },
+  "general": {
+    "article_count": 5,
+    "avg_sentiment": 0.068,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "AmCham Sri Lanka"
+      },
+      {
+        "keyword": "Sri Lankan Economy"
+      },
+      {
+        "keyword": "Strategic Communications"
+      },
+      {
+        "keyword": "Foreign Investment"
+      },
+      {
+        "keyword": "Talent"
+      },
+      {
+        "keyword": "Sri Lanka Narrative"
+      },
+      {
+        "keyword": "Government Relations"
+      },
+      {
+        "keyword": "Investment Promotion"
+      },
+      {
+        "keyword": "Sri Lankan Business"
+      },
+      {
+        "keyword": "Sri Lankan Growth"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "AmCham SL"
+      },
+      {
+        "org": "Lankadeepa"
+      },
+      {
+        "org": "Middleast Lankadeepa"
+      },
+      {
+        "org": "Ada Deshaya"
+      },
+      {
+        "org": "Life Online"
+      }
+    ]
+  },
+  "government": {
+    "article_count": 28,
+    "avg_sentiment": 0.066,
+    "sentiment_label": "neutral",
+    "top_keywords": [
+      {
+        "keyword": "Rebuilding Sri Lanka"
+      },
+      {
+        "keyword": "Cyclone Ditwah"
+      },
+      {
+        "keyword": "Hutch Sri Lanka"
+      },
+      {
+        "keyword": "Relief Fund"
+      },
+      {
+        "keyword": "Communication Towers"
+      },
+      {
+        "keyword": "Mobile Services"
+      },
+      {
+        "keyword": "Port Expansion"
+      },
+      {
+        "keyword": "Government Projects"
+      },
+      {
+        "keyword": "Volunteer Privilege Cards"
+      },
+      {
+        "keyword": "Digital Infrastructure"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "CH17"
+      },
+      {
+        "org": "Hutch Sri Lanka"
       },
       {
         "org": "Sri Lankan Government"
       },
       {
-        "org": "Sri Lankan Apparel Export Developers"
+        "org": "Nandika Sanath Kumanayake"
       },
       {
-        "org": "Sri Lankan Textile Manufacturers"
+        "org": "Hutchison Asia Telecommunications Ltd."
       },
       {
-        "org": "Sri Lankan Export and Import Board"
+        "org": "Ministry of Finance Economic Stabilization and National Policies"
+      },
+      {
+        "org": "Sri Lankan Army"
+      },
+      {
+        "org": "Sri Lankan Police"
+      },
+      {
+        "org": "Ministry of Transport"
+      },
+      {
+        "org": "Sri Lankan Government"
+      }
+    ]
+  },
+  "agriculture": {
+    "article_count": 10,
+    "avg_sentiment": 0.132,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "Cyclone Ditwah"
+      },
+      {
+        "keyword": "tea industry"
+      },
+      {
+        "keyword": "CTC"
+      },
+      {
+        "keyword": "Colombo Tea Auctions"
+      },
+      {
+        "keyword": "Kelani River"
+      },
+      {
+        "keyword": "South of Island"
+      },
+      {
+        "keyword": "Exports"
+      },
+      {
+        "keyword": "Production"
+      },
+      {
+        "keyword": "Agricultural"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "CTTA"
+      },
+      {
+        "org": "Forbes"
+      },
+      {
+        "org": "Walker Research"
+      },
+      {
+        "org": "Colombo Tea Traders\u2019 Association"
+      },
+      {
+        "org": "Life Online"
+      },
+      {
+        "org": "Colombo Tea Auction"
+      },
+      {
+        "org": "Tea Auction"
+      },
+      {
+        "org": "Sri Lanka tea production"
+      },
+      {
+        "org": "Forbes"
+      },
+      {
+        "org": "Walker Research"
+      }
+    ]
+  },
+  "manufacturing": {
+    "article_count": 2,
+    "avg_sentiment": 0.106,
+    "sentiment_label": "positive",
+    "top_keywords": [
+      {
+        "keyword": "NQA"
+      },
+      {
+        "keyword": "Quality Assurance"
+      },
+      {
+        "keyword": "Export Target"
+      },
+      {
+        "keyword": "Structural Shift"
+      },
+      {
+        "keyword": "Weather"
+      },
+      {
+        "keyword": "Foreign Market"
+      },
+      {
+        "keyword": "Investment Pulse"
+      },
+      {
+        "keyword": "SFC"
+      },
+      {
+        "keyword": "Dutch Buhler"
+      },
+      {
+        "keyword": "Manufacturing"
+      }
+    ],
+    "top_organizations": [
+      {
+        "org": "Serendib Flour Mills"
+      },
+      {
+        "org": "EDB"
+      },
+      {
+        "org": "Sri Lanka Standards Institution"
+      },
+      {
+        "org": "Life Online"
+      },
+      {
+        "org": "Mirananda"
+      },
+      {
+        "org": "Lankadeepa"
+      },
+      {
+        "org": "Ada Deshaya"
+      },
+      {
+        "org": "Sri Lanka Economic Summit"
+      },
+      {
+        "org": "Chameen Dayarathne"
       }
     ]
   }
