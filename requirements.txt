@@ -9,4 +9,6 @@ pyyaml==6.0.1
 flask==3.0.0
 python-dotenv==1.0.0
 pandas==2.2.0
-
+chromadb
+sentence-transformers
+requests
