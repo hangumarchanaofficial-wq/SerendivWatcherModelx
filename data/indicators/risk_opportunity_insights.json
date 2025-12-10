@@ -93,5 +93,58 @@
     }
   ],
   "total_risks": 0,
-  "total_opportunities": 9
+  "total_opportunities": 9,
+  "top_risks": [],
+  "top_opportunities": [
+    {
+      "title": "Devastation",
+      "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
+      "sectors": [
+        "agriculture"
+      ],
+      "sentiment": 0.458,
+      "impact": "medium",
+      "type": "positive_sentiment"
+    },
+    {
+      "title": "NDB recognised at CMA Excellence awards",
+      "url": "https://www.sundaytimes.lk/251130/business-times/ndb-recognised-at-cma-excellence-awards-622233.html",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.385,
+      "impact": "medium",
+      "type": "positive_sentiment"
+    },
+    {
+      "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
+      "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.37,
+      "impact": "medium",
+      "type": "positive_sentiment"
+    },
+    {
+      "title": "SL Tax Dept. extends deadline for filing of tax returns",
+      "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.356,
+      "impact": "medium",
+      "type": "positive_sentiment"
+    },
+    {
+      "title": "Bay of Bengal countries mark World Fisheries Day",
+      "url": "https://www.sundaytimes.lk/251130/business-times/bay-of-bengal-countries-mark-world-fisheries-day-622229.html",
+      "sectors": [
+        "agriculture"
+      ],
+      "sentiment": 0.352,
+      "impact": "medium",
+      "type": "positive_sentiment"
+    }
+  ]
 }

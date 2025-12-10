@@ -2,20 +2,20 @@
   "timeline": [
     {
       "date": "2025-12-09",
-      "avg_sentiment": 0.101,
-      "article_count": 226,
+      "avg_sentiment": 0.1,
+      "article_count": 233,
       "top_sectors": [
         [
           "finance",
-          55
+          58
+        ],
+        [
+          "technology",
+          40
         ],
         [
           "government",
           38
-        ],
-        [
-          "technology",
-          35
         ]
       ]
     }

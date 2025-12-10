@@ -36,9 +36,9 @@ def get_available_gemma_model():
             
             if gemma_models:
                 print(f"Found Gemma models: {', '.join(gemma_models)}")
-                return gemma_models[0]  # Use the first one
+                return gemma_models[0]
             else:
-                print(f"No Gemma models found.")
+                print("No Gemma models found.")
                 print(f"Available models: {', '.join(model_names) if model_names else 'None'}")
                 return None
     except Exception as e:
@@ -99,8 +99,10 @@ def ensure_ollama_ready(max_wait=30):
         return False
 
 
-if __name__ == "__main__":
+def main():
+    """Main function to build all indicators."""
     
+    # Check Ollama availability
     ollama_ready = ensure_ollama_ready(max_wait=30)
     
     use_llm = False
@@ -113,7 +115,7 @@ if __name__ == "__main__":
             use_llm = True
         else:
             print("\nNo Gemma model available. Proceeding without LLM enhancement...")
-            print("To install Gemma, run: ollama pull gemma:3.1b")
+            print("To install Gemma, run: ollama pull gemma:2b")
     else:
         print("\nOllama not available. Proceeding without LLM enhancement...")
     
@@ -124,43 +126,116 @@ if __name__ == "__main__":
         print(f"LLM Model: {model_name}")
     print(f"{'='*60}\n")
 
-    # Pass the detected model name to IndicatorBuilder
-    builder = IndicatorBuilder()
+    # Initialize IndicatorBuilder
+    builder = IndicatorBuilder(
+        db_path="data/raw/articles.json",
+        output_dir="data/indicators"
+    )
+    
     if use_llm and model_name:
         builder.set_llm_model(model_name)
     
-    print("Building national indicators...")
+    # Build National Indicators
+    print("Step 1: Building national indicators...")
     national = builder.build_national_indicators()
-    print(f"  Overall sentiment: {national['overall_sentiment']}")
-    print(f"  Total articles: {national['total_articles']}\n")
+    print(f"  Overall sentiment: {national.get('overall_sentiment', 0):.3f}")
+    print(f"  Total articles: {national.get('total_articles', 0)}")
+    print(f"  Positive articles: {national.get('positive_articles', 0)}")
+    print(f"  Negative articles: {national.get('negative_articles', 0)}")
+    print(f"  Neutral articles: {national.get('neutral_articles', 0)}\n")
 
-    print("Building sector indicators...")
+    # Build Sector Indicators
+    print("Step 2: Building sector indicators...")
     if use_llm:
-        print(f"  Using LLM-enhanced keyword/org selection ({model_name})\n")
+        print(f"  Using LLM-enhanced analysis with {model_name}")
     sectors = builder.build_sector_indicators(use_llm=use_llm)
-    print(f"  Analyzed {len(sectors)} sectors\n")
+    print(f"  Analyzed {len(sectors)} sectors")
+    
+    for sector_name in list(sectors.keys())[:5]:
+        sector = sectors[sector_name]
+        print(f"    - {sector_name}: {sector['article_count']} articles, "
+              f"sentiment {sector['avg_sentiment']:.3f}")
+    print()
 
-    print("Detecting risks & opportunities...")
-    insights = builder.detect_risks_opportunities()
-    print(f"  Found {insights['total_risks']} risks")
-    print(f"  Found {insights['total_opportunities']} opportunities\n")
+    # Build Risk & Opportunity Insights
+    print("Step 3: Detecting risks and opportunities...")
+    insights = builder.build_risk_opportunity_insights()
+    print(f"  Total risks: {insights.get('total_risks', 0)}")
+    print(f"  Total opportunities: {insights.get('total_opportunities', 0)}")
+    
+    if insights.get('top_risks'):
+        print(f"  Top risk: {insights['top_risks'][0].get('title', 'N/A')[:50]}...")
+    if insights.get('top_opportunities'):
+        print(f"  Top opportunity: {insights['top_opportunities'][0].get('title', 'N/A')[:50]}...")
+    print()
 
-    print("Saving basic indicators...")
+    # Save basic indicators
+    print("Step 4: Saving basic indicators...")
     builder.save_indicators()
+    print("  Saved: national_indicators.json")
+    print("  Saved: sector_indicators.json")
+    print("  Saved: risk_opportunity_insights.json\n")
 
-    print(f"\n{'='*60}")
-    print("Running Advanced Analytics...")
+    # Run Advanced Analytics
+    print(f"{'='*60}")
+    print("Step 5: Running advanced analytics...")
     print(f"{'='*60}\n")
 
-    advanced = AdvancedAnalytics()
-    results = advanced.save_analytics()
+    advanced = AdvancedAnalytics(db_path="data/raw/articles.json")
+    results = advanced.save_analytics(output_path="data/indicators")
 
-    print(f"\nTemporal trends: {results['trends']['trend']} (strength: {results['trends']['trend_strength']})")
+    # Run Advanced Analytics
+    print(f"{'='*60}")
+    print("Step 5: Running advanced analytics...")
+    print(f"{'='*60}\n")
+
+    advanced = AdvancedAnalytics(db_path="data/raw/articles.json")
+    results = advanced.save_analytics()  # No parameter needed (uses default)
+
+    print("Advanced analytics results:")
+    print(f"  Temporal trend: {results['trends']['trend']} "
+        f"(strength: {results['trends']['trend_strength']})")
     print(f"  Anomalies detected: {results['anomalies']['total_anomalies']}")
-    print(f"  Sector clusters: {len(results['clusters']['clusters'])}")
-    print(f"  Sector correlations: {results['correlations']['total_correlations']}")
-    print(f"  Velocity analysis: {len(results['velocity']['sector_velocities'])} sectors")
+    if results['anomalies']['total_anomalies'] > 0:
+        print(f"    - Positive anomalies: {sum(1 for a in results['anomalies']['anomalies'] if a['anomaly_type'] == 'extremely_positive')}")
+        print(f"    - Negative anomalies: {sum(1 for a in results['anomalies']['anomalies'] if a['anomaly_type'] == 'extremely_negative')}")
 
-    print(f"\n{'='*60}")
-    print("All indicators saved to data/indicators/")
+    print(f"  Sector clusters: {len(results['clusters']['clusters'])}")
+    for cluster in results['clusters']['clusters']:
+        print(f"    - Cluster {cluster['cluster_id']}: {len(cluster['sectors'])} sectors, "
+            f"avg sentiment {cluster['avg_sentiment']:.3f}")
+
+    print(f"  Sector correlations: {results['correlations'].get('total_correlations', 0)}")
+    print(f"  Velocity analysis: {len(results['velocity'].get('sector_velocities', []))} sectors")
+    print()
+
+
+    # Summary
+    print(f"{'='*60}")
+    print("Indicator Generation Complete")
+    print(f"{'='*60}")
+    print(f"Output directory: data/indicators/")
+    print(f"Generated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("\nGenerated files:")
+    print("  - national_indicators.json")
+    print("  - sector_indicators.json")
+    print("  - risk_opportunity_insights.json")
+    print("  - temporal_trends.json")
+    print("  - anomalies.json")
+    print("  - sector_clusters.json")
+    print("  - sector_correlations.json")
+    print("  - sentiment_velocity.json")
     print(f"{'='*60}\n")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\nProcess interrupted by user.")
+        sys.exit(0)
+    except Exception as e:
+        print(f"\n\nError: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)

@@ -1,17 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("SerendivWatcher Premium Dashboard Loaded");
+    console.log("SerendivWatcher Premium Dark Dashboard Loaded");
     
-    // Initialize all components
+    // Initialize components
     if (typeof dashboardData !== 'undefined') {
         initSectorChart(dashboardData.national_indicators?.top_sectors || []);
-        initThemeToggle();
         initAutoRefresh();
+        initAnimations();
     }
 });
 
 let currentChart = null;
 let currentChartType = 'bar';
 
+// ==========================================
+// SECTOR CHART WITH DARK THEME
+// ==========================================
 function initSectorChart(sectors) {
     const ctx = document.getElementById('sectorChart')?.getContext('2d');
     if (!ctx) return;
@@ -29,8 +32,8 @@ function initSectorChart(sectors) {
                     label: 'Article Volume',
                     data: dataPoints,
                     backgroundColor: createGradient(ctx),
-                    borderRadius: 8,
-                    barThickness: 24,
+                    borderRadius: 10,
+                    barThickness: 30,
                 }]
             },
             options: getChartOptions('bar')
@@ -42,13 +45,15 @@ function initSectorChart(sectors) {
                 datasets: [{
                     label: 'Sector Activity',
                     data: dataPoints,
-                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                    borderColor: 'rgb(99, 102, 241)',
-                    borderWidth: 2,
-                    pointBackgroundColor: 'rgb(99, 102, 241)',
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderColor: 'rgb(102, 126, 234)',
+                    borderWidth: 3,
+                    pointBackgroundColor: 'rgb(102, 126, 234)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgb(99, 102, 241)'
+                    pointHoverBorderColor: 'rgb(102, 126, 234)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
                 }]
             },
             options: getChartOptions('radar')
@@ -64,6 +69,7 @@ function initSectorChart(sectors) {
                         '#f97316', '#f59e0b', '#10b981', '#14b8a6'
                     ],
                     borderWidth: 0,
+                    hoverOffset: 10
                 }]
             },
             options: getChartOptions('doughnut')
@@ -88,8 +94,8 @@ function initSectorChart(sectors) {
 
 function createGradient(ctx) {
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(99, 102, 241, 0.8)');
-    gradient.addColorStop(1, 'rgba(139, 92, 246, 0.4)');
+    gradient.addColorStop(0, 'rgba(102, 126, 234, 0.9)');
+    gradient.addColorStop(1, 'rgba(118, 75, 162, 0.6)');
     return gradient;
 }
 
@@ -102,23 +108,25 @@ function getChartOptions(type) {
             easing: 'easeInOutQuart'
         },
         plugins: {
-            legend: { 
+            legend: {
                 display: type === 'doughnut',
                 position: 'bottom',
                 labels: {
-                    padding: 15,
-                    font: { size: 11, family: "'Inter', sans-serif" },
+                    padding: 20,
+                    font: { size: 12, family: "'Inter', sans-serif" },
+                    color: '#94a3b8',
                     usePointStyle: true
                 }
             },
             tooltip: {
-                backgroundColor: '#1e293b',
+                backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 padding: 16,
-                titleFont: { size: 14, weight: '600' },
+                titleFont: { size: 14, weight: '700' },
                 bodyFont: { size: 13 },
-                cornerRadius: 10,
-                displayColors: false,
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                cornerRadius: 12,
+                displayColors: type !== 'bar',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1
             }
         }
     };
@@ -127,16 +135,16 @@ function getChartOptions(type) {
         baseOptions.scales = {
             y: {
                 beginAtZero: true,
-                grid: { color: '#f1f5f9', drawBorder: false },
+                grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
                 ticks: {
-                    font: { size: 11, family: "'Inter', sans-serif" },
+                    font: { size: 12, family: "'Inter', sans-serif" },
                     color: '#64748b'
                 }
             },
             x: {
                 grid: { display: false },
                 ticks: {
-                    font: { size: 11, family: "'Inter', sans-serif" },
+                    font: { size: 12, family: "'Inter', sans-serif" },
                     color: '#64748b'
                 }
             }
@@ -146,13 +154,16 @@ function getChartOptions(type) {
     if (type === 'radar') {
         baseOptions.scales = {
             r: {
-                angleLines: { color: '#e2e8f0' },
-                grid: { color: '#f1f5f9' },
+                angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                grid: { color: 'rgba(255, 255, 255, 0.08)' },
                 pointLabels: {
                     font: { size: 11, family: "'Inter', sans-serif" },
-                    color: '#64748b'
+                    color: '#94a3b8'
                 },
-                ticks: { display: false }
+                ticks: { 
+                    display: false,
+                    backdropColor: 'transparent'
+                }
             }
         };
     }
@@ -160,30 +171,55 @@ function getChartOptions(type) {
     return baseOptions;
 }
 
-// Theme Toggle
-function initThemeToggle() {
-    const toggle = document.getElementById('themeToggle');
-    if (!toggle) return;
-    
-    toggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-moon');
-        icon.classList.toggle('fa-sun');
-    });
-}
-
-// Auto-refresh timestamp
+// ==========================================
+// AUTO-REFRESH TIMESTAMP
+// ==========================================
 function initAutoRefresh() {
     const updateElement = document.getElementById('lastUpdated');
     if (!updateElement) return;
     
-    setInterval(() => {
-        const now = new Date().toLocaleString('en-US', {
-            hour: '2-digit',
+    function updateTime() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
             minute: '2-digit'
         });
-        updateElement.textContent = now;
-    }, 60000); // Update every minute
+        updateElement.textContent = `Updated at ${timeString}`;
+    }
+    
+    updateTime();
+    setInterval(updateTime, 60000); // Update every minute
 }
 
+// ==========================================
+// ANIMATIONS ON SCROLL
+// ==========================================
+function initAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.card-glass-dark').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// ==========================================
+// REFRESH BUTTON
+// ==========================================
+document.querySelector('.btn-glass-primary')?.addEventListener('click', function() {
+    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+    
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
+});

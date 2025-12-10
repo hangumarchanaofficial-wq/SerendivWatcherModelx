@@ -2,7 +2,7 @@ import sys
 import os
 from datetime import datetime
 
-# Ensure project root is on path (scripts folder is one level below root)
+# Ensure project root is on path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.storage.db_manager import DatabaseManager
@@ -81,7 +81,7 @@ def run_enrichment(db_path: str = "data/raw/articles.json"):
                 enriched_count += 1
 
             except Exception as e:
-                print(f"  ✗ Error enriching article: {e}\n")
+                print(f"  Error enriching article: {e}\n")
                 failed_count += 1
 
         print(f"{'=' * 60}")
@@ -93,7 +93,6 @@ def run_enrichment(db_path: str = "data/raw/articles.json"):
         return {"enriched": enriched_count, "failed": failed_count}
 
     finally:
-        
         db.close()
 
 

@@ -6,6 +6,124 @@ import requests
 from collections import Counter
 
 
+class EntityCleaner:
+    """Post-process SpaCy NER output to fix common errors."""
+    
+    # Things wrongly tagged as locations
+    LOCATION_BLACKLIST = {
+        'floods', 'rainfall', 'cyclone', 'landslides', 'advertise',
+        'taj samudra', 'sri lankans',
+    }
+    
+    # Things wrongly tagged as organizations
+    ORG_BLACKLIST = {
+        'sme', 'smes', 'msmes', 'inr', 'dhs', 'bbc', 'u.s.', 'us'
+    }
+    
+    # Entities that should be people, not orgs
+    PERSON_NAMES = {
+        'dissanayake', 'shannine', 'fakhoury', 'tilvin silva',
+        'ahmed jasim', 'richard teng', 'sri lankan'
+    }
+    
+    # Normalize these variations to canonical form
+    LOCATION_ALIASES = {
+        'sri lankas': 'Sri Lanka',
+        'sri lankan': 'Sri Lanka',
+        'sri lanka': 'Sri Lanka',
+    }
+    
+    @staticmethod
+    def clean_entities(entities):
+        """
+        Clean up NER errors from SpaCy.
+        
+        Args:
+            entities: Dict with keys PERSON, ORG, GPE, LOC
+            
+        Returns:
+            Cleaned entities dict
+        """
+        cleaned = {
+            'PERSON': [],
+            'ORG': [],
+            'GPE': [],
+            'LOC': []
+        }
+        
+        # Clean LOCATIONS (GPE)
+        for loc in entities.get('GPE', []):
+            loc_lower = loc.lower().strip()
+            
+            # Skip blacklisted non-locations
+            if loc_lower in EntityCleaner.LOCATION_BLACKLIST:
+                continue
+            
+            # Normalize Sri Lanka variants
+            if loc_lower in EntityCleaner.LOCATION_ALIASES:
+                loc = EntityCleaner.LOCATION_ALIASES[loc_lower]
+            
+            # Remove if it's actually a person
+            if loc_lower in EntityCleaner.PERSON_NAMES:
+                cleaned['PERSON'].append(loc)
+                continue
+            
+            cleaned['GPE'].append(loc)
+        
+        # Clean ORGANIZATIONS
+        for org in entities.get('ORG', []):
+            org_lower = org.lower().strip()
+            
+            # Skip blacklisted non-organizations
+            if org_lower in EntityCleaner.ORG_BLACKLIST:
+                continue
+            
+            # Move misclassified people to PERSON
+            if org_lower in EntityCleaner.PERSON_NAMES:
+                cleaned['PERSON'].append(org)
+                continue
+            
+            # Remove leading articles (the, The)
+            org_clean = org.lstrip('the ').lstrip('The ')
+            
+            # Skip if too short (likely acronym noise)
+            if len(org_clean) < 3:
+                continue
+            
+            cleaned['ORG'].append(org_clean)
+        
+        # Clean PEOPLE
+        for person in entities.get('PERSON', []):
+            person_lower = person.lower().strip()
+            
+            # Skip if it's actually a location
+            if person_lower in EntityCleaner.LOCATION_ALIASES:
+                cleaned['GPE'].append(EntityCleaner.LOCATION_ALIASES[person_lower])
+                continue
+            
+            cleaned['PERSON'].append(person)
+        
+        # Clean LOC (less common)
+        cleaned['LOC'] = [loc for loc in entities.get('LOC', []) 
+                          if loc.lower() not in EntityCleaner.LOCATION_BLACKLIST]
+        
+        # Deduplicate and limit
+        for key in cleaned:
+            # Remove duplicates (case-insensitive)
+            seen = set()
+            unique = []
+            for item in cleaned[key]:
+                item_lower = item.lower()
+                if item_lower not in seen:
+                    seen.add(item_lower)
+                    unique.append(item)
+            
+            # Keep top 10 most frequent
+            cleaned[key] = unique[:10]
+        
+        return cleaned
+
+
 class NLPProcessor:
     def __init__(self, config_path="config/nlp_config.yaml"):
         # Load spaCy model
@@ -20,10 +138,10 @@ class NLPProcessor:
         self.sentiment_thresholds = self.config['sentiment']
         
         # LLM settings
-        self.use_llm_validation = True  # Set to False to disable LLM
+        self.use_llm_validation = True
         self.llm_api_url = "http://localhost:11434/api/generate"
         self.llm_model = "gemma3:1b"
-        self.min_confidence = 3  # Higher threshold since LLM will validate
+        self.min_confidence = 3
     
     def clean_text(self, text):
         """Remove extra whitespace and special characters"""
@@ -167,14 +285,14 @@ ANSWER:"""
             "negative" if sentiment_score < neg_thresh else "neutral"
         )
         
-        # Named entities
-        entities = {"PERSON": [], "ORG": [], "GPE": [], "LOC": []}
+        # Named entities (RAW from SpaCy)
+        raw_entities = {"PERSON": [], "ORG": [], "GPE": [], "LOC": []}
         for ent in doc.ents:
-            if ent.label_ in entities:
-                entities[ent.label_].append(ent.text)
+            if ent.label_ in raw_entities:
+                raw_entities[ent.label_].append(ent.text)
         
-        for key in entities:
-            entities[key] = list(set(entities[key]))[:10]
+        # POST-PROCESS: Clean up NER errors
+        entities = EntityCleaner.clean_entities(raw_entities)
         
         # Keywords from noun chunks
         keywords = [chunk.text.lower() for chunk in doc.noun_chunks 
@@ -192,7 +310,7 @@ ANSWER:"""
             primary_sector = self.validate_sector_with_llm(
                 title, text_sample, candidate_sectors
             )
-            confidence = candidate_sectors[0][1]  # Top keyword score
+            confidence = candidate_sectors[0][1]
         elif candidate_sectors:
             # No LLM, use top keyword match
             primary_sector = candidate_sectors[0][0]
@@ -208,10 +326,9 @@ ANSWER:"""
             "sentiment_label": sentiment_label,
             "entities": entities,
             "keywords": keywords,
-            "sectors": [primary_sector],  # Single sector
+            "sectors": [primary_sector],
             "sector_confidence": confidence,
-            "sector_candidates": [s[0] for s in candidate_sectors],  # For debugging
+            "sector_candidates": [s[0] for s in candidate_sectors],
             "language": doc.lang_,
             "word_count": len(text_cleaned.split())
         }
-

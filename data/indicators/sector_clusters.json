@@ -3,8 +3,50 @@
     {
       "cluster_id": 1,
       "label": "Stable Sectors",
-      "avg_sentiment": 0.145,
+      "avg_sentiment": 0.12,
       "sectors": [
+        {
+          "sector": "tourism",
+          "avg_sentiment": 0.134,
+          "article_count": 16
+        },
+        {
+          "sector": "energy",
+          "avg_sentiment": 0.101,
+          "article_count": 13
+        },
+        {
+          "sector": "manufacturing",
+          "avg_sentiment": 0.111,
+          "article_count": 7
+        },
+        {
+          "sector": "construction",
+          "avg_sentiment": 0.136,
+          "article_count": 4
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "label": "Stable Sectors",
+      "avg_sentiment": 0.108,
+      "sectors": [
+        {
+          "sector": "transport",
+          "avg_sentiment": 0.103,
+          "article_count": 22
+        },
+        {
+          "sector": "agriculture",
+          "avg_sentiment": 0.108,
+          "article_count": 19
+        },
+        {
+          "sector": "general",
+          "avg_sentiment": 0.078,
+          "article_count": 10
+        },
         {
           "sector": "healthcare",
           "avg_sentiment": 0.145,
@@ -15,64 +57,22 @@
     {
       "cluster_id": 2,
       "label": "Stable Sectors",
-      "avg_sentiment": 0.105,
-      "sectors": [
-        {
-          "sector": "transport",
-          "avg_sentiment": 0.098,
-          "article_count": 23
-        },
-        {
-          "sector": "agriculture",
-          "avg_sentiment": 0.108,
-          "article_count": 19
-        },
-        {
-          "sector": "tourism",
-          "avg_sentiment": 0.126,
-          "article_count": 15
-        },
-        {
-          "sector": "energy",
-          "avg_sentiment": 0.099,
-          "article_count": 12
-        },
-        {
-          "sector": "general",
-          "avg_sentiment": 0.084,
-          "article_count": 11
-        },
-        {
-          "sector": "manufacturing",
-          "avg_sentiment": 0.102,
-          "article_count": 7
-        },
-        {
-          "sector": "construction",
-          "avg_sentiment": 0.117,
-          "article_count": 5
-        }
-      ]
-    },
-    {
-      "cluster_id": 0,
-      "label": "Stable Sectors",
-      "avg_sentiment": 0.095,
+      "avg_sentiment": 0.09,
       "sectors": [
         {
           "sector": "finance",
-          "avg_sentiment": 0.1,
-          "article_count": 55
-        },
-        {
-          "sector": "government",
-          "avg_sentiment": 0.077,
-          "article_count": 38
+          "avg_sentiment": 0.098,
+          "article_count": 58
         },
         {
           "sector": "technology",
-          "avg_sentiment": 0.109,
-          "article_count": 35
+          "avg_sentiment": 0.094,
+          "article_count": 40
+        },
+        {
+          "sector": "government",
+          "avg_sentiment": 0.078,
+          "article_count": 38
         }
       ]
     }

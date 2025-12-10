@@ -1,243 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SerendivWatcher | Risk Monitor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+    <title>SerendivWatcher | Risk Intelligence</title>
 
-    <aside class="sidebar">
-        <div class="brand">
-            <div class="logo-icon"><i class="fa-solid fa-chart-network"></i></div>
-            <span>SerendivWatcher</span>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Shared Dark Theme CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+</head>
+<body class="bg-dark-custom">
+
+    <!-- Sidebar -->
+    <div class="sidebar-dark">
+        <div class="sidebar-header">
+            <div class="brand-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="brand-text">
+                    <h5>SerendivWatcher</h5>
+                    <small>Intelligence Platform</small>
+                </div>
+            </div>
         </div>
-        
-        <nav class="nav-menu">
-            <div class="nav-label">Intelligence Hub</div>
-            <a href="/" class="nav-item {% if active_page == 'overview' %}active{% endif %}">
-                <i class="fa-solid fa-grid-2"></i> <span>Overview</span>
+
+        <!-- Live status -->
+        <div class="live-status-card">
+            <div class="pulse-indicator"></div>
+            <span class="status-text">System Active</span>
+        </div>
+
+        <!-- Nav -->
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">ANALYTICS</div>
+
+            <a href="/" class="nav-link-dark {% if active_page == 'overview' %}active{% endif %}">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
             </a>
-            <a href="/sectors" class="nav-item {% if active_page == 'sectors' %}active{% endif %}">
-                <i class="fa-solid fa-layer-group"></i> <span>Sector Analysis</span>
+
+            <a href="/sectors" class="nav-link-dark {% if active_page == 'sectors' %}active{% endif %}">
+                <i class="fas fa-layer-group"></i>
+                <span>Sector Analysis</span>
             </a>
-            <a href="/risks" class="nav-item {% if active_page == 'risks' %}active{% endif %}">
-                <i class="fa-solid fa-shield-exclamation"></i> <span>Risk Monitor</span>
+
+            <a href="/risks" class="nav-link-dark {% if active_page == 'risks' %}active{% endif %}">
+                <i class="fas fa-shield-alt"></i>
+                <span>Risk Intelligence</span>
             </a>
         </nav>
 
+        <!-- User -->
         <div class="sidebar-footer">
-            <div class="live-indicator">
-                <div class="pulse-dot"></div>
-                <span>Live Monitoring</span>
-            </div>
-            <div class="user-profile">
-                <div class="avatar">AD</div>
+            <div class="user-profile-card">
+                <div class="avatar-gradient">
+                    <i class="fas fa-user"></i>
+                </div>
                 <div class="user-info">
-                    <span class="name">Admin User</span>
-                    <span class="role">Premium Access</span>
+                    <div class="user-name">Analyst User</div>
+                    <div class="user-role">Premium Access</div>
                 </div>
             </div>
         </div>
-    </aside>
+    </div>
 
-    <main class="main-content">
-        
-        <header class="top-bar">
-            <div class="breadcrumbs">
-                <span class="text-muted">Dashboard</span> / <span class="text-primary">Risk Monitor</span>
-            </div>
-            <div class="header-actions">
-                <span class="last-updated">
-                    <i class="fa-regular fa-clock"></i> 
-                    05:15 AM
-                </span>
-                <button class="btn-secondary"><i class="fa-solid fa-bell"></i> Alerts</button>
-            </div>
-        </header>
-
-        <!-- OUTPUT 3: RISK & OPPORTUNITY INSIGHTS -->
-        <section class="section-header">
-            <h2><i class="fa-solid fa-shield-exclamation"></i> Risk & Opportunity Insights</h2>
-            <p class="section-desc">Early warnings and emerging positive trends from aggregated real-time data</p>
-        </section>
-
-        <!-- Summary Cards -->
-        <div class="risk-summary-grid">
-            <div class="card summary-card border-left-danger">
-                <div class="summary-icon bg-danger">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
+    <!-- Main wrapper -->
+    <div class="main-wrapper">
+        <!-- Top bar -->
+        <nav class="navbar-dark-custom">
+            <div class="container-fluid">
+                <div class="navbar-left">
+                    <h2 class="page-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="text-gradient">Risk Intelligence</span>
+                    </h2>
+                    <p class="page-subtitle">
+                        Downside risks and upside opportunities extracted from business news
+                    </p>
                 </div>
-                <div class="summary-body">
-                    <h3>{{ data.risk_opportunity_insights.total_risks if data.risk_opportunity_insights else 0 }}</h3>
-                    <p>Total Risks</p>
-                    <span class="badge badge-danger-pulse">LIVE</span>
+                <div class="navbar-right">
+                    <div class="last-update-badge">
+                        <i class="far fa-clock"></i>
+                        <span>Updated a few minutes ago</span>
+                    </div>
                 </div>
             </div>
+        </nav>
 
-            <div class="card summary-card border-left-success">
-                <div class="summary-icon bg-success">
-                    <i class="fa-solid fa-lightbulb"></i>
+        <div class="container-fluid px-4 py-4">
+
+            <!-- KPI row: risks & opportunities -->
+            <div class="row g-4 mb-4">
+                <!-- Active Risks -->
+                <div class="col-xl-6 col-md-6">
+                    <div class="card card-glass-dark metric-card-animated">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <p class="metric-label">Active Risks</p>
+                                    <h2 class="metric-value text-danger-glow">
+                                        {{ data.risk_opportunity_insights.total_risks if data.risk_opportunity_insights else 0 }}
+                                    </h2>
+                                </div>
+                                <div class="metric-icon risk-icon-gradient">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                            </div>
+                            <p class="metric-description">
+                                Critical:
+                                <strong class="text-danger">
+                                    {{ (data.risk_opportunity_insights.risks | selectattr('severity', 'equalto', 'high') | list | length) if data.risk_opportunity_insights else 0 }}
+                                </strong>
+                                <br>
+                                <span class="badge badge-glass mt-1">
+                                    {{ (data.risk_opportunity_insights.risks | length) if data.risk_opportunity_insights and data.risk_opportunity_insights.risks else 0 }}
+                                    total risk items
+                                </span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="summary-body">
-                    <h3>{{ data.risk_opportunity_insights.total_opportunities if data.risk_opportunity_insights else 0 }}</h3>
-                    <p>Growth Opportunities</p>
-                    <span class="badge badge-success-pulse">ACTIVE</span>
+
+                <!-- Growth Opportunities -->
+                <div class="col-xl-6 col-md-6">
+                    <div class="card card-glass-dark metric-card-animated" style="animation-delay: 0.1s;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <p class="metric-label">Growth Opportunities</p>
+                                    <h2 class="metric-value text-success-glow">
+                                        {{ data.risk_opportunity_insights.total_opportunities if data.risk_opportunity_insights else 0 }}
+                                    </h2>
+                                </div>
+                                <div class="metric-icon opportunity-icon-gradient">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+                            <p class="metric-description">
+                                High Impact:
+                                <strong class="text-success">
+                                    {{ (data.risk_opportunity_insights.opportunities | selectattr('impact', 'equalto', 'high') | list | length) if data.risk_opportunity_insights else 0 }}
+                                </strong>
+                                <br>
+                                <span class="badge badge-glass mt-1">
+                                    {{ (data.risk_opportunity_insights.opportunities | length) if data.risk_opportunity_insights and data.risk_opportunity_insights.opportunities else 0 }}
+                                    total opportunity items
+                                </span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Risk & Opportunity Tables -->
-        <div class="dashboard-split">
-            <div class="card">
-                <div class="card-header">
-                    <h3><i class="fa-solid fa-shield-exclamation text-danger"></i> High Priority Risks</h3>
-                    <span class="badge badge-danger-pulse">Live Monitoring</span>
+            <!-- Risks list -->
+            <div class="card card-glass-dark mb-4">
+                <div class="card-header-dark">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title-dark">
+                                <i class="fas fa-triangle-exclamation text-gradient"></i>
+                                Downside Risk Signals
+                            </h5>
+                            <p class="card-subtitle-dark">
+                                Articles and events tagged as potential threats to business conditions
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="risk-table-container">
+                <div class="card-body">
                     {% if data.risk_opportunity_insights and data.risk_opportunity_insights.risks %}
-                        {% for risk in data.risk_opportunity_insights.risks %}
-                        <div class="risk-item-card">
-                            <div class="risk-item-header">
-                                <div class="risk-title">{{ risk.title }}</div>
-                                <span class="severity-badge badge-{{ risk.severity }}">{{ risk.severity|upper }}</span>
+                        <div class="row g-3">
+                            {% for risk in data.risk_opportunity_insights.risks %}
+                            <div class="col-12 col-xl-6">
+                                <div class="anomaly-card-dark">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <a href="{{ risk.url }}" target="_blank" class="anomaly-title-dark text-decoration-none">
+                                                {{ risk.title }}
+                                            </a>
+                                            <div class="mt-1">
+                                                {% if risk.sectors %}
+                                                    {% for s in risk.sectors %}
+                                                    <span class="badge keyword-pill me-1">
+                                                        {{ s|title }}
+                                                    </span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span class="badge keyword-pill me-1">
+                                                        Unassigned sector
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            {% set sev = risk.severity|default('medium') %}
+                                            <span class="badge 
+                                                {% if sev == 'high' %}badge-danger-soft
+                                                {% elif sev == 'low' %}badge-neutral-soft
+                                                {% else %}badge-warning-soft{% endif %}">
+                                                {{ sev|title }} risk
+                                            </span>
+                                            <div class="text-muted-small mt-1">
+                                                Sentiment: {{ "%.3f"|format(risk.sentiment|default(0.0)) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if risk.type %}
+                                    <div class="text-muted-small">
+                                        Type: {{ risk.type.replace('_', ' ')|title }}
+                                    </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <div class="risk-sectors">
-                                {% for sector in risk.sectors %}
-                                <span class="sector-pill danger">{{ sector }}</span>
-                                {% endfor %}
-                            </div>
-                            <div class="risk-footer">
-                                <span class="sentiment-score negative">
-                                    <i class="fa-solid fa-arrow-down"></i> {{ "%.2f"|format(risk.sentiment) }}
-                                </span>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     {% else %}
-                        <div class="empty-state">
-                            <i class="fa-solid fa-shield-check"></i>
-                            <p>No active risks detected</p>
+                        <div class="text-center py-5">
+                            <i class="fas fa-shield-halved fa-3x text-muted mb-3"></i>
+                            <p class="mb-1 text-muted">
+                                No risk items detected in the current snapshot.
+                            </p>
+                            <p class="mb-0 text-muted-small">
+                                As more negatively skewed or adverse articles are ingested, this section will populate automatically.
+                            </p>
                         </div>
                     {% endif %}
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3><i class="fa-solid fa-lightbulb text-success"></i> Strategic Opportunities</h3>
-                    <span class="badge badge-success-pulse">Active</span>
+            <!-- Opportunities list -->
+            <div class="card card-glass-dark mb-4">
+                <div class="card-header-dark">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title-dark">
+                                <i class="fas fa-circle-up text-gradient"></i>
+                                Upside Opportunity Signals
+                            </h5>
+                            <p class="card-subtitle-dark">
+                                Positive events and contrarian signals with potential business upside
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="opportunity-table-container">
+                <div class="card-body">
                     {% if data.risk_opportunity_insights and data.risk_opportunity_insights.opportunities %}
-                        {% for opp in data.risk_opportunity_insights.opportunities %}
-                        <div class="opportunity-item-card">
-                            <div class="opportunity-item-header">
-                                <div class="opportunity-title">{{ opp.title }}</div>
-                                <span class="impact-badge badge-{{ opp.impact }}">{{ opp.impact|upper }}</span>
+                        <div class="row g-3">
+                            {% for opp in data.risk_opportunity_insights.opportunities %}
+                            <div class="col-12 col-xl-6">
+                                <div class="anomaly-card-dark">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <a href="{{ opp.url }}" target="_blank" class="anomaly-title-dark text-decoration-none">
+                                                {{ opp.title }}
+                                            </a>
+                                            <div class="mt-1">
+                                                {% if opp.sectors %}
+                                                    {% for s in opp.sectors %}
+                                                    <span class="badge keyword-pill me-1">
+                                                        {{ s|title }}
+                                                    </span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span class="badge keyword-pill me-1">
+                                                        Unassigned sector
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            {% set impact = opp.impact|default('medium') %}
+                                            <span class="badge 
+                                                {% if impact == 'high' %}badge-success-soft
+                                                {% elif impact == 'low' %}badge-neutral-soft
+                                                {% else %}badge-warning-soft{% endif %}">
+                                                {{ impact|title }} impact
+                                            </span>
+                                            <div class="text-muted-small mt-1">
+                                                Sentiment: {{ "%.3f"|format(opp.sentiment|default(0.0)) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1">
+                                        <span class="badge badge-glass-gradient badge-success">
+                                            {{ opp.type.replace('_', ' ')|title if opp.type else 'Positive signal' }}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="opportunity-sectors">
-                                {% for sector in opp.sectors %}
-                                <span class="sector-pill success">{{ sector }}</span>
-                                {% endfor %}
-                            </div>
-                            <div class="opportunity-footer">
-                                <span class="sentiment-score positive">
-                                    <i class="fa-solid fa-arrow-up"></i> {{ "%.2f"|format(opp.sentiment) }}
-                                </span>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     {% else %}
-                        <div class="empty-state">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <p>No opportunities detected</p>
+                        <div class="text-center py-5">
+                            <i class="fas fa-rocket fa-3x text-muted mb-3"></i>
+                            <p class="mb-1 text-muted">
+                                No opportunity items identified yet.
+                            </p>
+                            <p class="mb-0 text-muted-small">
+                                Once the pipeline flags positive outliers, they will appear here with sector and impact tags.
+                            </p>
                         </div>
                     {% endif %}
                 </div>
             </div>
+
         </div>
+    </div>
 
-        <!-- Additional Insights Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3><i class="fa-solid fa-chart-line"></i> Risk Trends Overview</h3>
-            </div>
-            <div class="risk-trends-grid">
-                <div class="trend-card">
-                    <div class="trend-icon bg-danger">
-                        <i class="fa-solid fa-arrow-trend-up"></i>
-                    </div>
-                    <div class="trend-content">
-                        <h4>Emerging Risks</h4>
-                        <p class="trend-value">{{ (data.risk_opportunity_insights.risks | selectattr('severity', 'equalto', 'high') | list | length) if data.risk_opportunity_insights else 0 }}</p>
-                        <span class="trend-label">High severity detected</span>
-                    </div>
-                </div>
-
-                <div class="trend-card">
-                    <div class="trend-icon bg-warning">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                    <div class="trend-content">
-                        <h4>Monitoring</h4>
-                        <p class="trend-value">{{ (data.risk_opportunity_insights.risks | selectattr('severity', 'equalto', 'medium') | list | length) if data.risk_opportunity_insights else 0 }}</p>
-                        <span class="trend-label">Medium severity items</span>
-                    </div>
-                </div>
-
-                <div class="trend-card">
-                    <div class="trend-icon bg-success">
-                        <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <div class="trend-content">
-                        <h4>High Impact Opportunities</h4>
-                        <p class="trend-value">{{ (data.risk_opportunity_insights.opportunities | selectattr('impact', 'equalto', 'high') | list | length) if data.risk_opportunity_insights else 0 }}</p>
-                        <span class="trend-label">Growth potential</span>
-                    </div>
-                </div>
-
-                <div class="trend-card">
-                    <div class="trend-icon bg-info">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <div class="trend-content">
-                        <h4>Medium Opportunities</h4>
-                        <p class="trend-value">{{ (data.risk_opportunity_insights.opportunities | selectattr('impact', 'equalto', 'medium') | list | length) if data.risk_opportunity_insights else 0 }}</p>
-                        <span class="trend-label">Steady growth</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer Stats -->
-        <footer class="dashboard-footer">
-            <div class="footer-stat">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span>{{ data.risk_opportunity_insights.total_risks if data.risk_opportunity_insights else 0 }} Risks Monitored</span>
-            </div>
-            <div class="footer-stat">
-                <i class="fa-solid fa-lightbulb"></i>
-                <span>{{ data.risk_opportunity_insights.total_opportunities if data.risk_opportunity_insights else 0 }} Opportunities</span>
-            </div>
-            <div class="footer-stat">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>Updated 2 min ago</span>
-            </div>
-            <div class="footer-stat">
-                <i class="fa-solid fa-shield-check"></i>
-                <span>System Healthy</span>
-            </div>
-        </footer>
-    </main>
-
+    <!-- Optional JSON dump if needed -->
     <script>
-        const dashboardData = {{ data | tojson | safe }};
+        const riskData = {{ data | tojson | safe }};
     </script>
-    
-    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

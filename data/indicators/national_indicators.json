@@ -1,27 +1,30 @@
 {
-  "overall_sentiment": 0.101,
+  "overall_sentiment": 0.1,
   "sentiment_distribution": {
-    "positive": 103,
-    "neutral": 122,
+    "positive": 104,
+    "neutral": 128,
     "negative": 1
   },
-  "total_articles": 226,
+  "total_articles": 233,
+  "positive_articles": 104,
+  "negative_articles": 1,
+  "neutral_articles": 128,
   "top_sectors": [
     {
       "sector": "finance",
-      "count": 55
+      "count": 58
+    },
+    {
+      "sector": "technology",
+      "count": 40
     },
     {
       "sector": "government",
       "count": 38
     },
     {
-      "sector": "technology",
-      "count": 35
-    },
-    {
       "sector": "transport",
-      "count": 23
+      "count": 22
     },
     {
       "sector": "agriculture",
@@ -30,118 +33,118 @@
   ],
   "top_organizations": [
     {
-      "org": "IMF",
+      "org": "aj Samudra",
       "count": 12
     },
     {
-      "org": "SME",
-      "count": 7
+      "org": "IMF",
+      "count": 10
     },
     {
-      "org": "The Ceylon Chamber of Commerce",
-      "count": 7
+      "org": "Colombo Stock Exchange CSE",
+      "count": 9
     },
     {
-      "org": "the Colombo Stock Exchange",
-      "count": 6
+      "org": "Ceylon Chamber of Commerce",
+      "count": 9
     },
     {
-      "org": "the Disaster Management Centre",
-      "count": 6
-    },
-    {
-      "org": "First Capital Research",
-      "count": 4
-    },
-    {
-      "org": "SEC",
-      "count": 4
-    },
-    {
-      "org": "Dissanayake",
-      "count": 4
-    },
-    {
-      "org": "Governments",
-      "count": 4
+      "org": "reasury",
+      "count": 8
     },
     {
       "org": "International Monetary Fund IMF",
-      "count": 4
+      "count": 8
+    },
+    {
+      "org": "Central Bank",
+      "count": 7
+    },
+    {
+      "org": "Disaster Management Centre",
+      "count": 7
+    },
+    {
+      "org": "Colombo Stock Exchange",
+      "count": 6
+    },
+    {
+      "org": "Governments",
+      "count": 6
     }
   ],
   "top_locations": [
     {
       "location": "Sri Lanka",
-      "count": 131
+      "count": 188
     },
     {
       "location": "London",
-      "count": 32
-    },
-    {
-      "location": "Floods",
-      "count": 29
-    },
-    {
-      "location": "Sri Lankas",
-      "count": 26
+      "count": 31
     },
     {
       "location": "India",
-      "count": 18
-    },
-    {
-      "location": "Sri Lankan",
-      "count": 17
+      "count": 20
     },
     {
       "location": "US",
       "count": 16
     },
     {
-      "location": "Colombo",
-      "count": 15
+      "location": "China",
+      "count": 16
     },
     {
-      "location": "China",
-      "count": 14
+      "location": "Colombo",
+      "count": 16
     },
     {
       "location": "South Asia",
+      "count": 7
+    },
+    {
+      "location": "Japan",
+      "count": 7
+    },
+    {
+      "location": "UK",
+      "count": 6
+    },
+    {
+      "location": "Bangladesh",
       "count": 6
     }
   ],
   "top_topics": [
     {
-      "topic": "the country",
-      "count": 59,
+      "topic": "sri lanka",
+      "count": 56,
       "top_sectors": [
         {
           "sector": "finance",
-          "count": 13
+          "count": 15
         },
+        {
+          "sector": "technology",
+          "count": 10
+        },
+        {
+          "sector": "transport",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "topic": "sri lankas",
+      "count": 46,
+      "top_sectors": [
         {
           "sector": "government",
           "count": 12
         },
         {
-          "sector": "technology",
-          "count": 9
-        }
-      ]
-    },
-    {
-      "topic": "91,wijerama mawatha",
-      "count": 42,
-      "top_sectors": [
-        {
-          "sector": "government",
-          "count": 11
-        },
-        {
           "sector": "transport",
-          "count": 10
+          "count": 11
         },
         {
           "sector": "agriculture",
@@ -150,149 +153,149 @@
       ]
     },
     {
-      "topic": "all rights",
-      "count": 38,
+      "topic": "current affairs",
+      "count": 34,
       "top_sectors": [
-        {
-          "sector": "government",
-          "count": 11
-        },
         {
           "sector": "transport",
           "count": 10
         },
         {
+          "sector": "government",
+          "count": 8
+        },
+        {
           "sector": "agriculture",
-          "count": 5
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "by staff writer",
+      "count": 32,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 10
+        },
+        {
+          "sector": "government",
+          "count": 9
+        },
+        {
+          "sector": "agriculture",
+          "count": 4
         }
       ]
     },
     {
       "topic": "the sunday morning",
-      "count": 35,
+      "count": 30,
       "top_sectors": [
         {
           "sector": "transport",
-          "count": 10
+          "count": 7
         },
         {
           "sector": "government",
-          "count": 9
+          "count": 6
         },
         {
-          "sector": "general",
+          "sector": "agriculture",
           "count": 5
         }
       ]
     },
     {
-      "topic": "the due courtesy",
-      "count": 31,
+      "topic": "the event",
+      "count": 23,
       "top_sectors": [
         {
-          "sector": "technology",
-          "count": 8
-        },
-        {
-          "sector": "government",
+          "sector": "finance",
           "count": 7
-        },
-        {
-          "sector": "finance",
-          "count": 6
-        }
-      ]
-    },
-    {
-      "topic": "disaster damage",
-      "count": 29,
-      "top_sectors": [
-        {
-          "sector": "finance",
-          "count": 12
-        },
-        {
-          "sector": "government",
-          "count": 4
-        },
-        {
-          "sector": "technology",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "topic": "all the content",
-      "count": 29,
-      "top_sectors": [
-        {
-          "sector": "technology",
-          "count": 7
-        },
-        {
-          "sector": "government",
-          "count": 7
-        },
-        {
-          "sector": "finance",
-          "count": 6
-        }
-      ]
-    },
-    {
-      "topic": "the time",
-      "count": 21,
-      "top_sectors": [
-        {
-          "sector": "finance",
-          "count": 8
         },
         {
           "sector": "agriculture",
           "count": 5
         },
         {
+          "sector": "tourism",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "topic": "all rights",
+      "count": 23,
+      "top_sectors": [
+        {
+          "sector": "transport",
+          "count": 6
+        },
+        {
+          "sector": "government",
+          "count": 5
+        },
+        {
+          "sector": "agriculture",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "tuesday dec",
+      "count": 23,
+      "top_sectors": [
+        {
+          "sector": "government",
+          "count": 6
+        },
+        {
+          "sector": "finance",
+          "count": 5
+        },
+        {
           "sector": "technology",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "topic": "mr channa jayasinghe",
+      "count": 22,
+      "top_sectors": [
+        {
+          "sector": "government",
+          "count": 6
+        },
+        {
+          "sector": "finance",
+          "count": 6
+        },
+        {
+          "sector": "transport",
           "count": 2
         }
       ]
     },
     {
-      "topic": "todays",
-      "count": 19,
+      "topic": "politics",
+      "count": 20,
       "top_sectors": [
         {
-          "sector": "finance",
-          "count": 8
+          "sector": "government",
+          "count": 5
         },
         {
           "sector": "agriculture",
           "count": 4
         },
         {
-          "sector": "technology",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "topic": "affordable options",
-      "count": 19,
-      "top_sectors": [
-        {
-          "sector": "finance",
-          "count": 8
-        },
-        {
-          "sector": "agriculture",
-          "count": 4
-        },
-        {
-          "sector": "technology",
-          "count": 2
+          "sector": "transport",
+          "count": 3
         }
       ]
     }
   ],
-  "timestamp": "2025-12-09T12:06:43.199816"
+  "timestamp": "2025-12-10T09:40:48.530722"
 }

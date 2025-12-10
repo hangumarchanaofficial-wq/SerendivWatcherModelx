@@ -37,7 +37,7 @@
       "title": "SL Tax Dept. extends deadline for filing of tax returns",
       "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
       "sentiment": 0.356,
-      "z_score": 2.82,
+      "z_score": 2.83,
       "sectors": [
         "government"
       ],
@@ -67,26 +67,26 @@
       "anomaly_type": "extremely_positive"
     },
     {
-      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
-      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
-      "sentiment": -0.143,
-      "z_score": 2.69,
-      "sectors": [
-        "finance"
-      ],
-      "source": "EconomicTimes.lk",
-      "anomaly_type": "extremely_negative"
-    },
-    {
       "title": "Doola River Edge Celebrates the Spirit of the Season with Festive Cake-Mixing Ceremony 2025",
       "url": "https://economictimes.lk/index.php/2025/12/09/doola-river-edge-celebrates-the-spirit-of-the-season-with-festive-cake-mixing-ceremony-2025/",
       "sentiment": 0.343,
-      "z_score": 2.68,
+      "z_score": 2.69,
       "sectors": [
         "tourism"
       ],
       "source": "EconomicTimes.lk",
       "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
+      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
+      "sentiment": -0.143,
+      "z_score": 2.67,
+      "sectors": [
+        "finance"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_negative"
     },
     {
       "title": "Nestl\u00e9 Lanka Recognized at the Best Corporate Citizen Sustainability Awards 2025",
@@ -103,7 +103,7 @@
       "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
       "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
       "sentiment": 0.328,
-      "z_score": 2.51,
+      "z_score": 2.52,
       "sectors": [
         "finance"
       ],
@@ -114,7 +114,7 @@
       "title": "People\u2019s Bank achieves pre-tax profit of Rs.43.7 b in 9mths\u201925",
       "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-achieves-pre-tax-profit-of-rs-43-7-b-in-9mths25-622203.html",
       "sentiment": 0.297,
-      "z_score": 2.17,
+      "z_score": 2.18,
       "sectors": [
         "finance"
       ],
@@ -123,6 +123,6 @@
     }
   ],
   "total_anomalies": 11,
-  "mean_sentiment": 0.101,
-  "std_sentiment": 0.09
+  "mean_sentiment": 0.1,
+  "std_sentiment": 0.091
 }

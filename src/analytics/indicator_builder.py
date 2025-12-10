@@ -6,12 +6,14 @@ import math
 import requests
 import re
 
+
 # =====================================================================
 # LLM CONFIGURATION
 # =====================================================================
 
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "gemma3:1b"
+
 
 # =====================================================================
 # COMPREHENSIVE NOISE FILTERING
@@ -88,8 +90,16 @@ GARBAGE_PATTERNS = [
 
 
 class IndicatorBuilder:
-    def __init__(self, db_path: str = "data/raw/articles.json"):
+    def __init__(self, db_path: str = "data/raw/articles.json", output_dir: str = "data/indicators"):
+        """
+        Initialize IndicatorBuilder.
+        
+        Args:
+            db_path: Path to TinyDB articles database
+            output_dir: Directory to save indicator JSON files
+        """
         self.db = TinyDB(db_path)
+        self.output_dir = output_dir
         self.llm_model = OLLAMA_MODEL
 
     def set_llm_model(self, model_name: str):
@@ -411,6 +421,9 @@ FORMAT: Organization1, Organization2, Organization3"""
             "overall_sentiment": round(avg_sentiment, 3),
             "sentiment_distribution": dict(sentiment_dist),
             "total_articles": len(articles),
+            "positive_articles": sentiment_dist.get("positive", 0),
+            "negative_articles": sentiment_dist.get("negative", 0),
+            "neutral_articles": sentiment_dist.get("neutral", 0),
             "top_sectors": [{"sector": s, "count": c} for s, c in top_sectors],
             "top_organizations": [{"org": o, "count": c} for o, c in top_orgs],
             "top_locations": [{"location": l, "count": c} for l, c in top_locations],
@@ -531,14 +544,25 @@ FORMAT: Organization1, Organization2, Organization3"""
             "opportunities": opportunities[:10],
             "total_risks": len(risks),
             "total_opportunities": len(opportunities),
+            "top_risks": risks[:5],
+            "top_opportunities": opportunities[:5],
         }
+
+    def build_risk_opportunity_insights(self):
+        """Alias for detect_risks_opportunities() for consistency with build_indicators.py."""
+        return self.detect_risks_opportunities()
 
     # =================================================================
     # SAVE ALL INDICATORS
     # =================================================================
-    def save_indicators(self, output_path: str = "data/indicators/", national=None, sectors=None, insights=None):
+    def save_indicators(self, output_path: str = None, national=None, sectors=None, insights=None):
         """Generate and save all indicators to JSON files."""
         import os
+        
+        # Use self.output_dir if output_path not provided
+        if output_path is None:
+            output_path = self.output_dir
+        
         os.makedirs(output_path, exist_ok=True)
 
         if national is None:
@@ -548,11 +572,11 @@ FORMAT: Organization1, Organization2, Organization3"""
         if insights is None:
             insights = self.detect_risks_opportunities()
 
-        with open(f"{output_path}national_indicators.json", "w") as f:
+        with open(f"{output_path}/national_indicators.json", "w") as f:
             json.dump(national, f, indent=2)
-        with open(f"{output_path}sector_indicators.json", "w") as f:
+        with open(f"{output_path}/sector_indicators.json", "w") as f:
             json.dump(sectors, f, indent=2)
-        with open(f"{output_path}risk_opportunity_insights.json", "w") as f:
+        with open(f"{output_path}/risk_opportunity_insights.json", "w") as f:
             json.dump(insights, f, indent=2)
 
         return {"national": national, "sectors": sectors, "insights": insights}

@@ -100,6 +100,25 @@ class DatabaseManager:
             "sources": len(set(a.get("source") for a in articles)),
             "updated_articles": len([a for a in articles if a.get("update_count", 0) > 0])
         }
+
+    
+
+    def get_articles_by_sector(self, sector, limit=10):
+        """Get top articles for a specific sector"""
+        articles = self.db.table('articles').all()
+        sector_articles = [
+            a for a in articles 
+            if a.get('sector', '').lower() == sector.lower()
+        ]
+        # Sort by published date (most recent first)
+        sector_articles.sort(key=lambda x: x.get('published_date', ''), reverse=True)
+        return sector_articles[:limit]
+
+    def get_article_by_url(self, url):
+        """Get a single article by URL"""
+        Article = Query()
+        return self.db.table('articles').get(Article.url == url)
+
     
     def close(self):
         """Close database connection"""
