@@ -1,0 +1,128 @@
+{
+  "anomalies": [
+    {
+      "title": "Devastation",
+      "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
+      "sentiment": 0.458,
+      "z_score": 3.95,
+      "sectors": [
+        "agriculture"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "NDB recognised at CMA Excellence awards",
+      "url": "https://www.sundaytimes.lk/251130/business-times/ndb-recognised-at-cma-excellence-awards-622233.html",
+      "sentiment": 0.385,
+      "z_score": 3.15,
+      "sectors": [
+        "finance"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
+      "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
+      "sentiment": 0.37,
+      "z_score": 2.98,
+      "sectors": [
+        "finance"
+      ],
+      "source": "DailyMirror",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "SL Tax Dept. extends deadline for filing of tax returns",
+      "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
+      "sentiment": 0.356,
+      "z_score": 2.83,
+      "sectors": [
+        "government"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Bay of Bengal countries mark World Fisheries Day",
+      "url": "https://www.sundaytimes.lk/251130/business-times/bay-of-bengal-countries-mark-world-fisheries-day-622229.html",
+      "sentiment": 0.352,
+      "z_score": 2.78,
+      "sectors": [
+        "agriculture"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
+      "url": "https://www.sundaytimes.lk/251130/business-times/citrus-leisure-indira-cancer-trust-to-help-critically-ill-children-622217.html",
+      "sentiment": 0.349,
+      "z_score": 2.75,
+      "sectors": [
+        "healthcare"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Doola River Edge Celebrates the Spirit of the Season with Festive Cake-Mixing Ceremony 2025",
+      "url": "https://economictimes.lk/index.php/2025/12/09/doola-river-edge-celebrates-the-spirit-of-the-season-with-festive-cake-mixing-ceremony-2025/",
+      "sentiment": 0.343,
+      "z_score": 2.69,
+      "sectors": [
+        "tourism"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
+      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
+      "sentiment": -0.143,
+      "z_score": 2.67,
+      "sectors": [
+        "finance"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_negative"
+    },
+    {
+      "title": "Nestl\u00e9 Lanka Recognized at the Best Corporate Citizen Sustainability Awards 2025",
+      "url": "https://economictimes.lk/index.php/2025/12/09/nestle-lanka-recognized-at-the-best-corporate-citizen-sustainability-awards-2025/",
+      "sentiment": 0.332,
+      "z_score": 2.56,
+      "sectors": [
+        "healthcare"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
+      "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
+      "sentiment": 0.328,
+      "z_score": 2.52,
+      "sectors": [
+        "finance"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "People\u2019s Bank achieves pre-tax profit of Rs.43.7 b in 9mths\u201925",
+      "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-achieves-pre-tax-profit-of-rs-43-7-b-in-9mths25-622203.html",
+      "sentiment": 0.297,
+      "z_score": 2.18,
+      "sectors": [
+        "finance"
+      ],
+      "source": "SundayTimes",
+      "anomaly_type": "extremely_positive"
+    }
+  ],
+  "total_anomalies": 11,
+  "mean_sentiment": 0.1,
+  "std_sentiment": 0.091
+}

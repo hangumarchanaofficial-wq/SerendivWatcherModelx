@@ -1,0 +1,637 @@
+/* Overall layout tweaks */
+.main-wrapper {
+    padding-bottom: 32px;
+}
+
+/* Make all sector cards equal height and aligned */
+.sector-card-clickable {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+    background: radial-gradient(circle at top left, #020617 0%, #020617 45%, #020617 100%);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    cursor: default;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.sector-card-clickable .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Hover effect */
+.sector-card-clickable:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 140, 248, 0.8);
+    box-shadow:
+        0 26px 60px rgba(15, 23, 42, 1),
+        0 0 35px rgba(59, 130, 246, 0.55);
+}
+
+/* Header text alignment */
+.card-title-dark {
+    font-size: 1.05rem;
+}
+
+/* Top keywords pills in this page */
+.keyword-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.keyword-pill {
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    font-size: 0.76rem;
+    padding: 4px 10px;
+    color: #e5e7eb;
+}
+
+/* Key player glowing pills */
+.org-pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.org-pill {
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    color: #f9fafb;
+    background: radial-gradient(circle at top left, #a855f7, #6366f1);
+    box-shadow:
+        0 12px 30px rgba(79, 70, 229, 0.7),
+        0 0 16px rgba(147, 197, 253, 0.55);
+    border: 1px solid rgba(191, 219, 254, 0.7);
+    white-space: nowrap;
+}
+
+/* Sentiment bar */
+.sentiment-bar-mini {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+}
+
+.sentiment-fill-mini {
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.25s ease;
+}
+
+.sentiment-positive {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.sentiment-negative {
+    background: linear-gradient(90deg, #f97373, #fca5a5);
+}
+
+/* Velocity cards grid alignment */
+.velocity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+/* Correlation cards grid alignment */
+.correlation-grid-dark {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+/* More info button area: always pinned bottom-right inside card */
+.sector-card-clickable .mt-4.d-flex {
+    margin-top: auto !important;
+}
+
+.btn-glass-primary {
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(129, 140, 248, 0.9);
+    background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.18), rgba(15, 23, 42, 0.95));
+    color: #e5e7eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.9),
+        0 0 18px rgba(59, 130, 246, 0.5);
+    transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.btn-glass-primary:hover {
+    background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.4), rgba(15, 23, 42, 0.98));
+    transform: translateY(-1px);
+    box-shadow:
+        0 14px 32px rgba(15, 23, 42, 1),
+        0 0 24px rgba(129, 140, 248, 0.8);
+}
+
+/* Small utility text */
+.text-muted-small {
+    font-size: 0.78rem;
+    color: #9ca3af;
+}
+/* Sentiment velocity cards */
+.velocity-card-dark {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.95);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 96px;
+}
+
+.velocity-header-dark {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.velocity-header-dark .sector-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.velocity-badge {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* coloured dots inside badge */
+.velocity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.velocity-dot-positive {
+    color: #22c55e;
+    background-color: #22c55e;
+}
+
+.velocity-dot-negative {
+    color: #f97373;
+    background-color: #f97373;
+}
+
+/* soft badge backgrounds */
+.badge-success-soft {
+    background: rgba(34, 197, 94, 0.18);
+    color: #bbf7d0;
+    border: 1px solid rgba(34, 197, 94, 0.5);
+}
+
+.badge-danger-soft {
+    background: rgba(248, 113, 113, 0.2);
+    color: #fee2e2;
+    border: 1px solid rgba(248, 113, 113, 0.5);
+}
+
+.badge-neutral-soft {
+    background: rgba(148, 163, 184, 0.18);
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+/* meta row under the badge */
+.velocity-meta {
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+.velocity-meta .trend-badge {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* remove old bar and global dot decoration */
+.velocity-bar-container,
+.velocity-bar,
+.velocity-positive,
+.velocity-negative {
+    display: none;
+}
+
+.velocity-meta::before {
+    content: none;
+}
+
+/* Base sector card – calmer, no glow */
+.sector-card {
+    height: 100%;
+    border-radius: 18px;
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 18px 20px;
+    display: flex;
+    transition: transform 0.16s ease, border-color 0.16s ease,
+                box-shadow 0.16s ease, background 0.16s ease;
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
+}
+
+.sector-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(129, 140, 248, 0.9);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    background: #020818;
+}
+
+.sector-card-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Header */
+.sector-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.sector-title {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.sector-meta {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+/* Sentiment pill – flat, no glow */
+.sector-sentiment-pill {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.pill-positive {
+    background: rgba(22, 163, 74, 0.12);
+    color: #bbf7d0;
+    border: 1px solid rgba(34, 197, 94, 0.5);
+}
+
+.pill-negative {
+    background: rgba(220, 38, 38, 0.12);
+    color: #fecaca;
+    border: 1px solid rgba(248, 113, 113, 0.6);
+}
+
+.pill-neutral {
+    background: rgba(148, 163, 184, 0.12);
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+/* Blocks */
+.sector-block {
+    margin-bottom: 14px;
+}
+
+.sector-block-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+}
+
+/* Score + bar */
+.sector-score-row {
+    margin-top: 4px;
+    margin-bottom: 6px;
+}
+
+.sector-score {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.score-positive { color: #4ade80; }
+.score-negative { color: #fca5a5; }
+.score-neutral  { color: #e5e7eb; }
+
+.sector-bar {
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+}
+
+.sector-bar-fill {
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.25s ease;
+}
+
+.bar-positive {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.bar-negative {
+    background: linear-gradient(90deg, #f97373, #fecaca);
+}
+
+/* Chips – simpler, no glow */
+.sector-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.chip {
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.chip-quiet {
+    background: rgba(15, 23, 42, 0.95);
+    color: #e5e7eb;
+}
+
+.chip-soft {
+    background: rgba(79, 70, 229, 0.18);
+    color: #e0e7ff;
+    border-color: rgba(129, 140, 248, 0.8);
+}
+
+/* Footer – button centered like screenshot */
+.sector-card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.sector-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: rgba(15, 23, 42, 0.95);
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: background 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+}
+
+.sector-more-btn i {
+    font-size: 0.78rem;
+}
+
+.sector-more-btn:hover {
+    background: rgba(30, 64, 175, 0.85);
+    border-color: rgba(129, 140, 248, 0.9);
+    transform: translateY(-1px);
+}
+/* Colourful card background */
+.sector-card {
+    height: 100%;
+    border-radius: 22px;
+    padding: 20px 22px;
+    display: flex;
+    background:
+        radial-gradient(circle at top left, rgba(94, 234, 212, 0.08), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.12), transparent 55%),
+        #020617;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease,
+                background 0.16s ease;
+}
+
+/* Slightly brighter & more colourful on hover */
+.sector-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(129, 140, 248, 0.9);
+    background:
+        radial-gradient(circle at top left, rgba(45, 212, 191, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.24), transparent 55%),
+        #020819;
+    box-shadow: 0 22px 50px rgba(15, 23, 42, 1);
+}
+
+/* Make header and labels pop a bit */
+.sector-title {
+    color: #f9fafb;
+}
+
+.sector-meta,
+.sector-block-label {
+    color: #9ca3af;
+}
+
+/* Give chips a subtle coloured outline */
+.chip-quiet {
+    background: rgba(15, 23, 42, 0.96);
+    color: #e5e7eb;
+    border-color: rgba(148, 163, 184, 0.7);
+}
+
+.chip-soft {
+    background: rgba(79, 70, 229, 0.25);
+    color: #e0e7ff;
+    border-color: rgba(129, 140, 248, 0.9);
+}
+
+/* More‑info button matches card colours */
+.sector-more-btn {
+    background: rgba(15, 23, 42, 0.96);
+    border-color: rgba(148, 163, 184, 0.7);
+    color: #e5e7eb;
+}
+
+.sector-more-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(129, 140, 248, 1);
+}
+
+/* === Sector card: brighter & more visible === */
+
+.sector-card {
+    height: 100%;
+    border-radius: 24px;
+    padding: 22px 26px;
+    display: flex;
+    background:
+        radial-gradient(circle at top left, rgba(94, 234, 212, 0.14), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.18), transparent 55%),
+        #020617;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 1);
+    transition: transform 0.18s ease, box-shadow 0.18s ease,
+                border-color 0.18s ease, background 0.18s ease;
+}
+
+.sector-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(191, 219, 254, 0.95);
+    background:
+        radial-gradient(circle at top left, rgba(45, 212, 191, 0.25), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.28), transparent 55%),
+        #020819;
+    box-shadow:
+        0 24px 55px rgba(15, 23, 42, 1),
+        0 0 40px rgba(56, 189, 248, 0.35);
+}
+
+/* Typography more readable */
+
+.sector-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f9fafb;
+}
+
+.sector-meta {
+    font-size: 0.82rem;
+    color: #cbd5f5;
+}
+
+.sector-block-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a5b4fc;
+}
+
+/* Sentiment score stands out */
+
+.sector-score {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.score-positive { color: #4ade80; }
+.score-negative { color: #fecaca; }
+.score-neutral  { color: #e5e7eb; }
+
+.sector-bar {
+    margin-top: 4px;
+    height: 5px;
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.bar-positive {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.bar-negative {
+    background: linear-gradient(90deg, #fb7185, #fecaca);
+}
+
+/* Chips: clearer outline & background */
+
+.sector-chip-row {
+    gap: 8px;
+}
+
+.chip {
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    border-radius: 999px;
+    border-width: 1px;
+}
+
+.chip-quiet {
+    background: rgba(15, 23, 42, 0.96);
+    color: #e5e7eb;
+    border-color: rgba(148, 163, 184, 0.9);
+}
+
+.chip-soft {
+    background: rgba(79, 70, 229, 0.32);
+    color: #e0e7ff;
+    border-color: rgba(129, 140, 248, 1);
+}
+
+/* Sentiment pill: crisper */
+
+.sector-sentiment-pill {
+    padding: 4px 12px;
+    font-size: 0.72rem;
+}
+
+/* === More info button: premium pill in the middle === */
+
+.sector-card-footer {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+}
+
+.sector-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 26px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.9);
+    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+    color: #f9fafb;
+    font-size: 0.86rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow:
+        0 14px 30px rgba(15, 23, 42, 1),
+        0 0 18px rgba(129, 140, 248, 0.6);
+    transition: transform 0.16s ease, box-shadow 0.16s ease,
+                background 0.16s ease, border-color 0.16s ease;
+}
+
+.sector-more-btn i {
+    font-size: 0.78rem;
+}
+
+.sector-more-btn:hover {
+    transform: translateY(-1px);
+    background: radial-gradient(circle at top, rgba(37, 99, 235, 0.9), rgba(15, 23, 42, 0.98));
+    border-color: rgba(191, 219, 254, 1);
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 1),
+        0 0 26px rgba(96, 165, 250, 0.8);
+}

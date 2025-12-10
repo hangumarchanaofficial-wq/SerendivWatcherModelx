@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import json
 import os
 
@@ -14,8 +14,8 @@ from insight_generator import (
     load_cached_insights,
     summarize_single_article,
 )
+from title_insight_generator import generate_title_insights
 from tinydb import TinyDB
-
 
 app = Flask(__name__)
 
@@ -155,6 +155,27 @@ def api_article_summary(article_id):
 
     summary = summarize_single_article(article)
     return jsonify(summary)
+
+
+@app.route("/api/title-insights")
+def api_title_insights():
+    """
+    Return LLM-powered high-level insights based ONLY on article title
+    (and optional sector). Used by the side chat panel.
+    """
+    title = request.args.get("title", "").strip()
+    sector = request.args.get("sector", "").strip() or None
+
+    print(f"[APP] /api/title-insights called with title='{title}', sector='{sector}'")
+
+    if not title:
+        return jsonify({"error": "Missing title"}), 400
+
+    insights = generate_title_insights(title, sector)
+    if not insights:
+        return jsonify({"error": "Failed to generate title-based insights"}), 500
+
+    return jsonify({"insights": insights})
 
 
 @app.route("/api/debug/db")

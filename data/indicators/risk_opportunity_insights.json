@@ -9,7 +9,8 @@
       ],
       "sentiment": 0.458,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "NDB recognised at CMA Excellence awards",
@@ -19,7 +20,8 @@
       ],
       "sentiment": 0.385,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
@@ -29,7 +31,8 @@
       ],
       "sentiment": 0.37,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "DailyMirror"
     },
     {
       "title": "SL Tax Dept. extends deadline for filing of tax returns",
@@ -39,7 +42,8 @@
       ],
       "sentiment": 0.356,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "Bay of Bengal countries mark World Fisheries Day",
@@ -49,7 +53,8 @@
       ],
       "sentiment": 0.352,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
@@ -59,7 +64,8 @@
       ],
       "sentiment": 0.349,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "Doola River Edge Celebrates the Spirit of the Season with Festive Cake-Mixing Ceremony 2025",
@@ -69,7 +75,8 @@
       ],
       "sentiment": 0.343,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
     },
     {
       "title": "Nestl\u00e9 Lanka Recognized at the Best Corporate Citizen Sustainability Awards 2025",
@@ -79,7 +86,8 @@
       ],
       "sentiment": 0.332,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
     },
     {
       "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
@@ -89,11 +97,133 @@
       ],
       "sentiment": 0.328,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "People\u2019s Bank achieves pre-tax profit of Rs.43.7 b in 9mths\u201925",
+      "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-achieves-pre-tax-profit-of-rs-43-7-b-in-9mths25-622203.html",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.297,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "Toyota Lanka Hosts High-Level Delegation from Toyota Tsusho Corporation",
+      "url": "https://economictimes.lk/index.php/2025/04/23/toyota-lanka-hosts-high-level-delegation-from-toyota-tsusho-corporation/",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.262,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "CBL Foods International wins global award",
+      "url": "https://www.sundaytimes.lk/251130/business-times/cbl-foods-international-wins-global-award-622242.html",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.257,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "The Sri Lanka Coffee Festival returns: Celebrating the Artistry and Essence of Coffee",
+      "url": "https://economictimes.lk/index.php/2023/05/27/the-sri-lanka-coffee-festival-returns-celebrating-the-artistry-and-essence-of-coffee/",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.253,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "Mrs India Pride of the Nation makes international debut in Sri Lanka",
+      "url": "https://www.ft.lk/front-page/Mrs-India-Pride-of-the-Nation-makes-international-debut-in-Sri-Lanka/44-785333",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.251,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "FT.lk"
+    },
+    {
+      "title": "Fountain of diversity",
+      "url": "https://www.sundaytimes.lk/251130/business-times/fountain-of-diversity-622249.html",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.237,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "Velona Cuddles Bamboo Nappies Set to Revolutionize Baby Care in Australia",
+      "url": "https://economictimes.lk/index.php/2023/08/10/velona-cuddles-bamboo-nappies-set-to-revolutionize-baby-care-in-australia/",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.237,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "Australia to support Sri Lanka tourism promo",
+      "url": "https://www.sundaytimes.lk/251130/business-times/australia-to-support-sri-lanka-tourism-promo-622265.html",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.232,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "Corporate Earnings Nosedives to a 3-Year Low, but the banking sector posted a remarkable growth",
+      "url": "https://economictimes.lk/index.php/2023/09/11/corporate-earnings-nosedives-to-a-3-year-low-but-the-banking-sector-posted-a-remarkable-growth/",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.232,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "People\u2019s Bank helps in digital tickets on buses",
+      "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-helps-in-digital-tickets-on-buses-622221.html",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.231,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "EKHO Ella among world\u2019s top 1% hotels",
+      "url": "https://www.dailymirror.lk/business-news/EKHO-Ella-among-worlds-top-1-hotels/273-327208",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.229,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "DailyMirror"
     }
   ],
   "total_risks": 0,
-  "total_opportunities": 9,
+  "total_opportunities": 54,
   "top_risks": [],
   "top_opportunities": [
     {
@@ -104,7 +234,8 @@
       ],
       "sentiment": 0.458,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "NDB recognised at CMA Excellence awards",
@@ -114,7 +245,8 @@
       ],
       "sentiment": 0.385,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
@@ -124,7 +256,8 @@
       ],
       "sentiment": 0.37,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "DailyMirror"
     },
     {
       "title": "SL Tax Dept. extends deadline for filing of tax returns",
@@ -134,7 +267,8 @@
       ],
       "sentiment": 0.356,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     },
     {
       "title": "Bay of Bengal countries mark World Fisheries Day",
@@ -144,7 +278,9 @@
       ],
       "sentiment": 0.352,
       "impact": "medium",
-      "type": "positive_sentiment"
+      "type": "positive_sentiment",
+      "source": "SundayTimes"
     }
-  ]
+  ],
+  "timestamp": "2025-12-10T14:33:29.863901"
 }
