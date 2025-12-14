@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
           integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
@@ -177,21 +176,25 @@
             color: #e0f2fe;
         }
 
-        /* --- UPDATED CHAT PANEL (CENTERED) --- */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* === CENTERED CHAT PANEL === */
         .chat-panel {
             position: fixed;
             top: 50%;
             left: 50%;
-            /* Start slightly scaled down and centered */
             transform: translate(-50%, -50%) scale(0.95);
             
-            /* Sizing */
             width: 700px;
             max-width: 90vw;
             height: 80vh;
             max-height: 850px;
             
-            /* Glassmorphism & Visuals */
             background: rgba(11, 17, 32, 0.96);
             border: 1px solid rgba(148, 163, 184, 0.35);
             box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
@@ -202,23 +205,44 @@
             display: flex;
             flex-direction: column;
             
-            /* Hidden State */
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Active State Class */
         .chat-panel.is-open {
             opacity: 1;
             pointer-events: auto;
             transform: translate(-50%, -50%) scale(1);
         }
 
-        /* Optional: Backdrop when panel is open */
+        .chat-header {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .chat-header .text-uppercase {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+        }
+
+        .chat-body {
+            padding: 1.75rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Backdrop */
         .panel-backdrop {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(2px);
             z-index: 1999;
@@ -226,21 +250,42 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
+
         .panel-backdrop.is-open {
             opacity: 1;
             pointer-events: auto;
         }
 
-        /* --- AI TEXT STYLES --- */
+        /* === AI INSIGHT STYLES === */
         .ai-insight-content {
             font-size: 0.95rem;
             line-height: 1.6;
             color: #cbd5e1;
         }
-        .ai-insight-content h6 { font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; font-size: 0.8rem; }
-        .ai-insight-content ul li { margin-bottom: 0.75rem; position: relative; }
-        .ai-insight-content strong { color: #f8fafc; font-weight: 600; }
 
+        .insight-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .insight-section:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-insight-content ul {
+            margin-bottom: 0;
+        }
+
+        .ai-insight-content li {
+            position: relative;
+            padding-left: 0.25rem;
+        }
+
+        /* Color Classes */
         .text-ai-risk { color: var(--ai-risk) !important; }
         .text-ai-opp { color: var(--ai-opportunity) !important; }
         .text-ai-issue { color: var(--ai-issue) !important; }
@@ -249,20 +294,93 @@
         .border-ai-risk { border-color: var(--ai-risk) !important; }
         .border-ai-opp { border-color: var(--ai-opportunity) !important; }
         .border-ai-issue { border-color: var(--ai-issue) !important; }
-        
+
+        /* Scrollbar for chat body */
+        .chat-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .chat-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        .chat-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Alert styling */
+        .alert {
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .alert-warning {
+            background: rgba(251, 191, 36, 0.1);
+            border-color: rgba(251, 191, 36, 0.3);
+            color: #fcd34d;
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .spinner-border {
+            animation: spinner-border 0.75s linear infinite, pulse 2s ease-in-out infinite;
+        }
+
+        /* Responsive */
         @media (max-width: 576px) {
-            .article-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-            .article-meta { align-items: flex-start; text-align: left; min-width: auto; }
-            .chat-panel { width: 95vw; height: 90vh; border-radius: 1rem; }
+            .article-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .article-meta {
+                align-items: flex-start;
+                text-align: left;
+                min-width: auto;
+            }
+            
+            .chat-panel {
+                width: 95vw;
+                height: 90vh;
+                border-radius: 1rem;
+            }
+
+            .chat-header {
+                padding: 1rem;
+            }
+
+            .chat-body {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
+<!-- Backdrop -->
 <div id="panelBackdrop" class="panel-backdrop" onclick="closeChatPanel()"></div>
 
+<!-- Main Content -->
 <div class="page-shell">
     <div class="glass-panel">
+        <!-- Page Header -->
         <div class="page-header">
             <button class="btn btn-ghost btn-sm" onclick="window.location.href='{{ url_for('sectors') }}'">
                 <i class="fas fa-arrow-left me-1"></i> Back to sectors
@@ -270,15 +388,17 @@
             <span class="badge-sector">Sector · {{ sector_name|title }}</span>
         </div>
 
+        <!-- Title Section -->
         <div class="d-flex flex-column gap-1 mb-3">
             <h2 class="page-title">
                 <span class="text-gradient">{{ sector_name|title }}</span> <small>Articles</small>
             </h2>
             <p class="text-muted mb-0" style="font-size: 0.88rem;">
-                Curated transport intelligence from leading Sri Lankan and regional sources.
+                Curated {{ sector_name }} intelligence from leading Sri Lankan and regional sources.
             </p>
         </div>
 
+        <!-- Articles List -->
         {% if articles %}
             <div class="articles-wrapper">
                 <ul class="list-group list-group-flush list-group-custom">
@@ -298,26 +418,34 @@
                 </ul>
             </div>
         {% else %}
-            <p class="empty-state mb-0">No articles available.</p>
+            <p class="empty-state mb-0">
+                <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
+                No articles available for this sector.
+            </p>
         {% endif %}
     </div>
 </div>
 
+<!-- AI Insights Panel -->
 <div id="chatPanel" class="chat-panel">
-    <div class="chat-header" style="padding:1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center;">
+    <div class="chat-header">
         <div>
-            <span class="d-block text-uppercase text-muted" style="font-size:0.7rem; letter-spacing:0.1em;">Analysis</span>
+            <span class="d-block text-uppercase text-muted">Analysis</span>
             <span id="chatTitle" style="font-weight:600; color:#fff;">AI Insights</span>
         </div>
         <button type="button" class="btn-close btn-close-white" onclick="closeChatPanel()"></button>
     </div>
-    <div class="chat-body" id="chatBody" style="padding:1.75rem; overflow-y:auto; flex:1;">
+    <div class="chat-body" id="chatBody">
         <div class="d-flex align-items-center justify-content-center h-100 text-muted small">
-            Click an article to generate insights.
+            <div class="text-center">
+                <i class="fas fa-brain fa-3x mb-3" style="opacity: 0.3;"></i>
+                <p>Click an article to generate AI insights</p>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 async function openArticleSummary(liElem) {
@@ -346,11 +474,11 @@ function openChatPanel(title) {
     chatBody.innerHTML = `
         <div class="d-flex flex-column align-items-center justify-content-center h-100 gap-3">
             <div class="spinner-border text-info" role="status" style="width: 2rem; height: 2rem;"></div>
-            <p class="text-muted small">Consulting Neural Network...</p>
+            <p class="text-muted small">🧠 Analyzing with AI...</p>
         </div>
     `;
 
-    // Add class to trigger CSS transition
+    // Trigger opening animation
     panel.classList.add('is-open');
     backdrop.classList.add('is-open');
 }
@@ -364,62 +492,110 @@ function setChatBody(html) {
     document.getElementById('chatBody').innerHTML = html;
 }
 
-// === THE SMART FORMATTER ===
+// === EMOJI-BASED FORMATTER ===
 function formatSmartInsights(text) {
-    let safeText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    const lines = safeText.split('\n');
+    const lines = text.split('\n');
     let html = '<div class="ai-insight-content">';
+    let currentSection = null;
     let inList = false;
-    let listBorderClass = 'border-secondary';
-
+    
     lines.forEach(line => {
         line = line.trim();
-        if (!line) return;
-
-        // Headers
-        if (line.startsWith('**') && (line.match(/^\*\*\d+\./) || line.includes(':**'))) {
-            if (inList) { html += '</ul>'; inList = false; }
-            
-            let colorClass = 'text-ai-issue'; 
-            let icon = 'fa-info-circle';
-            let lower = line.toLowerCase();
-
-            if (lower.includes('risk') || lower.includes('threat')) {
-                colorClass = 'text-ai-risk'; icon = 'fa-exclamation-triangle';
-                listBorderClass = 'border-ai-risk';
-            } else if (lower.includes('opportunit') || lower.includes('positive')) {
-                colorClass = 'text-ai-opp'; icon = 'fa-lightbulb';
-                listBorderClass = 'border-ai-opp';
-            } else if (lower.includes('issue') || lower.includes('problem')) {
-                colorClass = 'text-ai-issue'; icon = 'fa-bullseye';
-                listBorderClass = 'border-ai-issue';
-            } else if (lower.includes('strat') || lower.includes('quest')) {
-                colorClass = 'text-ai-strat'; icon = 'fa-chess';
-                listBorderClass = 'border-secondary';
+        if (!line) {
+            if (inList) {
+                html += '</ul>';
+                inList = false;
             }
+            return;
+        }
 
-            const cleanTitle = line.replace(/\*\*/g, '');
-            html += `<h6 class="${colorClass} mt-4 mb-2"><i class="fas ${icon} me-2"></i>${cleanTitle}</h6>`;
-        } 
-        // Lists
-        else if (line.startsWith('* ') || line.startsWith('- ')) {
+        // Detect emoji headers
+        if (line.startsWith('💡')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            if (currentSection) { html += '</div>'; }
+            currentSection = 'issue';
+            const title = line.replace('💡', '').trim();
+            html += `
+                <div class="insight-section mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span style="font-size: 1.5rem;">💡</span>
+                        <h6 class="text-ai-issue mb-0 text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.1em; font-weight: 700;">${title}</h6>
+                    </div>
+            `;
+        }
+        else if (line.startsWith('⚠️')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            if (currentSection) { html += '</div>'; }
+            currentSection = 'risk';
+            const title = line.replace('⚠️', '').trim();
+            html += `
+                <div class="insight-section mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span style="font-size: 1.5rem;">⚠️</span>
+                        <h6 class="text-ai-risk mb-0 text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.1em; font-weight: 700;">${title}</h6>
+                    </div>
+            `;
+        }
+        else if (line.startsWith('✨')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            if (currentSection) { html += '</div>'; }
+            currentSection = 'opportunity';
+            const title = line.replace('✨', '').trim();
+            html += `
+                <div class="insight-section mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span style="font-size: 1.5rem;">✨</span>
+                        <h6 class="text-ai-opp mb-0 text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.1em; font-weight: 700;">${title}</h6>
+                    </div>
+            `;
+        }
+        else if (line.startsWith('❓')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            if (currentSection) { html += '</div>'; }
+            currentSection = 'question';
+            const title = line.replace('❓', '').trim();
+            html += `
+                <div class="insight-section mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span style="font-size: 1.5rem;">❓</span>
+                        <h6 class="text-ai-strat mb-0 text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.1em; font-weight: 700;">${title}</h6>
+                    </div>
+            `;
+        }
+        // Bullet points
+        else if (line.startsWith('•') || line.startsWith('*') || line.startsWith('-')) {
             if (!inList) {
-                html += `<ul class="list-unstyled ps-3 border-start ${listBorderClass} border-opacity-25" style="border-width:2px!important;">`;
+                const borderClass = 
+                    currentSection === 'risk' ? 'border-ai-risk' :
+                    currentSection === 'opportunity' ? 'border-ai-opp' :
+                    currentSection === 'issue' ? 'border-ai-issue' :
+                    'border-secondary';
+                
+                html += `<ul class="list-unstyled ps-3 border-start ${borderClass}" style="border-width: 3px !important; border-opacity: 0.4 !important;">`;
                 inList = true;
             }
-            let content = line.substring(1).trim(); 
-            content = content.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>');
-            html += `<li class="mb-2 text-muted small">${content}</li>`;
-        } 
-        // Paragraphs
+            
+            let content = line.replace(/^[•*-]\s*/, '').trim();
+            html += `
+                <li class="mb-3" style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6;">
+                    <span style="color: #64748b; margin-right: 0.5rem;">▸</span>${content}
+                </li>
+            `;
+        }
+        // Regular paragraphs
         else {
-            if (inList) { html += '</ul>'; inList = false; }
-            html += `<p class="mb-2 text-muted small">${line}</p>`;
+            if (inList) {
+                html += '</ul>';
+                inList = false;
+            }
+            html += `<p class="mb-3" style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;">${line}</p>`;
         }
     });
 
     if (inList) html += '</ul>';
+    if (currentSection) html += '</div>';
     html += '</div>';
+    
     return html;
 }
 
@@ -427,19 +603,41 @@ async function fetchTitleInsights(title, sector) {
     try {
         const url = `/api/title-insights?title=${encodeURIComponent(title)}&sector=${encodeURIComponent(sector || '')}`;
         const resp = await fetch(url);
-        if (!resp.ok) throw new Error(`API Error: ${resp.status}`);
+        
+        if (!resp.ok) {
+            throw new Error(`API Error: ${resp.status}`);
+        }
+        
         const data = await resp.json();
 
         if (data.error) {
-            setChatBody(`<p class="text-danger small">${data.error}</p>`);
+            setChatBody(`
+                <div class="alert alert-danger d-flex align-items-center gap-3">
+                    <i class="fas fa-exclamation-circle fa-2x"></i>
+                    <div>
+                        <strong>Analysis Failed</strong>
+                        <p class="mb-0 small">${data.error}</p>
+                    </div>
+                </div>
+            `);
         } else {
-            setChatBody(formatSmartInsights(data.insights));
+            const formattedHtml = formatSmartInsights(data.insights);
+            setChatBody(formattedHtml);
         }
     } catch (e) {
         console.error("Insights error:", e);
-        setChatBody('<p class="text-danger small">Failed to load AI insights.</p>');
+        setChatBody(`
+            <div class="alert alert-warning d-flex align-items-center gap-3">
+                <i class="fas fa-exclamation-triangle fa-2x"></i>
+                <div>
+                    <strong>Connection Error</strong>
+                    <p class="mb-0 small">Failed to load AI insights. Please try again.</p>
+                </div>
+            </div>
+        `);
     }
 }
 </script>
+
 </body>
 </html>

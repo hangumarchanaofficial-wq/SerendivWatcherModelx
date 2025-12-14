@@ -1,107 +1,363 @@
+"""
+SerendivWatcher - Main Backend Application
+Runs both the data pipeline scheduler and Flask web server
+"""
+
 import os
 import sys
 import time
 import subprocess
+import threading
+import logging
 from datetime import datetime, timedelta
+from pathlib import Path
 
-# ---------------------------------------------------------------------
-# Paths & Python interpreter
-# ---------------------------------------------------------------------
+# Add project root to path
+BASE_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(BASE_DIR))
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 PYTHON = sys.executable
 
+# ---------------------------------------------------------------------
+# Logging Configuration
+# ---------------------------------------------------------------------
 
-def run_step(name: str, script_rel_path: str):
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s | %(levelname)-8s | %(name)s | %(message)s',
+    handlers=[
+        logging.FileHandler(LOG_DIR / f"serendivwatcher_{datetime.now():%Y%m%d}.log"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+
+logger = logging.getLogger("SerendivWatcher")
+
+
+# ---------------------------------------------------------------------
+# Pipeline Functions
+# ---------------------------------------------------------------------
+
+def run_step(name: str, script_rel_path: str) -> bool:
     """
-    Helper to run a script as a subprocess and log output.
+    Execute a pipeline step as subprocess
+    Returns True if successful, False otherwise
     """
-    script_path = os.path.join(BASE_DIR, script_rel_path)
+    script_path = BASE_DIR / script_rel_path
     
-    if not os.path.exists(script_path):
-        print(f"\n[ERROR] Could not find script: {script_path}")
-        return
+    if not script_path.exists():
+        logger.error(f"Script not found: {script_path}")
+        return False
 
-    print("\n" + "=" * 80)
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting step: {name}")
-    print("=" * 80)
-    print(f"Running: {PYTHON} {script_path}\n")
+    logger.info(f"{'='*80}")
+    logger.info(f"Starting step: {name}")
+    logger.info(f"{'='*80}")
+    logger.info(f"Running: {PYTHON} {script_path}")
 
     try:
-        subprocess.run([PYTHON, script_path], check=True)
-        print(f"\n[{name}] completed successfully.")
+        result = subprocess.run(
+            [PYTHON, str(script_path)],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=1800  # 30 minute timeout per step
+        )
+        logger.info(f"[{name}] completed successfully")
+        if result.stdout:
+            logger.debug(f"Output: {result.stdout[:500]}")
+        return True
+        
+    except subprocess.TimeoutExpired:
+        logger.error(f"[{name}] TIMEOUT after 30 minutes")
+        return False
+        
     except subprocess.CalledProcessError as e:
-        print(f"\n[{name}] FAILED with exit code {e.returncode}.")
+        logger.error(f"[{name}] FAILED with exit code {e.returncode}")
+        if e.stderr:
+            logger.error(f"Error output: {e.stderr[:500]}")
+        return False
+        
     except Exception as e:
-        print(f"\n[{name}] FAILED with unexpected error: {e}")
+        logger.error(f"[{name}] FAILED with unexpected error: {e}")
+        return False
 
 
-def run_pipeline_once():
+def run_pipeline_once() -> dict:
     """
-    One full pipeline:
-      1) Scrape news
-      2) Enrich with NLP
-      3) Build indicators
-      4) Advanced Analytics (Correlations)
-      5) Sentiment Velocity
-      6) Build Vector Database (For Chatbot)
+    Execute full data pipeline
+    Returns dict with status of each step
     """
-    # 1. Scraper
-    run_step("Scraper", os.path.join("scripts", "run_scraper.py"))
+    start_time = datetime.now()
+    logger.info("=" * 80)
+    logger.info("STARTING FULL DATA PIPELINE")
+    logger.info("=" * 80)
+    
+    results = {}
+    
+    # Define pipeline steps
+    steps = [
+        ("Scraper", "scripts/run_scraper.py"),
+        ("NLP Enrichment", "scripts/enrich_articles.py"),
+        ("Build Indicators", "scripts/build_indicators.py"),
+        ("Generate Correlations", "src/processing/generate_correlations.py"),
+        ("Generate Velocity", "src/processing/generate_velocity.py"),
+        ("Build Vector DB", "scripts/build_vector_db.py"),
+    ]
+    
+    # Run each step
+    for name, path in steps:
+        success = run_step(name, path)
+        results[name] = "SUCCESS" if success else "FAILED"
+        
+        # Optional: Stop pipeline if critical step fails
+        if not success and name in ["Scraper", "NLP Enrichment"]:
+            logger.warning(f"Critical step '{name}' failed. Continuing anyway...")
+    
+    # Summary
+    end_time = datetime.now()
+    duration = (end_time - start_time).total_seconds() / 60.0
+    
+    logger.info("=" * 80)
+    logger.info("PIPELINE SUMMARY")
+    logger.info("=" * 80)
+    for step, status in results.items():
+        logger.info(f"  {step:.<40} {status}")
+    logger.info(f"\nTotal Duration: {duration:.1f} minutes")
+    logger.info("=" * 80)
+    
+    return results
 
-    # 2. NLP enrichment
-    run_step("NLP Enrichment", os.path.join("scripts", "enrich_articles.py"))
 
-    # 3. Indicators
-    run_step("Build Indicators", os.path.join("scripts", "build_indicators.py"))
+# ---------------------------------------------------------------------
+# Scheduler (Background Thread)
+# ---------------------------------------------------------------------
 
-    # 4. Correlations
-    run_step("Generate Correlations", os.path.join("src", "processing", "generate_correlations.py"))
+class PipelineScheduler:
+    """Background scheduler for data pipeline"""
+    
+    def __init__(self, interval_hours: int = 6):
+        self.interval_hours = interval_hours
+        self.interval_seconds = interval_hours * 3600
+        self.running = False
+        self.thread = None
+        self.last_run = None
+        self.next_run = None
+    
+    def start(self):
+        """Start the scheduler in a background thread"""
+        if self.running:
+            logger.warning("Scheduler already running")
+            return
+        
+        self.running = True
+        self.thread = threading.Thread(target=self._run_loop, daemon=True)
+        self.thread.start()
+        logger.info(f"Pipeline scheduler started (runs every {self.interval_hours}h)")
+    
+    def stop(self):
+        """Stop the scheduler"""
+        self.running = False
+        if self.thread:
+            self.thread.join(timeout=5)
+        logger.info("Pipeline scheduler stopped")
+    
+    def _run_loop(self):
+        """Internal loop that runs pipeline periodically"""
+        while self.running:
+            try:
+                self.last_run = datetime.now()
+                logger.info(f"Scheduler: Starting pipeline run at {self.last_run:%Y-%m-%d %H:%M:%S}")
+                
+                run_pipeline_once()
+                
+                self.next_run = datetime.now() + timedelta(seconds=self.interval_seconds)
+                logger.info(f"Scheduler: Next run scheduled at {self.next_run:%Y-%m-%d %H:%M:%S}")
+                logger.info(f"Scheduler: Sleeping for {self.interval_hours} hours...\n")
+                
+                # Sleep in small intervals to allow clean shutdown
+                sleep_until = time.time() + self.interval_seconds
+                while self.running and time.time() < sleep_until:
+                    time.sleep(60)  # Check every minute
+                    
+            except Exception as e:
+                logger.error(f"Scheduler error: {e}", exc_info=True)
+                time.sleep(300)  # Wait 5 minutes on error
 
-    # 5. Sentiment Velocity
-    run_step("Generate Velocity", os.path.join("src", "processing", "generate_velocity.py"))
 
-    # 6. Build Vector DB (NEW STEP)
-    # This ensures the chatbot always has the latest news indexed
-    run_step("Build Vector DB", os.path.join("scripts", "build_vector_db.py"))
+# ---------------------------------------------------------------------
+# Flask Web Server
+# ---------------------------------------------------------------------
+
+def start_flask_app(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):
+    """Start Flask web application"""
+    try:
+        from src.api.app import app
+        
+        logger.info("=" * 80)
+        logger.info("STARTING FLASK WEB SERVER")
+        logger.info("=" * 80)
+        logger.info(f"Host: {host}")
+        logger.info(f"Port: {port}")
+        logger.info(f"Debug: {debug}")
+        logger.info(f"Access at: http://localhost:{port}")
+        logger.info("=" * 80 + "\n")
+        
+        app.run(host=host, port=port, debug=debug, use_reloader=False)
+        
+    except Exception as e:
+        logger.error(f"Failed to start Flask app: {e}", exc_info=True)
+        sys.exit(1)
 
 
-def main(run_every_6_hours: bool = False):
+# ---------------------------------------------------------------------
+# Main Entry Point
+# ---------------------------------------------------------------------
+
+def main(
+    mode: str = "all",
+    run_pipeline_now: bool = True,
+    scheduler_interval: int = 6,
+    flask_host: str = "0.0.0.0",
+    flask_port: int = 5000,
+    flask_debug: bool = False
+):
     """
-    Main Loop
+    Main application entry point
+    
+    Args:
+        mode: "all", "pipeline", "scheduler", or "web"
+        run_pipeline_now: Run pipeline immediately on startup
+        scheduler_interval: Hours between scheduled runs
+        flask_host: Flask server host
+        flask_port: Flask server port
+        flask_debug: Enable Flask debug mode
     """
-    print("\n" + "=" * 80)
-    print(" SerendivWatcher – Full Data Pipeline")
-    print("=" * 80 + "\n")
+    
+    logger.info("\n" + "=" * 80)
+    logger.info("  ___                     _ _     __        __    _       _               ")
+    logger.info(" / __| ___ _ _ ___ _ _  __| (_)_ _\ \      / /_ _| |_ ___| |_  ___ _ _   ")
+    logger.info(" \__ \/ -_) '_/ -_) ' \/ _` | \ V /\ \ /\ / / _` |  _/ __| ' \/ -_) '_|  ")
+    logger.info(" |___/\___|_| \___|_||_\__,_|_|\_/  \_/\_/\__,_|\__\___|_||_\___|_|    ")
+    logger.info("=" * 80)
+    logger.info(f"Mode: {mode.upper()}")
+    logger.info(f"Started: {datetime.now():%Y-%m-%d %H:%M:%S}")
+    logger.info("=" * 80 + "\n")
+    
+    scheduler = None
+    
+    try:
+        # MODE 1: Pipeline Only (one-time run)
+        if mode == "pipeline":
+            logger.info("Running pipeline once and exiting...")
+            run_pipeline_once()
+            logger.info("Pipeline completed. Exiting.")
+            return
+        
+        # MODE 2: Scheduler Only (background pipeline)
+        elif mode == "scheduler":
+            scheduler = PipelineScheduler(interval_hours=scheduler_interval)
+            if run_pipeline_now:
+                logger.info("Running initial pipeline...")
+                run_pipeline_once()
+            scheduler.start()
+            
+            logger.info("Scheduler running. Press Ctrl+C to stop.")
+            while True:
+                time.sleep(60)
+        
+        # MODE 3: Web Server Only
+        elif mode == "web":
+            start_flask_app(host=flask_host, port=flask_port, debug=flask_debug)
+        
+        # MODE 4: All (Scheduler + Web Server)
+        elif mode == "all":
+            # Start scheduler in background
+            scheduler = PipelineScheduler(interval_hours=scheduler_interval)
+            
+            if run_pipeline_now:
+                logger.info("Running initial pipeline before starting services...")
+                run_pipeline_once()
+            
+            scheduler.start()
+            
+            # Start Flask in main thread
+            start_flask_app(host=flask_host, port=flask_port, debug=flask_debug)
+        
+        else:
+            logger.error(f"Invalid mode: {mode}. Use 'all', 'pipeline', 'scheduler', or 'web'")
+            sys.exit(1)
+    
+    except KeyboardInterrupt:
+        logger.info("\n\nReceived interrupt signal (Ctrl+C)")
+    
+    except Exception as e:
+        logger.error(f"Fatal error: {e}", exc_info=True)
+        sys.exit(1)
+    
+    finally:
+        if scheduler:
+            scheduler.stop()
+        logger.info("SerendivWatcher shut down successfully")
 
-    if not run_every_6_hours:
-        start_time = datetime.now()
-        print(f"[Scheduler] Single pipeline run started at {start_time:%Y-%m-%d %H:%M:%S}")
-        run_pipeline_once()
-        end_time = datetime.now()
-        duration = (end_time - start_time).total_seconds() / 60.0
-        print(f"[Scheduler] Finished in {duration:.1f} minutes. Exiting.\n")
-        return
 
-    while True:
-        start_time = datetime.now()
-        print(f"[Scheduler] Pipeline run started at {start_time:%Y-%m-%d %H:%M:%S}")
-        run_pipeline_once()
-        end_time = datetime.now()
-        duration = (end_time - start_time).total_seconds() / 60.0
-        print(f"[Scheduler] Pipeline finished in {duration:.1f} minutes.")
-
-        sleep_seconds = 6 * 60 * 60
-        next_run = end_time + timedelta(seconds=sleep_seconds)
-        print(f"\n[Scheduler] Sleeping for 6 hours. Next run at {next_run:%Y-%m-%d %H:%M:%S}.\n")
-
-        try:
-            time.sleep(sleep_seconds)
-        except KeyboardInterrupt:
-            print("\n[Scheduler] Stopped by user (Ctrl+C). Exiting.")
-            break
-
+# ---------------------------------------------------------------------
+# Command Line Interface
+# ---------------------------------------------------------------------
 
 if __name__ == "__main__":
-    # Change to True if you want the continuous loop
-    main(run_every_6_hours=False)
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="SerendivWatcher Backend")
+    
+    parser.add_argument(
+        "--mode",
+        choices=["all", "pipeline", "scheduler", "web"],
+        default="all",
+        help="Run mode: all (default), pipeline (once), scheduler (background), or web (server only)"
+    )
+    
+    parser.add_argument(
+        "--no-initial-run",
+        action="store_true",
+        help="Skip initial pipeline run on startup"
+    )
+    
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=6,
+        help="Hours between scheduled pipeline runs (default: 6)"
+    )
+    
+    parser.add_argument(
+        "--host",
+        default="0.0.0.0",
+        help="Flask server host (default: 0.0.0.0)"
+    )
+    
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=5000,
+        help="Flask server port (default: 5000)"
+    )
+    
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable Flask debug mode"
+    )
+    
+    args = parser.parse_args()
+    
+    main(
+        mode=args.mode,
+        run_pipeline_now=not args.no_initial_run,
+        scheduler_interval=args.interval,
+        flask_host=args.host,
+        flask_port=args.port,
+        flask_debug=args.debug
+    )

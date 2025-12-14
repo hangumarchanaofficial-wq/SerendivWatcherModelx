@@ -182,24 +182,31 @@ def api_article_summary(article_id):
     return jsonify(summary)
 
 
-@app.route("/api/title-insights")
-def api_title_insights():
-    """
-    Return LLM-powered high-level insights based ONLY on article title.
-    """
-    title = request.args.get("title", "").strip()
-    sector = request.args.get("sector", "").strip() or None
-
-    print(f"[APP] /api/title-insights called with title='{title}', sector='{sector}'")
-
+@app.route('/api/title-insights', methods=['GET'])
+def get_title_insights():
+    """Generate formatted insights with emojis"""
+    from  title_insight_generator import generate_title_insights
+    
+    title = request.args.get('title', '')
+    sector = request.args.get('sector', '')
+    
     if not title:
-        return jsonify({"error": "Missing title"}), 400
-
-    insights = generate_title_insights(title, sector)
-    if not insights:
-        return jsonify({"error": "Failed to generate title-based insights"}), 500
-
-    return jsonify({"insights": insights})
+        return jsonify({"error": "Title required"}), 400
+    
+    try:
+        insights = generate_title_insights(title, sector if sector else None)
+        
+        # Return both formatted and plain versions
+        return jsonify({
+            "insights": insights,
+            "title": title,
+            "sector": sector
+        })
+    except Exception as e:
+        return jsonify({
+            "error": str(e),
+            "insights": f"❌ Analysis failed: {str(e)}"
+        }), 500
 
 
 # Set up Gemini API (Better to use .env file for security)
@@ -315,6 +322,8 @@ def api_debug_db():
         "total_documents": len(all_docs),
         "articles": all_docs[:5],
     })
+
+
 
 
 # ------------ Main ------------
