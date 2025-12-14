@@ -4,7 +4,7 @@
       "title": "Devastation",
       "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
       "sentiment": 0.458,
-      "z_score": 3.99,
+      "z_score": 3.54,
       "sectors": [
         "agriculture"
       ],
@@ -12,10 +12,32 @@
       "anomaly_type": "extremely_positive"
     },
     {
+      "title": "SAMPATH BANK",
+      "url": "https://lmd.lk/sampath-bank-131/",
+      "sentiment": 0.408,
+      "z_score": 3.04,
+      "sectors": [
+        "finance"
+      ],
+      "source": "LMD",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Emirates ends the year on high scooping 5 more global awards",
+      "url": "https://economictimes.lk/index.php/2025/12/11/emirates-ends-the-year-on-high-scooping-5-more-global-awards/",
+      "sentiment": 0.389,
+      "z_score": 2.84,
+      "sectors": [
+        "transport"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_positive"
+    },
+    {
       "title": "NDB recognised at CMA Excellence awards",
       "url": "https://www.sundaytimes.lk/251130/business-times/ndb-recognised-at-cma-excellence-awards-622233.html",
       "sentiment": 0.385,
-      "z_score": 3.19,
+      "z_score": 2.8,
       "sectors": [
         "finance"
       ],
@@ -26,7 +48,7 @@
       "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
       "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
       "sentiment": 0.37,
-      "z_score": 3.03,
+      "z_score": 2.65,
       "sectors": [
         "finance"
       ],
@@ -34,10 +56,43 @@
       "anomaly_type": "extremely_positive"
     },
     {
+      "title": "Hemas\u00a0Listed in\u00a0Forbes\u2019 Top 200 Under a Billion in Asia for 2025",
+      "url": "https://economictimes.lk/index.php/2025/12/11/hemas-listed-in-forbes-top-200-under-a-billion-in-asia-for-2025/",
+      "sentiment": 0.365,
+      "z_score": 2.6,
+      "sectors": [
+        "technology"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "CROCODILE ELEVATES SHOPPING EXPERIENCE AT UPGRADED STORE AT ONE GALLE FACE MALL",
+      "url": "https://lmd.lk/crocodile-elevates-shopping-experience-at-upgraded-store-at-one-galle-face-mall/",
+      "sentiment": 0.362,
+      "z_score": 2.57,
+      "sectors": [
+        "tourism"
+      ],
+      "source": "LMD",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
+      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
+      "sentiment": -0.143,
+      "z_score": 2.55,
+      "sectors": [
+        "finance"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_negative"
+    },
+    {
       "title": "SL Tax Dept. extends deadline for filing of tax returns",
       "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
       "sentiment": 0.356,
-      "z_score": 2.87,
+      "z_score": 2.51,
       "sectors": [
         "government"
       ],
@@ -48,7 +103,7 @@
       "title": "Bay of Bengal countries mark World Fisheries Day",
       "url": "https://www.sundaytimes.lk/251130/business-times/bay-of-bengal-countries-mark-world-fisheries-day-622229.html",
       "sentiment": 0.352,
-      "z_score": 2.83,
+      "z_score": 2.47,
       "sectors": [
         "agriculture"
       ],
@@ -59,7 +114,7 @@
       "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
       "url": "https://www.sundaytimes.lk/251130/business-times/citrus-leisure-indira-cancer-trust-to-help-critically-ill-children-622217.html",
       "sentiment": 0.349,
-      "z_score": 2.8,
+      "z_score": 2.44,
       "sectors": [
         "healthcare"
       ],
@@ -67,40 +122,106 @@
       "anomaly_type": "extremely_positive"
     },
     {
-      "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
-      "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
-      "sentiment": 0.328,
-      "z_score": 2.56,
+      "title": "TOMORROW\u2019S WORLD",
+      "url": "https://lmd.lk/tomorrows-world-dec-2025/",
+      "sentiment": 0.349,
+      "z_score": 2.44,
       "sectors": [
-        "finance"
+        "government"
       ],
-      "source": "SundayTimes",
+      "source": "LMD",
       "anomaly_type": "extremely_positive"
     },
     {
-      "title": "Great Place to Work Sri Lanka announces Best Workplaces for Women 2025",
-      "url": "https://www.dailymirror.lk/business-news/Great-Place-to-Work-Sri-Lanka-announces-Best-Workplaces-for-Women-2025/273-327384",
-      "sentiment": 0.319,
-      "z_score": 2.47,
+      "title": "SRI LANKAN OVERSEAS",
+      "url": "https://lmd.lk/sri-lankan-overseas-nov-2025/",
+      "sentiment": 0.349,
+      "z_score": 2.44,
+      "sectors": [
+        "government"
+      ],
+      "source": "LMD",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "MICROCOSM",
+      "url": "https://lmd.lk/microcosm-dec-2025/",
+      "sentiment": 0.349,
+      "z_score": 2.44,
       "sectors": [
         "technology"
       ],
-      "source": "DailyMirror",
+      "source": "LMD",
       "anomaly_type": "extremely_positive"
     },
     {
-      "title": "People\u2019s Bank achieves pre-tax profit of Rs.43.7 b in 9mths\u201925",
-      "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-achieves-pre-tax-profit-of-rs-43-7-b-in-9mths25-622203.html",
-      "sentiment": 0.297,
+      "title": "GLOBAL EQUITIES",
+      "url": "https://lmd.lk/global-equities-dec-2025/",
+      "sentiment": 0.349,
+      "z_score": 2.44,
+      "sectors": [
+        "technology"
+      ],
+      "source": "LMD",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "KEY ECONOMIC DATA",
+      "url": "https://lmd.lk/key-economic-data-dec-2025/",
+      "sentiment": 0.349,
+      "z_score": 2.44,
+      "sectors": [
+        "technology"
+      ],
+      "source": "LMD",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "GLOBAL INNOVATION INDEX 2025",
+      "url": "https://lmd.lk/global-innovation-index-2025/",
+      "sentiment": 0.349,
+      "z_score": 2.44,
+      "sectors": [
+        "technology"
+      ],
+      "source": "LMD",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Hemas listed in Forbes\u2019 Top 200 Under A Billion in Asia for 2025",
+      "url": "https://www.ft.lk/business/Hemas-listed-in-Forbes-Top-200-Under-A-Billion-in-Asia-for-2025/34-785521",
+      "sentiment": 0.346,
+      "z_score": 2.41,
+      "sectors": [
+        "technology"
+      ],
+      "source": "FT.lk",
+      "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
+      "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
+      "sentiment": 0.328,
       "z_score": 2.22,
       "sectors": [
         "finance"
       ],
       "source": "SundayTimes",
       "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Emirates ends the year on high scooping 5 more global awards",
+      "url": "https://www.dailymirror.lk/business-news/Emirates-ends-the-year-on-high-scooping-5-more-global-awards/273-327695",
+      "sentiment": 0.326,
+      "z_score": 2.2,
+      "sectors": [
+        "transport"
+      ],
+      "source": "DailyMirror",
+      "anomaly_type": "extremely_positive"
     }
   ],
-  "total_anomalies": 9,
-  "mean_sentiment": 0.094,
-  "std_sentiment": 0.091
+  "total_anomalies": 20,
+  "mean_sentiment": 0.109,
+  "std_sentiment": 0.099
 }

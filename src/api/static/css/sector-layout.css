@@ -1,0 +1,28 @@
+/* ============================================
+   ABSOLUTE POSITIONING VERSION
+   ============================================ */
+
+   .main-wrapper {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 600px; /* Increased from 450px */
+}
+
+.main-wrapper > .container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-modern {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+/* Add extra margin to last content item */
+.main-wrapper > .container-fluid .card:last-of-type {
+    margin-bottom: 4rem !important;
+}

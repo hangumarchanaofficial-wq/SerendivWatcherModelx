@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>SerendivWatcher | AI Analyst Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+
+    <style>
+        /* Chat-specific styles */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 100px); /* Fill space below navbar */
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .message-row {
+            display: flex;
+            gap: 1rem;
+            max-width: 85%;
+        }
+
+        .message-row.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .avatar.ai {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .avatar.user {
+            background: #334155;
+            color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .message-bubble {
+            padding: 1rem 1.25rem;
+            border-radius: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .message-row.ai .message-bubble {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: #e2e8f0;
+            border-top-left-radius: 0;
+        }
+
+        .message-row.user .message-bubble {
+            background: #2563eb;
+            color: white;
+            border-top-right-radius: 0;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .chat-input-area {
+            padding: 1.5rem 2rem 2rem;
+            background: transparent;
+        }
+
+        .input-group-custom {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 1.5rem;
+            padding: 0.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group-custom input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            flex: 1;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .btn-send {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Typing Indicator */
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            padding: 0.5rem;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-dark-custom">
+
+    <nav class="navbar navbar-dark bg-transparent border-bottom border-secondary border-opacity-25 px-4 py-3">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center gap-3">
+                <a href="/" class="btn btn-outline-secondary btn-sm rounded-pill">
+                    <i class="fas fa-arrow-left me-2"></i> Dashboard
+                </a>
+                <span class="h5 mb-0 text-white">
+                    <i class="fas fa-robot text-primary me-2"></i> SerendivWatcher AI Analyst
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="chat-container">
+        
+        <div id="chatHistory" class="chat-history">
+            <div class="message-row ai">
+                <div class="avatar ai"><i class="fas fa-robot"></i></div>
+                <div class="message-bubble">
+                    Hello! I'm your AI Analyst. I have access to the latest news in our database.
+                    <br><br>
+                    You can ask me things like:
+                    <ul class="mb-0 mt-2 ps-3">
+                        <li>"What are the risks in the manufacturing sector?"</li>
+                        <li>"Summarize recent news about Nestle Lanka."</li>
+                        <li>"Is there any positive news for tourism?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <div class="input-group-custom">
+                <input type="text" id="userMessage" placeholder="Ask a question about the news..." autocomplete="off">
+                <button class="btn-send" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="text-center mt-2">
+                <small class="text-muted" style="font-size: 0.75rem;">AI generated responses may vary. Cross-check with source articles.</small>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const chatHistory = document.getElementById('chatHistory');
+        const userInput = document.getElementById('userMessage');
+
+        // Allow "Enter" key to send
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // 1. Display User Message
+            addMessageToUI('user', message);
+            userInput.value = '';
+
+            // 2. Show Typing Indicator
+            const loadingId = addTypingIndicator();
+
+            try {
+                // 3. Call Backend API
+                const response = await fetch('/api/chat-with-data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+
+                // 4. Remove Typing Indicator & Show Answer
+                removeMessage(loadingId);
+                
+                if (data.error) {
+                    addMessageToUI('ai', `Error: ${data.error}`);
+                } else {
+                    addMessageToUI('ai', data.response);
+                }
+
+            } catch (error) {
+                removeMessage(loadingId);
+                addMessageToUI('ai', "Sorry, I'm having trouble connecting to the server.");
+                console.error(error);
+            }
+        }
+
+        function addMessageToUI(role, text) {
+            const div = document.createElement('div');
+            div.className = `message-row ${role}`;
+            
+            const icon = role === 'ai' ? 'fa-robot' : 'fa-user';
+            
+            // Convert newlines to breaks for formatting
+            const formattedText = text.replace(/\n/g, '<br>');
+
+            div.innerHTML = `
+                <div class="avatar ${role}"><i class="fas ${icon}"></i></div>
+                <div class="message-bubble">${formattedText}</div>
+            `;
+            
+            chatHistory.appendChild(div);
+            chatHistory.scrollTop = chatHistory.scrollHeight; // Auto-scroll to bottom
+        }
+
+        function addTypingIndicator() {
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.className = 'message-row ai';
+            div.id = id;
+            div.innerHTML = `
+                <div class="avatar ai"><i class="fas fa-robot"></i></div>
+                <div class="message-bubble">
+                    <div class="typing-dots">
+                        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                    </div>
+                </div>
+            `;
+            chatHistory.appendChild(div);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+            return id;
+        }
+
+        function removeMessage(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+    </script>
+</body>
+</html>

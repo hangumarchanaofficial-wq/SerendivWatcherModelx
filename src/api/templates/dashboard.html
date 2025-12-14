@@ -433,6 +433,7 @@
             </div>
 
             <!-- Anomaly Detection Engine -->
+            
             <div class="row g-4 mb-4">
                 <div class="col-12">
                     <div class="card card-glass-dark">
@@ -445,28 +446,98 @@
                                     </h5>
                                     <p class="card-subtitle-dark">Statistical outliers and unusual patterns</p>
                                 </div>
-                                <button class="btn btn-glass-sm">
-                                    <i class="fas fa-sliders-h"></i>
-                                    Configure
-                                </button>
+                                <div class="anomaly-stats-badge">
+                                    <span class="badge badge-glass-success me-2">
+                                        <i class="fas fa-arrow-up"></i> 
+                                        {{ (data.anomalies.anomalies | selectattr('anomaly_type', 'equalto', 'extremely_positive') | list | length) if data.anomalies else 0 }} Positive
+                                    </span>
+                                    <span class="badge badge-glass-danger">
+                                        <i class="fas fa-arrow-down"></i> 
+                                        {{ (data.anomalies.anomalies | selectattr('anomaly_type', 'equalto', 'extremely_negative') | list | length) if data.anomalies else 0 }} Negative
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="anomaly-grid-dark">
                                 {% if data.anomalies and data.anomalies.anomalies %}
-                                    {% for anomaly in data.anomalies.anomalies[:6] %}
+                                    {# Separate positive and negative anomalies #}
+                                    {% set positive_anomalies = data.anomalies.anomalies | selectattr('anomaly_type', 'equalto', 'extremely_positive') | list %}
+                                    {% set negative_anomalies = data.anomalies.anomalies | selectattr('anomaly_type', 'equalto', 'extremely_negative') | list %}
+                                    
+                                    {% set pos_count = positive_anomalies | length %}
+                                    {% set neg_count = negative_anomalies | length %}
+                                    {% set total_cards = 6 %}
+                                    
+                                    {# Smart balancing logic #}
+                                    {% if pos_count > 0 and neg_count > 0 %}
+                                        {# Both types exist - balance them #}
+                                        {% if pos_count >= 3 and neg_count >= 3 %}
+                                            {# Show 3 of each #}
+                                            {% set pos_show = 3 %}
+                                            {% set neg_show = 3 %}
+                                        {% elif pos_count < 3 %}
+                                            {# Not enough positive, fill with negative #}
+                                            {% set pos_show = pos_count %}
+                                            {% set neg_show = (total_cards - pos_count) if (total_cards - pos_count) <= neg_count else neg_count %}
+                                        {% elif neg_count < 3 %}
+                                            {# Not enough negative, fill with positive #}
+                                            {% set neg_show = neg_count %}
+                                            {% set pos_show = (total_cards - neg_count) if (total_cards - neg_count) <= pos_count else pos_count %}
+                                        {% endif %}
+                                    {% elif pos_count > 0 %}
+                                        {# Only positive anomalies #}
+                                        {% set pos_show = total_cards if pos_count >= total_cards else pos_count %}
+                                        {% set neg_show = 0 %}
+                                    {% elif neg_count > 0 %}
+                                        {# Only negative anomalies #}
+                                        {% set pos_show = 0 %}
+                                        {% set neg_show = total_cards if neg_count >= total_cards else neg_count %}
+                                    {% else %}
+                                        {% set pos_show = 0 %}
+                                        {% set neg_show = 0 %}
+                                    {% endif %}
+                                    
+                                    {# Display positive anomalies #}
+                                    {% for anomaly in positive_anomalies[:pos_show] %}
                                     <div class="anomaly-card-dark">
-                                        <div class="anomaly-badge-dark {% if 'positive' in anomaly.anomaly_type %}badge-success-glow{% else %}badge-danger-glow{% endif %}">
+                                        <div class="anomaly-badge-dark badge-success-glow">
                                             <i class="fas fa-bolt"></i>
-                                            {{ anomaly.anomaly_type|replace('_', ' ')|title }}
+                                            Extremely Positive
                                         </div>
-                                        <p class="anomaly-title-dark">{{ anomaly.title[:80] }}...</p>
+                                        <p class="anomaly-title-dark">{{ anomaly.title[:80] }}{% if anomaly.title|length > 80 %}...{% endif %}</p>
                                         <div class="anomaly-footer-dark">
-                                            <span class="z-score-dark">Z-Score: {{ "%.2f"|format(anomaly.z_score) }}</span>
+                                            <span class="z-score-dark text-success">
+                                                <i class="fas fa-chart-line"></i> Z-Score: +{{ "%.2f"|format(anomaly.z_score) }}
+                                            </span>
                                             <span class="source-dark">{{ anomaly.source }}</span>
                                         </div>
                                     </div>
                                     {% endfor %}
+                                    
+                                    {# Display negative anomalies #}
+                                    {% for anomaly in negative_anomalies[:neg_show] %}
+                                    <div class="anomaly-card-dark">
+                                        <div class="anomaly-badge-dark badge-danger-glow">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            Extremely Negative
+                                        </div>
+                                        <p class="anomaly-title-dark">{{ anomaly.title[:80] }}{% if anomaly.title|length > 80 %}...{% endif %}</p>
+                                        <div class="anomaly-footer-dark">
+                                            <span class="z-score-dark text-danger">
+                                                <i class="fas fa-chart-line-down"></i> Z-Score: {{ "%.2f"|format(anomaly.z_score_signed) }}
+                                            </span>
+                                            <span class="source-dark">{{ anomaly.source }}</span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+                                {% else %}
+                                    <div class="text-center py-5 col-span-full">
+                                        <i class="fas fa-robot fa-3x text-muted mb-3"></i>
+                                        <p class="text-muted">No anomalies detected</p>
+                                        <small class="text-muted">System is analyzing patterns...</small>
+                                    </div>
                                 {% endif %}
                             </div>
                         </div>
@@ -474,7 +545,139 @@
                 </div>
             </div>
 
+
         </div>
+        
+        <footer class="footer-modern">
+            <div class="footer-divider"></div>
+            
+            <div class="container-fluid px-4 py-5">
+                <div class="row g-5 mb-4">
+                    <!-- Brand Column -->
+                    <div class="col-lg-5">
+                        <div class="footer-brand-section">
+                            <div class="footer-logo-modern">
+                                <div class="logo-icon-gradient">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="mb-1">SerendivWatcher</h4>
+                                    <span class="badge badge-glass-subtle">Intelligence Platform</span>
+                                </div>
+                            </div>
+                            
+                            <p class="footer-tagline">
+                                AI-powered business intelligence platform providing real-time sentiment 
+                                analysis and market insights for Sri Lanka's economy.
+                            </p>
+                            
+                            <div class="footer-social-modern">
+                                <a href="#" class="social-btn" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-btn" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-btn" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-btn" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Grid -->
+                    <div class="col-lg-7">
+                        <div class="row g-4">
+                            <!-- Platform -->
+                            <div class="col-md-4">
+                                <h6 class="footer-heading-modern">
+                                    <i class="fas fa-layer-group"></i> Platform
+                                </h6>
+                                <ul class="footer-menu">
+                                    <li><a href="/">Dashboard</a></li>
+                                    <li><a href="/sectors">Sectors</a></li>
+                                    <li><a href="/risks">Risk Analysis</a></li>
+                                    <li><a href="/chatbot">AI Analyst</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Resources -->
+                            <div class="col-md-4">
+                                <h6 class="footer-heading-modern">
+                                    <i class="fas fa-book"></i> Resources
+                                </h6>
+                                <ul class="footer-menu">
+                                    <li><a href="#">API Documentation</a></li>
+                                    <li><a href="#">User Guide</a></li>
+                                    <li><a href="#">Data Sources</a></li>
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- System Status -->
+                            <div class="col-md-4">
+                                <h6 class="footer-heading-modern">
+                                    <i class="fas fa-server"></i> System Status
+                                </h6>
+                                <div class="status-list-modern">
+                                    <div class="status-row">
+                                        <span class="pulse-dot pulse-success"></span>
+                                        <div class="status-info">
+                                            <span class="status-label">Data Pipeline</span>
+                                            <span class="status-value text-success">Operational</span>
+                                        </div>
+                                    </div>
+                                    <div class="status-row">
+                                        <span class="pulse-dot pulse-success"></span>
+                                        <div class="status-info">
+                                            <span class="status-label">AI Engine</span>
+                                            <span class="status-value text-success">Active</span>
+                                        </div>
+                                    </div>
+                                    <div class="status-row">
+                                        <span class="pulse-dot pulse-info"></span>
+                                        <div class="status-info">
+                                            <span class="status-label">Web Scrapers</span>
+                                            <span class="status-value text-info">5/5 Online</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="last-scan-badge">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Last scan: <strong>Just now</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom-modern">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
+                            <p class="copyright-modern mb-0">
+                                © 2025 <strong>SerendivWatcher</strong>. All rights reserved. 
+                                <span class="heart-text">Built with <i class="fas fa-heart"></i> in Sri Lanka</span>
+                            </p>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end">
+                            <div class="footer-legal-links">
+                                <a href="#">Privacy Policy</a>
+                                <a href="#">Terms of Service</a>
+                                <a href="#">Data Policy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    
+        
+
     </div>
 
     <!-- Dashboard Data (for Chart.js) -->

@@ -6,15 +6,18 @@ import math
 import requests
 import re
 
+
 # =====================================================================
 # LLM CONFIGURATION
 # =====================================================================
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "gemma3:1b"
 
+
 # =====================================================================
 # COMPREHENSIVE NOISE FILTERING
 # =====================================================================
+
 
 # English stopwords
 ENGLISH_STOPWORDS = {
@@ -25,6 +28,7 @@ ENGLISH_STOPWORDS = {
     "other", "another", "same", "so", "just", "very", "can", "will",
 }
 
+
 # UI artifacts
 UI_ARTIFACTS = {
     "mobile apps", "222 reply", "view results", "this browser", "my name",
@@ -34,6 +38,7 @@ UI_ARTIFACTS = {
     "accessibility", "partnership", "nations", "institutions",
 }
 
+
 # Website/scraping artifacts
 NOISY_TOPICS = {
     "marketing manager sales", "this website", "the morning",
@@ -42,11 +47,13 @@ NOISY_TOPICS = {
     "a few sections", "no impact", "the economy", "your old ride",
 }
 
+
 BAD_KEYWORD_FRAGMENTS = [
     "copyright", "ft.lk", "ft.", ".lk", "your old", "the next",
     "this website", "the morning", "sunday times", "daily mirror",
     "email", "friend", "click", "read more", "subscribe",
 ]
+
 
 # Generic buzzwords
 GENERIC_BUZZWORDS = {
@@ -55,14 +62,18 @@ GENERIC_BUZZWORDS = {
     "time", "year", "month", "week", "day", "today", "yesterday",
 }
 
+
 MIN_TOPIC_LENGTH = 5
+
 
 # Bad organization names
 BAD_ORG_NAMES = {
     "INR 2", "YoY", "BBC", "DHS", "U.S. Professor", "Colombos",
     "Unity Plazas", "Colombo", "Digital", "Group", "Groups", "Bank",
     "Committee", "Members", "EFF", "State", "COVID-19", "Sri Lanka",
+    "Mawatha, Colombo 7","Mawatha",
 }
+
 
 BANNED_ORGANIZATIONS = {
     "International Aid and Government Alerts Security",
@@ -71,6 +82,7 @@ BANNED_ORGANIZATIONS = {
     "the Ceylon Chamber of Commerce", "Charming and Co.",
     "the Onally Holdings PLC",
 }
+
 
 # Regex patterns for garbage
 GARBAGE_PATTERNS = [
@@ -86,6 +98,7 @@ GARBAGE_PATTERNS = [
 ]
 
 
+
 class IndicatorBuilder:
     def __init__(self, db_path: str = "data/raw/articles.json", output_dir: str = "data/indicators"):
         """
@@ -99,14 +112,17 @@ class IndicatorBuilder:
         self.output_dir = output_dir
         self.llm_model = OLLAMA_MODEL
 
+
     def set_llm_model(self, model_name: str):
         """Set the LLM model name to use."""
         self.llm_model = model_name
         print(f"LLM model set to: {model_name}")
 
+
     # =================================================================
     # LLM INTEGRATION
     # =================================================================
+
 
     def _call_ollama(self, prompt: str, temperature: float = 0.2) -> str:
         """Call Ollama API."""
@@ -124,6 +140,7 @@ class IndicatorBuilder:
         except Exception as e:
             print(f"⚠ Warning: LLM error: {e}")
             return ""
+
 
     def _extract_sector_text(self, sector: str, articles: list, max_words_per_article: int = 500, max_articles: int = 20) -> str:
         """
@@ -152,6 +169,7 @@ class IndicatorBuilder:
                 text_samples.append(sample)
         
         return "\n\n---\n\n".join(text_samples)
+
 
     def _llm_extract_keywords_from_text(self, sector: str, text_corpus: str, target_count: int = 10) -> list:
         """Use LLM to extract keywords directly from article text."""
@@ -207,6 +225,7 @@ FORMAT: keyword1, keyword2, keyword3"""
                 break
         
         return valid_keywords[:target_count]
+
 
     def _llm_extract_organizations_from_text(self, sector: str, text_corpus: str, target_count: int = 10) -> list:
         """Use LLM to extract key organizations directly from article text."""
@@ -264,9 +283,11 @@ FORMAT: Organization1, Organization2, Organization3"""
         
         return valid_orgs[:target_count]
 
+
     # =================================================================
     # HELPER: Publisher detection
     # =================================================================
+
 
     def _is_publisher(self, org: str) -> bool:
         """Filter news publishers."""
@@ -285,9 +306,11 @@ FORMAT: Organization1, Organization2, Organization3"""
         ]
         return any(indicator in o for indicator in media_indicators)
 
+
     # =================================================================
     # HELPER: Keyword cleaning (for national indicators)
     # =================================================================
+
 
     def _clean_topic(self, text: str) -> str | None:
         """Clean keyword for national-level indicators."""
@@ -317,6 +340,7 @@ FORMAT: Organization1, Organization2, Organization3"""
         
         return t
 
+
     def _clean_organization(self, org: str) -> str | None:
         """Clean organization names."""
         if not org or len(org) < 2:
@@ -335,9 +359,11 @@ FORMAT: Organization1, Organization2, Organization3"""
         
         return org
 
+
     # =================================================================
     # HELPER: Build national top topics
     # =================================================================
+
 
     def build_top_topics(self, max_topics: int = 10):
         """Aggregate top topics across all articles."""
@@ -373,9 +399,11 @@ FORMAT: Organization1, Organization2, Organization3"""
         
         return top_topics
 
+
     # =================================================================
     # 1) NATIONAL ACTIVITY INDICATORS
     # =================================================================
+
 
     def build_national_indicators(self):
         """Build national-level activity indicators."""
@@ -428,9 +456,11 @@ FORMAT: Organization1, Organization2, Organization3"""
             "timestamp": datetime.utcnow().isoformat(),
         }
 
+
     # =================================================================
     # 2) LLM-ENHANCED SECTOR INDICATORS (FROM TEXT)
     # =================================================================
+
 
     def build_sector_indicators(self, use_llm: bool = True):
         """
@@ -496,21 +526,32 @@ FORMAT: Organization1, Organization2, Organization3"""
         
         return sector_indicators
 
+
     # =================================================================
-    # 3) RISK & OPPORTUNITY INSIGHTS - TUNED THRESHOLDS
+    # 3) RISK & OPPORTUNITY INSIGHTS - WITH KEYWORD DETECTION
     # =================================================================
+
 
     def detect_risks_opportunities(self):
         """
-        Detect risks and opportunities using sentiment analysis.
+        Detect risks and opportunities using sentiment + keyword analysis.
         
-        TUNED THRESHOLDS:
-        - Risk: sentiment < -0.15 (lowered from -0.3)
-        - Opportunity: sentiment > 0.15 (lowered from 0.3)
+        FEATURES:
+        - Keyword-based disaster detection (overrides sentiment)
+        - Lowered sentiment thresholds for better detection
+        - Granular severity/impact classification
         """
         articles = self.db.all()
         risks = []
         opportunities = []
+        
+        # Disaster keywords that force risk classification
+        DISASTER_KEYWORDS = [
+            'devastation', 'destroyed', 'floods', 'flood', 'crisis', 'collapse',
+            'damage', 'disaster', 'losses', 'decline', 'drop', 'fail', 'recession',
+            'bankruptcy', 'closure', 'layoffs', 'unemployment', 'crash', 'plunge',
+            'shortage', 'disruption', 'cancelled', 'suspended', 'warning', 'threat'
+        ]
         
         for article in articles:
             sentiment = article.get("sentiment_score", 0)
@@ -519,12 +560,17 @@ FORMAT: Organization1, Organization2, Organization3"""
             url = article.get("url", "")
             source = article.get("source", "Unknown")
             
-            # === RISK DETECTION (lowered threshold) ===
-            if sentiment < -0.15:  # Changed from -0.3
-                # More granular severity classification
-                if sentiment < -0.5:
+            title_lower = title.lower()
+            
+            # Check if title contains disaster keywords
+            is_disaster = any(kw in title_lower for kw in DISASTER_KEYWORDS)
+            
+            # === RISK DETECTION ===
+            if sentiment < -0.10 or is_disaster:  # Lowered threshold + keyword override
+                # Granular severity classification
+                if sentiment < -0.30 or is_disaster:
                     severity = "high"
-                elif sentiment < -0.3:
+                elif sentiment < -0.15:
                     severity = "medium"
                 else:
                     severity = "low"
@@ -535,16 +581,16 @@ FORMAT: Organization1, Organization2, Organization3"""
                     "sectors": sectors,
                     "sentiment": round(sentiment, 3),
                     "severity": severity,
-                    "type": "negative_sentiment",
+                    "type": "keyword_detected" if is_disaster else "negative_sentiment",
                     "source": source,
                 })
             
-            # === OPPORTUNITY DETECTION (lowered threshold) ===
-            if sentiment > 0.15:  # Changed from 0.3
-                # More granular impact classification
+            # === OPPORTUNITY DETECTION ===
+            elif sentiment > 0.25:  # Higher threshold to reduce false positives
+                # Granular impact classification
                 if sentiment > 0.5:
                     impact = "high"
-                elif sentiment > 0.3:
+                elif sentiment > 0.35:
                     impact = "medium"
                 else:
                     impact = "low"
@@ -564,8 +610,8 @@ FORMAT: Organization1, Organization2, Organization3"""
         opportunities.sort(key=lambda x: x["sentiment"], reverse=True)
         
         return {
-            "risks": risks[:20],  # Increased from 10 to show more
-            "opportunities": opportunities[:20],  # Increased from 10
+            "risks": risks[:20],
+            "opportunities": opportunities[:20],
             "total_risks": len(risks),
             "total_opportunities": len(opportunities),
             "top_risks": risks[:5],
@@ -573,19 +619,21 @@ FORMAT: Organization1, Organization2, Organization3"""
             "timestamp": datetime.utcnow().isoformat(),
         }
 
+
     def build_risk_opportunity_insights(self):
         """Alias for detect_risks_opportunities() for consistency with build_indicators.py."""
         return self.detect_risks_opportunities()
+
 
     # =================================================================
     # SAVE ALL INDICATORS
     # =================================================================
 
+
     def save_indicators(self, output_path: str = None, national=None, sectors=None, insights=None):
         """Generate and save all indicators to JSON files."""
         import os
         
-        # Use self.output_dir if output_path not provided
         if output_path is None:
             output_path = self.output_dir
         
@@ -593,20 +641,18 @@ FORMAT: Organization1, Organization2, Organization3"""
         
         if national is None:
             national = self.build_national_indicators()
-        
         if sectors is None:
             sectors = self.build_sector_indicators()
-        
         if insights is None:
             insights = self.detect_risks_opportunities()
         
-        with open(f"{output_path}/national_indicators.json", "w") as f:
-            json.dump(national, f, indent=2)
+        with open(os.path.join(output_path, "national_indicators.json"), "w", encoding="utf-8") as f:
+            json.dump(national, f, indent=2, ensure_ascii=False)
         
-        with open(f"{output_path}/sector_indicators.json", "w") as f:
-            json.dump(sectors, f, indent=2)
+        with open(os.path.join(output_path, "sector_indicators.json"), "w", encoding="utf-8") as f:
+            json.dump(sectors, f, indent=2, ensure_ascii=False)
         
-        with open(f"{output_path}/risk_opportunity_insights.json", "w") as f:
-            json.dump(insights, f, indent=2)
+        with open(os.path.join(output_path, "risk_opportunity_insights.json"), "w", encoding="utf-8") as f:
+            json.dump(insights, f, indent=2, ensure_ascii=False)
         
         return {"national": national, "sectors": sectors, "insights": insights}

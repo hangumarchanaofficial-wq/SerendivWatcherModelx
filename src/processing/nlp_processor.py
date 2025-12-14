@@ -12,7 +12,7 @@ class EntityCleaner:
     # Things wrongly tagged as locations
     LOCATION_BLACKLIST = {
         'floods', 'rainfall', 'cyclone', 'landslides', 'advertise',
-        'taj samudra', 'sri lankans',
+        'taj samudra', 'sri lankans', "AI", "ai"
     }
     
     # Things wrongly tagged as organizations
@@ -144,9 +144,74 @@ class NLPProcessor:
         self.min_confidence = 3
     
     def clean_text(self, text):
-        """Remove extra whitespace and special characters"""
+        """Remove ads, navigation, UI elements, and extra whitespace."""
+        if not text:
+            return ""
+        
+        # ========================================
+        # STEP 1: Remove entire ad blocks aggressively
+        # ========================================
+        ad_patterns = [
+            # Hitad.lk car ads (ENTIRE block removal)
+            r'Hitad\.lk.*?(?:work best for you|deciding on what).*?!',
+            r'Hitad[.\s]lk.*',  # Catch any Hitad.lk line
+            r'Now is the time to sell your old ride.*',
+            r'Browse through our selection.*',
+            r'budget friendly yet reliable.*',
+            r'quality used or brand new cars.*',
+            
+            # Newsletter/subscription
+            r'Subscribe to our newsletter.*?(?:\.|$)',
+            r'Sign up for.*?(?:updates|news).*?(?:\.|$)',
+            
+            # View counters
+            r'View\(s\):\s*\d+',
+            r'Pic by [A-Z][a-z]+ [A-Z][a-z]+',  # "Pic by Nimal Jayarathna"
+            
+            # Comment/sharing
+            r'Save my name.*?browser.*?(?:\.|$)',
+            r'Leave a comment.*?(?:\.|$)',
+            r'Share this article.*?(?:\.|$)',
+            r'Click here.*?(?:\.|$)',
+            r'Read more.*?(?:\.|$)',
+            
+            # Copyright
+            r'Copyright.*?\d{4}.*?(?:\.|$)',
+            r'All rights reserved.*?(?:\.|$)',
+            
+            # Social
+            r'Follow us on.*?(?:\.|$)',
+            r'Share on.*?(?:Facebook|Twitter|LinkedIn).*?(?:\.|$)',
+        ]
+        
+        for pattern in ad_patterns:
+            text = re.sub(pattern, '', text, flags=re.IGNORECASE | re.DOTALL)
+        
+        # ========================================
+        # STEP 2: Remove sentences with ad keywords
+        # ========================================
+        # Split into sentences and filter
+        sentences = re.split(r'[.!?]+', text)
+        ad_keywords = ['hitad', 'browse through', 'attractive to today', 'modern automotive']
+        
+        cleaned_sentences = []
+        for sentence in sentences:
+            sentence_lower = sentence.lower().strip()
+            # Skip sentences with ad keywords
+            if any(kw in sentence_lower for kw in ad_keywords):
+                continue
+            if sentence.strip():
+                cleaned_sentences.append(sentence.strip())
+        
+        text = '. '.join(cleaned_sentences)
+        
+        # ========================================
+        # STEP 3: Clean whitespace
+        # ========================================
         text = re.sub(r'\s+', ' ', text)
         text = re.sub(r'[^\w\s\.,!?-]', '', text)
+        text = re.sub(r'[.!?]{2,}', '.', text)
+        
         return text.strip()
     
     def detect_primary_sector_keywords(self, title, text_lower, keywords):
@@ -267,17 +332,23 @@ ANSWER:"""
     def enrich_article(self, title, text):
         """
         Process article with hybrid approach:
-        1. Keyword matching finds top candidates (fast)
-        2. LLM validates and picks best one (accurate)
+        1. Clean ads/UI elements (NEW - fixes sentiment)
+        2. Keyword matching finds top candidates (fast)
+        3. LLM validates and picks best one (accurate)
         """
-        # Clean
+        # Clean text FIRST
         text_cleaned = self.clean_text(text)
+        
+        # FIXED: Lowered threshold from 20 to 10 for short news items
+        if len(text_cleaned.split()) < 10:
+            print(f"  ⚠ Article too short after cleaning: '{title[:50]}...'")
+            return None
         
         # Process with spaCy
         doc = self.nlp(text_cleaned[:50000])
         
-        # Sentiment
-        sentiment_score = doc._.blob.polarity
+        # Sentiment (now analyzing clean text)
+        sentiment_score = doc._.blob.polarity  # -1 to +1 range
         pos_thresh = self.sentiment_thresholds['positive_threshold']
         neg_thresh = self.sentiment_thresholds['negative_threshold']
         

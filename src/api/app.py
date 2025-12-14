@@ -1,10 +1,15 @@
 from flask import Flask, render_template, jsonify, request
 import json
 import os
-import requests  # For Ollama
+
 import chromadb  # For Vector Search
-from sentence_transformers import SentenceTransformer # For Embeddings
+from sentence_transformers import SentenceTransformer  # For Embeddings
 from tinydb import TinyDB, Query
+
+# LangChain imports for Gemini
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 from article_loader import (
     load_sector_articles,
@@ -28,8 +33,7 @@ print("Loading AI models...")
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Connect to Vector Database
-vector_db_path = os.path.join(os.getcwd(), "data", "vector_db")
-chroma_client = chromadb.PersistentClient(path=vector_db_path)
+chroma_client = chromadb.PersistentClient(path="E:\\serendivWatcher\\data\\vector_db")
 
 try:
     collection = chroma_client.get_collection(name="serendiv_news")
@@ -198,6 +202,16 @@ def api_title_insights():
     return jsonify({"insights": insights})
 
 
+# Set up Gemini API (Better to use .env file for security)
+os.environ["GOOGLE_API_KEY"] = "AIzaSyDogNiPuTjGiwtI1U1aOo0wKUCvttPLHrc"
+
+# Initialize Gemini model
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",  
+    temperature=0.3,
+)
+
+
 @app.route("/api/chat-with-data", methods=["POST"])
 def chat_with_data():
     """
@@ -209,13 +223,13 @@ def chat_with_data():
     
     if not user_question:
         return jsonify({"response": "Please ask a question."})
-
+    
     # 1. IMMEDIATE GREETING CHECK (Save resources)
     greetings = ["hi", "hello", "hey", "good morning", "greetings"]
     clean_q = ''.join(e for e in user_question.lower() if e.isalnum() or e.isspace())
     if clean_q in greetings:
         return jsonify({"response": "Hello! I am Serendiv AI. I have analyzed the latest news in our database. How can I help you today?"})
-
+    
     # 2. VECTOR SEARCH (Semantic Search)
     relevant_texts = []
     
@@ -239,66 +253,56 @@ def chat_with_data():
                     relevant_texts.append(snippet)
         except Exception as e:
             print(f"Vector search error: {e}")
-            # Fallback (optional): Could implement keyword search here if vector fails
             pass
     else:
         return jsonify({"error": "Database not ready. Please check backend logs."}), 500
-
+    
     # 3. PROMPT ENGINEERING
     if relevant_texts:
         context_block = "\n\n".join(relevant_texts)
         
-        prompt = f"""You are 'Serendiv AI', a senior Business Analyst for Sri Lanka.
-        
-        USER QUESTION: "{user_question}"
+        prompt_text = f"""You are 'Serendiv AI', a senior Business Analyst for Sri Lanka.
 
-        LATEST INTELLIGENCE (Context):
-        {context_block}
+USER QUESTION: "{user_question}"
 
-        INSTRUCTIONS:
-        1. Answer the question using the context above.
-        2. Synthesize the information; don't just list articles.
-        3. If the context doesn't fully answer the question, say so, but offer what you do know from the text.
-        4. Be professional and concise.
+LATEST INTELLIGENCE (Context):
+{context_block}
 
-        ANSWER:"""
+INSTRUCTIONS:
+1. Answer the question using the context above.
+2. Synthesize the information; don't just list articles.
+3. If the context doesn't fully answer the question, say so, but offer what you do know from the text.
+4. Be professional and concise.
+
+ANSWER:"""
     else:
         # Fallback for general questions (No relevant news found)
-        prompt = f"""You are 'Serendiv AI', a senior Business Analyst.
+        prompt_text = f"""You are 'Serendiv AI', a senior Business Analyst.
 
-        USER QUESTION: "{user_question}"
+USER QUESTION: "{user_question}"
 
-        SYSTEM NOTE: No specific news articles matched this query in the database.
+SYSTEM NOTE: No specific news articles matched this query in the database.
 
-        INSTRUCTIONS:
-        1. If this is a general business question (e.g. "What is inflation?"), answer it using your general knowledge.
-        2. If asking about a specific recent event (e.g. "Did the strike end today?"), apologize and state that you don't have that specific report in the database yet.
-        3. Do NOT make up fake news.
+INSTRUCTIONS:
+1. If this is a general business question (e.g. "What is inflation?"), answer it using your general knowledge.
+2. If asking about a specific recent event (e.g. "Did the strike end today?"), apologize and state that you don't have that specific report in the database yet.
+3. Do NOT make up fake news.
 
-        ANSWER:"""
-
-    # 4. CALL OLLAMA
+ANSWER:"""
+    
+    # 4. CALL GEMINI API
     try:
-        ollama_resp = requests.post(
-            "http://localhost:11434/api/generate",
-            json={
-                "model": "gemma3:1b", 
-                "prompt": prompt,
-                "stream": False,
-                "temperature": 0.3
-            },
-            timeout=60
-        )
-        ollama_resp.raise_for_status()
-        answer = ollama_resp.json().get("response", "").strip()
+        # Invoke Gemini using LangChain
+        response = llm.invoke(prompt_text)
+        answer = response.content.strip()
         
         return jsonify({"response": answer})
-
+    
     except Exception as e:
         print(f"Chat Error: {e}")
         return jsonify({"error": "Failed to connect to AI engine."}), 500
 
-
+        
 @app.route("/api/debug/db")
 def api_debug_db():
     db_path = get_db_path()
@@ -327,4 +331,3 @@ if __name__ == "__main__":
     print("=" * 60 + "\n")
 
     app.run(debug=True, port=5000)
-    

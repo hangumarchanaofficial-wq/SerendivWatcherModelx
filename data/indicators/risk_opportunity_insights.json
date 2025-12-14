@@ -1,214 +1,213 @@
 {
-  "risks": [],
-  "opportunities": [
+  "risks": [
+    {
+      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
+      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": -0.143,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "Govt. says early warnings saved lives despite claims of inaction",
+      "url": "https://www.themorning.lk/articles/pk0kxFssDlQH6sPeEH50",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": -0.083,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "Bus driver averts disaster after brake failure in Badulla",
+      "url": "https://www.themorning.lk/articles/Jf3YpoF764OKeIvsBYLd",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": -0.033,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "Sanasa Life Insurance suspended over solvency and data integrity violations",
+      "url": "https://www.dailymirror.lk/business-news/Sanasa-Life-Insurance-suspended-over-solvency-and-data-integrity-violations/273-327708",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": -0.028,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "DailyMirror"
+    },
     {
       "title": "Devastation",
       "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
       "sectors": [
         "agriculture"
       ],
-      "sentiment": 0.458,
-      "impact": "medium",
-      "type": "positive_sentiment",
+      "sentiment": 0.0,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "SundayTimes"
     },
     {
-      "title": "NDB recognised at CMA Excellence awards",
-      "url": "https://www.sundaytimes.lk/251130/business-times/ndb-recognised-at-cma-excellence-awards-622233.html",
-      "sectors": [
-        "finance"
-      ],
-      "sentiment": 0.385,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
-      "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
-      "sectors": [
-        "finance"
-      ],
-      "sentiment": 0.37,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "DailyMirror"
-    },
-    {
-      "title": "SL Tax Dept. extends deadline for filing of tax returns",
-      "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
+      "title": "Palm Oil policy paralysis threatens key Sri Lankan exports",
+      "url": "https://www.sundaytimes.lk/251130/business-times/palm-oil-policy-paralysis-threatens-key-sri-lankan-exports-622197.html",
       "sectors": [
         "government"
       ],
-      "sentiment": 0.356,
-      "impact": "medium",
-      "type": "positive_sentiment",
+      "sentiment": 0.015,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "SundayTimes"
     },
     {
-      "title": "Bay of Bengal countries mark World Fisheries Day",
-      "url": "https://www.sundaytimes.lk/251130/business-times/bay-of-bengal-countries-mark-world-fisheries-day-622229.html",
-      "sectors": [
-        "agriculture"
-      ],
-      "sentiment": 0.352,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
-      "url": "https://www.sundaytimes.lk/251130/business-times/citrus-leisure-indira-cancer-trust-to-help-critically-ill-children-622217.html",
-      "sectors": [
-        "healthcare"
-      ],
-      "sentiment": 0.349,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "Winners at People\u2019s Bank\u2019s Entrepreneurship Village Competition",
-      "url": "https://www.sundaytimes.lk/251130/business-times/winners-at-peoples-banks-entrepreneurship-village-competition-622260.html",
-      "sectors": [
-        "finance"
-      ],
-      "sentiment": 0.328,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "Great Place to Work Sri Lanka announces Best Workplaces for Women 2025",
-      "url": "https://www.dailymirror.lk/business-news/Great-Place-to-Work-Sri-Lanka-announces-Best-Workplaces-for-Women-2025/273-327384",
-      "sectors": [
-        "technology"
-      ],
-      "sentiment": 0.319,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "DailyMirror"
-    },
-    {
-      "title": "People\u2019s Bank achieves pre-tax profit of Rs.43.7 b in 9mths\u201925",
-      "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-achieves-pre-tax-profit-of-rs-43-7-b-in-9mths25-622203.html",
-      "sectors": [
-        "finance"
-      ],
-      "sentiment": 0.297,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "CBL Foods International wins global award",
-      "url": "https://www.sundaytimes.lk/251130/business-times/cbl-foods-international-wins-global-award-622242.html",
-      "sectors": [
-        "technology"
-      ],
-      "sentiment": 0.257,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "Mrs India Pride of the Nation makes international debut in Sri Lanka",
-      "url": "https://www.ft.lk/front-page/Mrs-India-Pride-of-the-Nation-makes-international-debut-in-Sri-Lanka/44-785333",
-      "sectors": [
-        "finance"
-      ],
-      "sentiment": 0.251,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "FT.lk"
-    },
-    {
-      "title": "Fountain of diversity",
-      "url": "https://www.sundaytimes.lk/251130/business-times/fountain-of-diversity-622249.html",
-      "sectors": [
-        "tourism"
-      ],
-      "sentiment": 0.237,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "Australia to support Sri Lanka tourism promo",
-      "url": "https://www.sundaytimes.lk/251130/business-times/australia-to-support-sri-lanka-tourism-promo-622265.html",
-      "sectors": [
-        "tourism"
-      ],
-      "sentiment": 0.232,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "People\u2019s Bank helps in digital tickets on buses",
-      "url": "https://www.sundaytimes.lk/251130/business-times/peoples-bank-helps-in-digital-tickets-on-buses-622221.html",
+      "title": "China pledges support to strengthen bilateral ties, provides aid for disaster-affected",
+      "url": "https://www.themorning.lk/articles/h4ST5D7v6zYnTskJtCAU",
       "sectors": [
         "transport"
       ],
-      "sentiment": 0.231,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
+      "sentiment": 0.018,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
     },
     {
-      "title": "IWS Logistics Boosts Efficiency and Sustainability with KALMAR DCU80 from DIMO",
-      "url": "https://economictimes.lk/index.php/2025/05/20/iws-logistics-boosts-efficiency-and-sustainability-with-kalmar-dcu80-from-dimo/",
+      "title": "ChildFund Sri Lanka Mobilizes Emergency Response as Catastrophic Floods Displace Over 1.1 Million",
+      "url": "https://economictimes.lk/index.php/2025/12/11/childfund-sri-lanka-mobilizes-emergency-response-as-catastrophic-floods-displace-over-1-1-million/",
       "sectors": [
-        "transport"
+        "general"
       ],
-      "sentiment": 0.225,
-      "impact": "low",
-      "type": "positive_sentiment",
+      "sentiment": 0.037,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "EconomicTimes.lk"
     },
     {
-      "title": "ACL cables bullish on growth in SL/abroad",
-      "url": "https://www.sundaytimes.lk/251130/business-times/acl-cables-bullish-on-growth-in-slabroad-622267.html",
+      "title": "GNs threatening strike:Public Admin. says relief operations unhindered",
+      "url": "https://www.themorning.lk/articles/kmhCXX5xssTcjUeTV2SO",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.046,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "Sri Lanka apparel exports to drop by $1 billion in 2023",
+      "url": "https://economictimes.lk/index.php/2023/05/06/sri-lanka-apparel-exports-to-drop-by-1-billion-in-2023/",
+      "sectors": [
+        "manufacturing"
+      ],
+      "sentiment": 0.05,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "UN warns “world is not prepared”  for escalating climate disasters",
+      "url": "https://www.ft.lk/front-page/UN-warns-world-is-not-prepared-for-escalating-climate-disasters/44-785539",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.054,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "FT.lk"
+    },
+    {
+      "title": "Govt. to re-tender Kollupitiya land for mixed development after cancelled lease",
+      "url": "https://www.ft.lk/front-page/Govt-to-re-tender-Kollupitiya-land-for-mixed-development-after-cancelled-lease/44-785615",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.056,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "FT.lk"
+    },
+    {
+      "title": "Over 80 reservoirs spilling, no immediate flood risk: Irrigation. dept",
+      "url": "https://www.themorning.lk/articles/FWfYcZh3CFL6GHegXch9",
+      "sectors": [
+        "agriculture"
+      ],
+      "sentiment": 0.061,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "CoPF endorses Rs. 50 b supplementary allocation for disaster relief",
+      "url": "https://www.ft.lk/front-page/CoPF-endorses-Rs-50-b-supplementary-allocation-for-disaster-relief/44-785456",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.064,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "FT.lk"
+    },
+    {
+      "title": "GeoAI project launched to build disaster-ready Sri Lanka",
+      "url": "https://www.ft.lk/front-page/GeoAI-project-launched-to-build-disaster-ready-Sri-Lanka/44-785624",
       "sectors": [
         "technology"
       ],
-      "sentiment": 0.223,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
-    },
-    {
-      "title": "Jetstar to launch Australia\u2019s only low-cost direct flights to SL",
-      "url": "https://www.ft.lk/front-page/Jetstar-to-launch-Australia-s-only-low-cost-direct-flights-to-SL/44-785387",
-      "sectors": [
-        "transport"
-      ],
-      "sentiment": 0.193,
-      "impact": "low",
-      "type": "positive_sentiment",
+      "sentiment": 0.064,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "FT.lk"
     },
     {
-      "title": "Cargills Bank\u2019s Rs. 313 m post-tax profit in Jan-Sept 2025",
-      "url": "https://www.sundaytimes.lk/251130/business-times/cargills-banks-rs-313-m-post-tax-profit-in-jan-sept-2025-622240.html",
+      "title": "Disaster-related spending: Supplementary allocations will suffice: Treasury",
+      "url": "https://www.themorning.lk/articles/WHk9t3XjkVt95AEv4QED",
       "sectors": [
         "finance"
       ],
-      "sentiment": 0.189,
-      "impact": "low",
-      "type": "positive_sentiment",
-      "source": "SundayTimes"
+      "sentiment": 0.082,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
     },
     {
-      "title": "Sri Lanka must prioritise sustainable destination management as global tourism trends shift: Expert",
-      "url": "https://www.ft.lk/front-page/Sri-Lanka-must-prioritise-sustainable-destination-management-as-global-tourism-trends-shift-Expert/44-785458",
+      "title": "MIT and Microsoft to support data collection on damages caused by Cyclone Ditwah",
+      "url": "https://www.ft.lk/front-page/MIT-and-Microsoft-to-support-data-collection-on-damages-caused-by-Cyclone-Ditwah/44-785529",
       "sectors": [
-        "tourism"
+        "general"
       ],
-      "sentiment": 0.189,
-      "impact": "low",
-      "type": "positive_sentiment",
+      "sentiment": 0.084,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "FT.lk"
+    },
+    {
+      "title": "Over 5,700 houses destroyed in severe weather",
+      "url": "https://www.themorning.lk/articles/7aoovzTWUyc4M3tmaUEr",
+      "sectors": [
+        "construction"
+      ],
+      "sentiment": 0.091,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "Ransomware payments drop to record low in Q1 2024",
+      "url": "https://economictimes.lk/index.php/2024/04/22/ransomware-payments-drop-to-record-low-in-q1-2024/",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.102,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "EconomicTimes.lk"
     },
     {
       "title": "Weather crisis: Some tourists to postpone trips to Sri Lanka",
@@ -216,26 +215,144 @@
       "sectors": [
         "tourism"
       ],
-      "sentiment": 0.181,
-      "impact": "low",
-      "type": "positive_sentiment",
+      "sentiment": 0.114,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "SundayTimes"
     }
   ],
-  "total_risks": 0,
-  "total_opportunities": 31,
-  "top_risks": [],
-  "top_opportunities": [
+  "opportunities": [
     {
-      "title": "Devastation",
-      "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
+      "title": "CFA awards spotlight SL’s capital-market trailblazers",
+      "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
       "sectors": [
-        "agriculture"
+        "finance"
       ],
-      "sentiment": 0.458,
+      "sentiment": 0.432,
       "impact": "medium",
       "type": "positive_sentiment",
-      "source": "SundayTimes"
+      "source": "DailyMirror"
+    },
+    {
+      "title": "SAMPATH BANK",
+      "url": "https://lmd.lk/sampath-bank-131/",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.408,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "Hemas listed in Forbes’ Top 200 Under A Billion in Asia for 2025",
+      "url": "https://www.ft.lk/business/Hemas-listed-in-Forbes-Top-200-Under-A-Billion-in-Asia-for-2025/34-785521",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.391,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "FT.lk"
+    },
+    {
+      "title": "Emirates ends the year on high scooping 5 more global awards",
+      "url": "https://economictimes.lk/index.php/2025/12/11/emirates-ends-the-year-on-high-scooping-5-more-global-awards/",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.389,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "TOMORROW’S WORLD",
+      "url": "https://lmd.lk/tomorrows-world-dec-2025/",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "SRI LANKAN OVERSEAS",
+      "url": "https://lmd.lk/sri-lankan-overseas-nov-2025/",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "MICROCOSM",
+      "url": "https://lmd.lk/microcosm-dec-2025/",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "GLOBAL EQUITIES",
+      "url": "https://lmd.lk/global-equities-dec-2025/",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "KEY ECONOMIC DATA",
+      "url": "https://lmd.lk/key-economic-data-dec-2025/",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "GLOBAL INNOVATION INDEX 2025",
+      "url": "https://lmd.lk/global-innovation-index-2025/",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "Hemas Listed in Forbes’ Top 200 Under a Billion in Asia for 2025",
+      "url": "https://economictimes.lk/index.php/2025/12/11/hemas-listed-in-forbes-top-200-under-a-billion-in-asia-for-2025/",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.365,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "CROCODILE ELEVATES SHOPPING EXPERIENCE AT UPGRADED STORE AT ONE GALLE FACE MALL",
+      "url": "https://lmd.lk/crocodile-elevates-shopping-experience-at-upgraded-store-at-one-galle-face-mall/",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.362,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
     },
     {
       "title": "NDB recognised at CMA Excellence awards",
@@ -243,30 +360,30 @@
       "sectors": [
         "finance"
       ],
-      "sentiment": 0.385,
+      "sentiment": 0.353,
       "impact": "medium",
       "type": "positive_sentiment",
       "source": "SundayTimes"
     },
     {
-      "title": "CFA awards spotlight SL\u2019s capital-market trailblazers",
-      "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
+      "title": "Emirates ends the year on high scooping 5 more global awards",
+      "url": "https://www.dailymirror.lk/business-news/Emirates-ends-the-year-on-high-scooping-5-more-global-awards/273-327695",
       "sectors": [
-        "finance"
+        "transport"
       ],
-      "sentiment": 0.37,
-      "impact": "medium",
+      "sentiment": 0.337,
+      "impact": "low",
       "type": "positive_sentiment",
       "source": "DailyMirror"
     },
     {
-      "title": "SL Tax Dept. extends deadline for filing of tax returns",
-      "url": "https://www.sundaytimes.lk/251130/business-times/sl-tax-dept-extends-deadline-for-filing-of-tax-returns-622227.html",
+      "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
+      "url": "https://www.sundaytimes.lk/251130/business-times/citrus-leisure-indira-cancer-trust-to-help-critically-ill-children-622217.html",
       "sectors": [
-        "government"
+        "healthcare"
       ],
-      "sentiment": 0.356,
-      "impact": "medium",
+      "sentiment": 0.308,
+      "impact": "low",
       "type": "positive_sentiment",
       "source": "SundayTimes"
     },
@@ -276,11 +393,160 @@
       "sectors": [
         "agriculture"
       ],
-      "sentiment": 0.352,
-      "impact": "medium",
+      "sentiment": 0.306,
+      "impact": "low",
       "type": "positive_sentiment",
+      "source": "SundayTimes"
+    },
+    {
+      "title": "Toyota Lanka Hosts High-Level Delegation from Toyota Tsusho Corporation",
+      "url": "https://economictimes.lk/index.php/2025/04/23/toyota-lanka-hosts-high-level-delegation-from-toyota-tsusho-corporation/",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.262,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "NDB RECOGNISED AMONG SRI LANKA’S BEST AT CMA EXCELLENCE IN INTEGRATED REPORTING AWARDS 2025",
+      "url": "https://lmd.lk/ndb-recognised-among-sri-lankas-best-at-cma-excellence-in-integrated-reporting-awards-2025/",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.26,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "The Sri Lanka Coffee Festival returns: Celebrating the Artistry and Essence of Coffee",
+      "url": "https://economictimes.lk/index.php/2023/05/27/the-sri-lanka-coffee-festival-returns-celebrating-the-artistry-and-essence-of-coffee/",
+      "sectors": [
+        "tourism"
+      ],
+      "sentiment": 0.253,
+      "impact": "low",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    }
+  ],
+  "total_risks": 21,
+  "total_opportunities": 19,
+  "top_risks": [
+    {
+      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
+      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": -0.143,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "Govt. says early warnings saved lives despite claims of inaction",
+      "url": "https://www.themorning.lk/articles/pk0kxFssDlQH6sPeEH50",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": -0.083,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "Bus driver averts disaster after brake failure in Badulla",
+      "url": "https://www.themorning.lk/articles/Jf3YpoF764OKeIvsBYLd",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": -0.033,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "TheMorning"
+    },
+    {
+      "title": "Sanasa Life Insurance suspended over solvency and data integrity violations",
+      "url": "https://www.dailymirror.lk/business-news/Sanasa-Life-Insurance-suspended-over-solvency-and-data-integrity-violations/273-327708",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": -0.028,
+      "severity": "high",
+      "type": "keyword_detected",
+      "source": "DailyMirror"
+    },
+    {
+      "title": "Devastation",
+      "url": "https://www.sundaytimes.lk/251130/business-times/devastation-622273.html",
+      "sectors": [
+        "agriculture"
+      ],
+      "sentiment": 0.0,
+      "severity": "high",
+      "type": "keyword_detected",
       "source": "SundayTimes"
     }
   ],
-  "timestamp": "2025-12-10T17:17:27.072344"
+  "top_opportunities": [
+    {
+      "title": "CFA awards spotlight SL’s capital-market trailblazers",
+      "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.432,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "DailyMirror"
+    },
+    {
+      "title": "SAMPATH BANK",
+      "url": "https://lmd.lk/sampath-bank-131/",
+      "sectors": [
+        "finance"
+      ],
+      "sentiment": 0.408,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    },
+    {
+      "title": "Hemas listed in Forbes’ Top 200 Under A Billion in Asia for 2025",
+      "url": "https://www.ft.lk/business/Hemas-listed-in-Forbes-Top-200-Under-A-Billion-in-Asia-for-2025/34-785521",
+      "sectors": [
+        "technology"
+      ],
+      "sentiment": 0.391,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "FT.lk"
+    },
+    {
+      "title": "Emirates ends the year on high scooping 5 more global awards",
+      "url": "https://economictimes.lk/index.php/2025/12/11/emirates-ends-the-year-on-high-scooping-5-more-global-awards/",
+      "sectors": [
+        "transport"
+      ],
+      "sentiment": 0.389,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "EconomicTimes.lk"
+    },
+    {
+      "title": "TOMORROW’S WORLD",
+      "url": "https://lmd.lk/tomorrows-world-dec-2025/",
+      "sectors": [
+        "government"
+      ],
+      "sentiment": 0.384,
+      "impact": "medium",
+      "type": "positive_sentiment",
+      "source": "LMD"
+    }
+  ],
+  "timestamp": "2025-12-13T23:16:14.504426"
 }
