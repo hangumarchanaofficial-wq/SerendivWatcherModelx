@@ -1,22 +1,22 @@
 {
-  "overall_sentiment": 0.106,
+  "overall_sentiment": 0.102,
   "sentiment_distribution": {
-    "neutral": 158,
-    "positive": 127,
+    "neutral": 156,
+    "positive": 123,
     "negative": 1
   },
-  "total_articles": 286,
-  "positive_articles": 127,
+  "total_articles": 280,
+  "positive_articles": 123,
   "negative_articles": 1,
-  "neutral_articles": 158,
+  "neutral_articles": 156,
   "top_sectors": [
     {
       "sector": "finance",
-      "count": 83
+      "count": 78
     },
     {
       "sector": "government",
-      "count": 43
+      "count": 48
     },
     {
       "sector": "technology",
@@ -24,18 +24,14 @@
     },
     {
       "sector": "transport",
-      "count": 27
+      "count": 24
     },
     {
       "sector": "agriculture",
-      "count": 21
+      "count": 20
     }
   ],
   "top_organizations": [
-    {
-      "org": "Mawatha, Colombo 7",
-      "count": 38
-    },
     {
       "org": "Friend Print Edition",
       "count": 23
@@ -71,12 +67,16 @@
     {
       "org": "Disaster Management Centre",
       "count": 7
+    },
+    {
+      "org": "Central Bank",
+      "count": 7
     }
   ],
   "top_locations": [
     {
       "location": "Sri Lanka",
-      "count": 223
+      "count": 219
     },
     {
       "location": "South Asia War",
@@ -117,66 +117,30 @@
   ],
   "top_topics": [
     {
-      "topic": "sri lanka",
-      "count": 72,
+      "topic": "timely insights",
+      "count": 32,
       "top_sectors": [
         {
-          "sector": "finance",
-          "count": 20
-        },
-        {
           "sector": "government",
-          "count": 13
+          "count": 8
         },
         {
-          "sector": "agriculture",
-          "count": 7
+          "sector": "transport",
+          "count": 8
+        },
+        {
+          "sector": "general",
+          "count": 5
         }
       ]
     },
     {
-      "topic": "january",
-      "count": 40,
-      "top_sectors": [
-        {
-          "sector": "finance",
-          "count": 15
-        },
-        {
-          "sector": "government",
-          "count": 7
-        },
-        {
-          "sector": "technology",
-          "count": 6
-        }
-      ]
-    },
-    {
-      "topic": "manager - marketing",
-      "count": 34,
-      "top_sectors": [
-        {
-          "sector": "finance",
-          "count": 10
-        },
-        {
-          "sector": "government",
-          "count": 6
-        },
-        {
-          "sector": "construction",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "topic": "themorningwebgmail",
+      "topic": "the daily morning",
       "count": 31,
       "top_sectors": [
         {
           "sector": "transport",
-          "count": 10
+          "count": 8
         },
         {
           "sector": "government",
@@ -184,66 +148,30 @@
         },
         {
           "sector": "general",
-          "count": 3
-        }
-      ]
-    },
-    {
-      "topic": "politics",
-      "count": 31,
-      "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 10
-        },
-        {
-          "sector": "government",
-          "count": 7
-        },
-        {
-          "sector": "general",
-          "count": 3
+          "count": 5
         }
       ]
     },
     {
       "topic": "by staff writer",
-      "count": 29,
+      "count": 30,
       "top_sectors": [
-        {
-          "sector": "transport",
-          "count": 9
-        },
         {
           "sector": "government",
           "count": 7
         },
         {
-          "sector": "general",
-          "count": 3
-        }
-      ]
-    },
-    {
-      "topic": "timely insights",
-      "count": 29,
-      "top_sectors": [
-        {
           "sector": "transport",
-          "count": 10
-        },
-        {
-          "sector": "government",
-          "count": 6
+          "count": 7
         },
         {
           "sector": "general",
-          "count": 3
+          "count": 5
         }
       ]
     },
     {
-      "topic": "heavy showers",
+      "topic": "visa-free facility",
       "count": 28,
       "top_sectors": [
         {
@@ -251,7 +179,61 @@
           "count": 11
         },
         {
-          "sector": "technology",
+          "sector": "government",
+          "count": 4
+        },
+        {
+          "sector": "general",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "the country",
+      "count": 26,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 8
+        },
+        {
+          "sector": "tourism",
+          "count": 4
+        },
+        {
+          "sector": "agriculture",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "topic": "cyclone ditwah",
+      "count": 25,
+      "top_sectors": [
+        {
+          "sector": "government",
+          "count": 7
+        },
+        {
+          "sector": "transport",
+          "count": 5
+        },
+        {
+          "sector": "finance",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "eternal rest govt",
+      "count": 23,
+      "top_sectors": [
+        {
+          "sector": "finance",
+          "count": 7
+        },
+        {
+          "sector": "general",
           "count": 4
         },
         {
@@ -261,41 +243,59 @@
       ]
     },
     {
-      "topic": "government alerts",
-      "count": 26,
+      "topic": "sri lankans",
+      "count": 21,
       "top_sectors": [
         {
           "sector": "finance",
-          "count": 9
+          "count": 6
         },
         {
-          "sector": "technology",
+          "sector": "general",
           "count": 4
         },
         {
-          "sector": "government",
+          "sector": "technology",
           "count": 3
         }
       ]
     },
     {
-      "topic": "lk webadsupportwijeya",
-      "count": 26,
+      "topic": "91,wijerama mawatha",
+      "count": 21,
+      "top_sectors": [
+        {
+          "sector": "government",
+          "count": 6
+        },
+        {
+          "sector": "general",
+          "count": 5
+        },
+        {
+          "sector": "transport",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "topic": "chamika karunaratne",
+      "count": 20,
       "top_sectors": [
         {
           "sector": "finance",
-          "count": 7
+          "count": 6
+        },
+        {
+          "sector": "general",
+          "count": 4
         },
         {
           "sector": "government",
-          "count": 7
-        },
-        {
-          "sector": "technology",
           "count": 2
         }
       ]
     }
   ],
-  "timestamp": "2025-12-13T23:14:24.999239"
+  "timestamp": "2025-12-14T01:48:52.038123"
 }

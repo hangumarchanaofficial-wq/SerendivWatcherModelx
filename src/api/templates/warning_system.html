@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>SerendivWatcher | Warning & Opportunity System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
+
+    <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at top left, #1f3b5d, #050815 55%, #02040a);
+            --card-bg: rgba(15, 23, 42, 0.88);
+            --card-border: rgba(148, 163, 184, 0.35);
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.35);
+            --text-muted-soft: #94a3b8;
+            --success: #4ade80;
+            --warning: #facc15;
+            --danger: #f87171;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: #e5e7eb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .page-shell {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 3rem;
+        }
+
+        .glass-panel {
+            border-radius: 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 24px 80px rgba(15, 23, 42, 0.85), 0 0 0 1px rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2rem 2rem 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin: 0;
+            background: linear-gradient(120deg, #38bdf8, #4ade80, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+        }
+
+        .page-subtitle {
+            color: var(--text-muted-soft);
+            font-size: 1rem;
+            margin-top: 0.75rem;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-back {
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            color: #e5e7eb;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.1rem;
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%);
+            transition: all 0.18s ease-out;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent);
+            color: #f9fafb;
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.32), transparent 60%);
+            box-shadow: 0 0 0 1px var(--accent-soft), 0 0 24px rgba(56, 189, 248, 0.35);
+            transform: translateX(-3px);
+        }
+
+        /* Form Styling */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.65rem;
+            display: block;
+            letter-spacing: 0.02em;
+        }
+
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #e5e7eb;
+            border-radius: 0.65rem;
+            padding: 0.85rem 1.15rem;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+            color: #f9fafb;
+            outline: none;
+            transform: translateY(-1px);
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.85rem center;
+            background-size: 16px 12px;
+        }
+
+        .form-select option {
+            background: #0f172a;
+            color: #e5e7eb;
+        }
+
+        /* Checkbox Grid for Operations */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .checkbox-item {
+            position: relative;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.15rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(148, 163, 184, 0.25);
+            border-radius: 0.65rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(148, 163, 184, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkbox-label {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(59, 130, 246, 0.15));
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft), 0 4px 12px rgba(56, 189, 248, 0.2);
+            color: #f9fafb;
+        }
+
+        .checkbox-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 0.35rem;
+            border: 2px solid rgba(148, 163, 184, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkbox-label .checkbox-icon {
+            background: linear-gradient(135deg, var(--accent), #3b82f6);
+            border-color: var(--accent);
+        }
+
+        .checkbox-icon i {
+            color: white;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkbox-label .checkbox-icon i {
+            opacity: 1;
+        }
+
+        /* Premium Buttons */
+        .btn-premium-primary {
+            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #6366f1 100%);
+            border: none;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.85rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35), 0 4px 12px rgba(59, 130, 246, 0.2);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-premium-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-premium-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(56, 189, 248, 0.45), 0 6px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-premium-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-premium-secondary {
+            background: rgba(148, 163, 184, 0.15);
+            border: 1.5px solid rgba(148, 163, 184, 0.35);
+            color: #e5e7eb;
+            padding: 1rem 2.5rem;
+            border-radius: 0.85rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-premium-secondary:hover {
+            background: rgba(148, 163, 184, 0.25);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(148, 163, 184, 0.2);
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(74, 222, 128, 0.12));
+            border: 1.5px solid rgba(56, 189, 248, 0.35);
+            border-radius: 1.15rem;
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .result-header h2 {
+            color: var(--accent);
+            font-size: 1.85rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            margin-top: 1.75rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.25rem;
+            font-weight: 800;
+            display: block;
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .stat-value.success { color: var(--success); }
+        .stat-value.warning { color: var(--warning); }
+        .stat-value.danger { color: var(--danger); }
+
+        .stat-label {
+            color: var(--text-muted-soft);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 0.35rem;
+            font-weight: 600;
+        }
+
+        /* Alert Cards */
+        .alerts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .alert-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 1.15rem;
+            padding: 1.75rem;
+            border-left: 5px solid;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .alert-card:hover::before {
+            opacity: 1;
+        }
+
+        .alert-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert-card.critical { border-left-color: var(--danger); }
+        .alert-card.high { border-left-color: #fb923c; }
+        .alert-card.medium { border-left-color: var(--warning); }
+        .alert-card.low { border-left-color: var(--success); }
+
+        .alert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.15rem;
+            gap: 1rem;
+        }
+
+        .alert-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f9fafb;
+            flex: 1;
+        }
+
+        .alert-severity {
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+
+        .alert-severity.critical { background: rgba(248, 113, 113, 0.25); color: var(--danger); }
+        .alert-severity.high { background: rgba(251, 146, 60, 0.25); color: #fb923c; }
+        .alert-severity.medium { background: rgba(250, 204, 21, 0.25); color: var(--warning); }
+        .alert-severity.low { background: rgba(74, 222, 128, 0.25); color: var(--success); }
+
+        .alert-description {
+            color: var(--text-muted-soft);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 1.15rem;
+        }
+
+        .alert-impact {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 0.65rem;
+            margin-bottom: 1.15rem;
+            border-left: 3px solid rgba(56, 189, 248, 0.4);
+        }
+
+        .alert-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.15rem;
+        }
+
+        .source-tag {
+            padding: 0.35rem 0.85rem;
+            background: rgba(148, 163, 184, 0.25);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            color: var(--text-muted-soft);
+            font-weight: 600;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 3.5rem;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 5px solid rgba(56, 189, 248, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.25rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 2px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .section-header i {
+            color: var(--accent);
+            font-size: 1.65rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #f9fafb;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .alerts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-stats {
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+
+            .page-title {
+                font-size: 1.65rem;
+            }
+
+            .btn-premium-primary,
+            .btn-premium-secondary {
+                padding: 0.85rem 1.75rem;
+                font-size: 0.95rem;
+            }
+            
+            .alert-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-shell">
+    <!-- Back Button -->
+    <a href="/" class="btn-back">
+        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+    </a>
+
+    <!-- Header -->
+    <div class="glass-panel">
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fas fa-shield-alt me-2"></i>
+                Warning & Opportunity System
+            </h1>
+            <p class="page-subtitle">
+                AI-powered risk analysis and opportunity detection for Sri Lankan businesses
+            </p>
+        </div>
+    </div>
+
+    <!-- Input Form -->
+    <div class="glass-panel">
+        <div class="section-header">
+            <i class="fas fa-building"></i>
+            <h3>Business Information</h3>
+        </div>
+
+        <form id="analysisForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="businessName">
+                        <i class="fas fa-briefcase me-2"></i>Business Name <span style="color: var(--danger);">*</span>
+                    </label>
+                    <input type="text"
+                           class="form-control"
+                           id="businessName"
+                           placeholder="Enter your business name"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="businessDistrict">
+                        <i class="fas fa-map-marker-alt me-2"></i>District <span style="color: var(--danger);">*</span>
+                    </label>
+                    <select class="form-select" id="businessDistrict" required>
+                        <option value="">Select your district...</option>
+                        <option value="Colombo">Colombo</option>
+                        <option value="Gampaha">Gampaha</option>
+                        <option value="Kalutara">Kalutara</option>
+                        <option value="Kandy">Kandy</option>
+                        <option value="Matale">Matale</option>
+                        <option value="Nuwara Eliya">Nuwara Eliya</option>
+                        <option value="Galle">Galle</option>
+                        <option value="Matara">Matara</option>
+                        <option value="Hambantota">Hambantota</option>
+                        <option value="Jaffna">Jaffna</option>
+                        <option value="Kilinochchi">Kilinochchi</option>
+                        <option value="Mannar">Mannar</option>
+                        <option value="Vavuniya">Vavuniya</option>
+                        <option value="Mullaitivu">Mullaitivu</option>
+                        <option value="Batticaloa">Batticaloa</option>
+                        <option value="Ampara">Ampara</option>
+                        <option value="Trincomalee">Trincomalee</option>
+                        <option value="Kurunegala">Kurunegala</option>
+                        <option value="Puttalam">Puttalam</option>
+                        <option value="Anuradhapura">Anuradhapura</option>
+                        <option value="Polonnaruwa">Polonnaruwa</option>
+                        <option value="Badulla">Badulla</option>
+                        <option value="Moneragala">Moneragala</option>
+                        <option value="Ratnapura">Ratnapura</option>
+                        <option value="Kegalle">Kegalle</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section-header mt-4">
+                <i class="fas fa-cogs"></i>
+                <h3>Business Operations</h3>
+            </div>
+
+            <p class="text-muted mb-3" style="font-size: 0.9rem;">
+                <i class="fas fa-info-circle me-2"></i>
+                Select all operations relevant to your business
+            </p>
+
+            <div class="checkbox-grid">
+                <!-- Export/Import -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_export" value="Export">
+                    <label class="checkbox-label" for="op_export">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Export
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_import" value="Import">
+                    <label class="checkbox-label" for="op_import">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Import
+                    </label>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_manufacturing" value="Manufacturing">
+                    <label class="checkbox-label" for="op_manufacturing">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Manufacturing
+                    </label>
+                </div>
+
+                <!-- Agriculture -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_agriculture" value="Agriculture">
+                    <label class="checkbox-label" for="op_agriculture">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Agriculture
+                    </label>
+                </div>
+
+                <!-- Retail -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_retail" value="Retail">
+                    <label class="checkbox-label" for="op_retail">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Retail
+                    </label>
+                </div>
+
+                <!-- Services -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_services" value="Services">
+                    <label class="checkbox-label" for="op_services">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Services
+                    </label>
+                </div>
+
+                <!-- Tourism -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_tourism" value="Tourism">
+                    <label class="checkbox-label" for="op_tourism">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Tourism
+                    </label>
+                </div>
+
+                <!-- Construction -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_construction" value="Construction">
+                    <label class="checkbox-label" for="op_construction">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Construction
+                    </label>
+                </div>
+
+                <!-- Technology -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_technology" value="Technology">
+                    <label class="checkbox-label" for="op_technology">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Technology
+                    </label>
+                </div>
+
+                <!-- Food & Beverage -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_food_beverage" value="Food & Beverage">
+                    <label class="checkbox-label" for="op_food_beverage">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Food & Beverage
+                    </label>
+                </div>
+
+                <!-- Supply Chain -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_supply_chain" value="Supply Chain">
+                    <label class="checkbox-label" for="op_supply_chain">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Supply Chain
+                    </label>
+                </div>
+
+                <!-- Logistics -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_logistics" value="Logistics">
+                    <label class="checkbox-label" for="op_logistics">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Logistics
+                    </label>
+                </div>
+
+                <!-- Cloud Hosting -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_cloud_hosting" value="Cloud Hosting">
+                    <label class="checkbox-label" for="op_cloud_hosting">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Cloud Hosting
+                    </label>
+                </div>
+
+                <!-- Payment Processing -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_payment_processing" value="Payment Processing">
+                    <label class="checkbox-label" for="op_payment_processing">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Payment Processing
+                    </label>
+                </div>
+
+                <!-- E-commerce -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_ecommerce" value="E-commerce">
+                    <label class="checkbox-label" for="op_ecommerce">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        E-commerce
+                    </label>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_financial_services" value="Financial Services">
+                    <label class="checkbox-label" for="op_financial_services">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Financial Services
+                    </label>
+                </div>
+
+                <!-- Healthcare Services -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_healthcare" value="Healthcare Services">
+                    <label class="checkbox-label" for="op_healthcare">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Healthcare Services
+                    </label>
+                </div>
+
+                <!-- Education -->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="op_education" value="Education">
+                    <label class="checkbox-label" for="op_education">
+                        <span class="checkbox-icon">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Education
+                    </label>
+                </div>
+            </div>
+
+            <div class="d-flex gap-3 justify-content-center mt-5">
+                <button type="submit" class="btn-premium-primary">
+                    <i class="fas fa-search me-2"></i>Generate Intelligence Report
+                </button>
+                <button type="reset" class="btn-premium-secondary">
+                    <i class="fas fa-redo me-2"></i>Reset Form
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="glass-panel loading" id="loading">
+        <div class="spinner"></div>
+        <p class="text-muted" style="font-size: 1.05rem; font-weight: 600;">Analyzing business environment...</p>
+        <p class="text-muted" style="font-size: 0.9rem;">Processing market trends, logistics data, and knowledge graph</p>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section" id="resultsSection">
+        <!-- Results Header -->
+        <div class="glass-panel">
+            <div class="result-header">
+                <h2 id="resultBusinessName">Analysis Results</h2>
+                <p class="text-muted">Comprehensive risk and opportunity assessment</p>
+
+                <div class="result-stats">
+                    <div class="stat-item">
+                        <span class="stat-value danger" id="criticalCount">0</span>
+                        <span class="stat-label">Critical Risks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value warning" id="warningCount">0</span>
+                        <span class="stat-label">Warnings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value success" id="opportunityCount">0</span>
+                        <span class="stat-label">Opportunities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Grid -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Insights & Recommendations</h3>
+            </div>
+            <div class="alerts-grid" id="alertsContainer"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Form submission handler
+document.getElementById('analysisForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const businessName = document.getElementById('businessName').value.trim();
+    const district = document.getElementById('businessDistrict').value;
+    
+    if (!businessName || !district) {
+        alert('Please fill in all required fields');
+        return;
+    }
+
+    const operations = [];
+    
+    // Collect all checked operations
+    document.querySelectorAll('.checkbox-item input[type="checkbox"]:checked').forEach(checkbox => {
+        operations.push(checkbox.value);
+    });
+
+    console.log('Submitting analysis:', { businessName, district, operations });
+
+    // Show loading
+    document.getElementById('loading').classList.add('active');
+    document.getElementById('resultsSection').classList.remove('active');
+
+    // Scroll to loading
+    document.getElementById('loading').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Call analysis API
+    try {
+        const response = await fetch('/api/risk/analyze', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                businessName: businessName,
+                district: district,
+                operations: operations
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `API error: ${response.status}`);
+        }
+
+        const results = await response.json();
+        console.log('Analysis results:', results);
+        displayResults(results);
+
+    } catch (error) {
+        console.error('Analysis error:', error);
+        document.getElementById('loading').classList.remove('active');
+        alert(`Failed to analyze risks: ${error.message}\n\nPlease check the console for more details.`);
+    }
+});
+
+function displayResults(results) {
+    // Hide loading
+    document.getElementById('loading').classList.remove('active');
+
+    // Update header
+    document.getElementById('resultBusinessName').textContent =
+        `${results.business_name} (${results.district}) - Intelligence Report`;
+
+    // Count alerts by severity
+    const alerts = results.alerts || [];
+    const counts = {
+        critical: alerts.filter(a => a.severity === 'critical').length,
+        warning: alerts.filter(a => a.severity === 'high' || a.severity === 'medium').length,
+        opportunity: alerts.filter(a => a.severity === 'low').length
+    };
+
+    document.getElementById('criticalCount').textContent = counts.critical;
+    document.getElementById('warningCount').textContent = counts.warning;
+    document.getElementById('opportunityCount').textContent = counts.opportunity;
+
+    // Display alerts
+    displayAlerts(alerts);
+
+    // Show results
+    document.getElementById('resultsSection').classList.add('active');
+
+    // Scroll to results
+    setTimeout(() => {
+        document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+}
+
+function displayAlerts(alerts) {
+    const container = document.getElementById('alertsContainer');
+    container.innerHTML = '';
+
+    if (alerts.length === 0) {
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 3.5rem;">
+                <i class="fas fa-check-circle" style="font-size: 3.5rem; color: var(--success); margin-bottom: 1.25rem;"></i>
+                <p class="text-muted" style="font-size: 1.2rem; font-weight: 600;">No significant risks or opportunities detected.</p>
+                <p class="text-muted" style="font-size: 1rem;">Your business appears to be operating under favorable conditions.</p>
+            </div>
+        `;
+        return;
+    }
+
+    // Sort alerts by severity (critical first)
+    const severityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+    alerts.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
+
+    alerts.forEach(alert => {
+        const card = document.createElement('div');
+        card.className = `alert-card ${alert.severity}`;
+
+        const sources = alert.sources || [];
+        const sourcesHTML = sources.length > 0 
+            ? sources.map(s => `<span class="source-tag"><i class="fas fa-tag me-1"></i>${s}</span>`).join('')
+            : '<span class="source-tag"><i class="fas fa-tag me-1"></i>System Analysis</span>';
+
+        card.innerHTML = `
+            <div class="alert-header">
+                <div class="alert-title">${alert.title || 'Alert'}</div>
+                <span class="alert-severity ${alert.severity}">${alert.severity}</span>
+            </div>
+            <div class="alert-description">${alert.description || 'No description available'}</div>
+            <div class="alert-impact">
+                <strong><i class="fas fa-info-circle me-2"></i>Impact:</strong> ${alert.impact || 'Impact assessment pending'}
+            </div>
+            <div class="alert-sources">
+                ${sourcesHTML}
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+// Reset form handler
+document.getElementById('analysisForm').addEventListener('reset', function() {
+    document.getElementById('resultsSection').classList.remove('active');
+    // Uncheck all checkboxes
+    document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+});
+
+// Log page load
+console.log('Warning System loaded successfully');
+</script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "finance": {
-    "article_count": 83,
-    "avg_sentiment": 0.094,
+    "article_count": 78,
+    "avg_sentiment": 0.093,
     "sentiment_label": "neutral",
     "top_keywords": [
       {
@@ -17,151 +17,154 @@
         "keyword": "Brain drain"
       },
       {
-        "keyword": "Secure360"
+        "keyword": "Interest rates"
       },
       {
-        "keyword": "TradeLinc"
+        "keyword": "Vehicle financing"
       },
       {
-        "keyword": "AI-assisted credit scoring"
+        "keyword": "Leasing interest rates"
       },
       {
-        "keyword": "Digital transformation"
+        "keyword": "Customer-focused solutions"
       },
       {
-        "keyword": "Cyberthreats"
+        "keyword": "Economic progress"
       },
       {
-        "keyword": "Supply chain financing"
+        "keyword": "Financial performance"
       }
     ],
     "top_organizations": [
       {
+        "org": "Sampath Bank PLC"
+      },
+      {
         "org": "NDB Bank"
       },
       {
-        "org": "TradeLinc"
+        "org": "Ideal Motors (Pvt) Ltd."
       },
       {
         "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "BCS The Chartered Institute for IT (Sri Lanka Section)"
+        "org": "Sampath Credit Cards"
+      },
+      {
+        "org": "Mahindra & Mahindra Ltd."
+      },
+      {
+        "org": "Central Investment Securities"
       },
       {
         "org": "PEPPERCUBE"
       },
       {
-        "org": "Indika Gunawardana"
-      },
-      {
-        "org": "NDB Bank"
-      },
-      {
-        "org": "Sri Lankan Businesses"
-      },
-      {
-        "org": "AI and ML"
+        "org": "National Development Bank PLC"
       }
     ]
   },
   "agriculture": {
-    "article_count": 21,
-    "avg_sentiment": 0.086,
+    "article_count": 20,
+    "avg_sentiment": 0.092,
     "sentiment_label": "neutral",
     "top_keywords": [
       {
-        "keyword": "GDP growth"
+        "keyword": "Natural rubber production"
+      },
+      {
+        "keyword": "rubber replanting"
+      },
+      {
+        "keyword": "smallholder farmers"
+      },
+      {
+        "keyword": "rubber gestation period"
       },
       {
         "keyword": "agricultural output"
       },
       {
-        "keyword": "harvest performance"
+        "keyword": "worker remittances"
       },
       {
-        "keyword": "sales volumes"
+        "keyword": "export growth"
       },
       {
-        "keyword": "investment climate"
+        "keyword": "agricultural incentives"
       },
       {
-        "keyword": "economic resilience"
+        "keyword": "commodity price volatility"
       },
       {
-        "keyword": "economic outlook"
-      },
-      {
-        "keyword": "export commodities"
-      },
-      {
-        "keyword": "fertilizer demand"
-      },
-      {
-        "keyword": "market stabilization"
+        "keyword": "agricultural financing"
       }
     ],
     "top_organizations": [
       {
-        "org": "Ministry of Agriculture"
+        "org": "Department of Agriculture"
       },
       {
-        "org": "PepperCube Consultants"
+        "org": "Rubber Development Department"
       },
       {
-        "org": "PEPPERCUBE Business Confidence Index"
+        "org": "National Institute of Smallholders"
       },
       {
-        "org": "Ministry of Finance"
-      },
-      {
-        "org": "John Keells Holdings"
-      },
-      {
-        "org": "Lanka APA Group"
+        "org": "Lanka ORIX Leasing & Finance"
       },
       {
         "org": "Hatton National Bank"
       },
       {
+        "org": "John Keells Holdings"
+      },
+      {
+        "org": "INSEE Cement"
+      },
+      {
+        "org": "Emirates Lanka Limited"
+      },
+      {
         "org": "National Livestock Development Corporation"
       },
       {
-        "org": "Department of Agriculture"
+        "org": "Sri Lanka Tea Board"
       }
     ]
   },
   "government": {
-    "article_count": 43,
-    "avg_sentiment": 0.1,
-    "sentiment_label": "positive",
+    "article_count": 48,
+    "avg_sentiment": 0.082,
+    "sentiment_label": "neutral",
     "top_keywords": [
       {
-        "keyword": "Tax Rate"
+        "keyword": "VAT rate"
       },
       {
-        "keyword": "VAT Rate"
+        "keyword": "fiscal discipline"
       },
       {
-        "keyword": "Budget 2026"
+        "keyword": "social measures"
       },
       {
-        "keyword": "Economic Output"
+        "keyword": "macroeconomic stability"
       },
       {
-        "keyword": "Macroeconomic Stability"
+        "keyword": "budget 2026"
       },
       {
-        "keyword": "Poverty Rates"
+        "keyword": "Sri Lanka development update"
       },
       {
-        "keyword": "Sri Lanka Development Update"
+        "keyword": "economic output"
       },
       {
-        "keyword": "Business Confidence Index"
+        "keyword": "poverty rates"
       },
       {
-        "keyword": "Socioeconomic Challenges"
+        "keyword": "confidence index"
       }
     ],
     "top_organizations": [
@@ -172,65 +175,68 @@
         "org": "World Bank"
       },
       {
-        "org": "Sri Lanka Development Bank"
+        "org": "International Monetary Fund"
       },
       {
         "org": "World Economic Forum"
       },
       {
-        "org": "International Monetary Fund"
-      },
-      {
         "org": "PepperCube Consultants"
       },
       {
-        "org": "Sri Lanka Institute of Tourism and Hotel Management"
+        "org": "Sri Lanka Development Update"
       },
       {
         "org": "Ministry of Finance"
       },
       {
-        "org": "Department of National Lands Survey"
+        "org": "Sri Lanka Assurance Corporation"
       },
       {
-        "org": "Sri Lanka Ports Authority"
+        "org": "John Keells Holdings"
       }
     ]
   },
   "technology": {
     "article_count": 39,
-    "avg_sentiment": 0.144,
+    "avg_sentiment": 0.129,
     "sentiment_label": "positive",
     "top_keywords": [
       {
-        "keyword": "Coatings enterprise"
+        "keyword": "Industrial wood coatings"
       },
       {
-        "keyword": "Australasia expansion"
+        "keyword": "AI-assisted credit scoring"
       },
       {
-        "keyword": "Global manufacturing"
+        "keyword": "Cybersecurity"
       },
       {
-        "keyword": "Brand equity"
+        "keyword": "Supply Chain Financing"
       },
       {
-        "keyword": "Sustainable solutions"
+        "keyword": "Digital Banking"
       },
       {
-        "keyword": "Distribution networks"
+        "keyword": "Risk Scoring"
       },
       {
-        "keyword": "Coatings formulation"
+        "keyword": "Predictive Analytics"
       },
       {
-        "keyword": "International markets"
+        "keyword": "Brand Acquisition"
       },
       {
-        "keyword": "Sri Lankan multinational"
+        "keyword": "International Markets"
+      },
+      {
+        "keyword": "Fintech"
       }
     ],
     "top_organizations": [
+      {
+        "org": "NDB Bank"
+      },
       {
         "org": "JAT Holdings PLC"
       },
@@ -238,103 +244,100 @@
         "org": "Mirotone (NZ) Limited"
       },
       {
-        "org": "Central Bank of Sri Lanka"
+        "org": "BCS The Chartered Institute for IT (Sri Lanka Section)"
       },
       {
-        "org": "Sri Lanka Institute of Nanotechnology"
+        "org": "Asia Pacific ICT Alliance (APICTA)"
       },
       {
-        "org": "Telecommunications Regulatory Authority of Sri Lanka"
+        "org": "TradeLinc"
       },
       {
-        "org": "John Keells Holdings"
+        "org": "NBQSA"
       },
       {
-        "org": "Lanka Institute of Standards and Quality"
+        "org": "JAT Holdings PLC"
       },
       {
-        "org": "Mobitel"
+        "org": "Mirotone (NZ) Limited"
       },
       {
-        "org": "Singer Sri Lanka"
-      },
-      {
-        "org": "Hayleys Ltd"
+        "org": "JAT Holdings PLC"
       }
     ]
   },
   "general": {
     "article_count": 18,
-    "avg_sentiment": 0.072,
+    "avg_sentiment": 0.089,
     "sentiment_label": "neutral",
     "top_keywords": [
       {
-        "keyword": "Cost of Living Index"
+        "keyword": "Displaced Persons"
       },
       {
-        "keyword": "Consumer Price Index"
+        "keyword": "Humanitarian Needs"
       },
       {
-        "keyword": "Inflation Rates"
+        "keyword": "Emergency Interventions"
       },
       {
-        "keyword": "Perceived Escalation"
+        "keyword": "GN Divisions"
       },
       {
-        "keyword": "Non-Food Items"
+        "keyword": "Telecommunications Blackouts"
       },
       {
-        "keyword": "Financial Rewards"
+        "keyword": "Skilled Professionals Departure"
       },
       {
-        "keyword": "Organisational Goals"
+        "keyword": "Digital Divide"
       },
       {
-        "keyword": "Leadership Motivations"
+        "keyword": "Flood Damage"
       },
       {
-        "keyword": "Perceived Escalation"
+        "keyword": "Phase 1 Interventions"
       },
       {
-        "keyword": "Consumer Price Index"
+        "keyword": "LKR 15 Million"
       }
     ],
     "top_organizations": [
       {
-        "org": "PepperCube"
-      },
-      {
-        "org": "Colombo Consumer Price Index"
-      },
-      {
-        "org": "Harvard Business Review"
+        "org": "ChildFund Sri Lanka"
       },
       {
         "org": "Central Bank of Sri Lanka"
       },
       {
+        "org": "Sri Lanka Institute of National Policy"
+      },
+      {
+        "org": "Ministry of Finance"
+      },
+      {
+        "org": "Department of Samurdhi"
+      },
+      {
+        "org": "Sri Lanka Ports Authority"
+      },
+      {
         "org": "John Keells Holdings"
       },
       {
-        "org": "Ceylon Biscuits Limited"
+        "org": "Dilmah Tea"
       },
       {
-        "org": "Singer Sri Lanka"
+        "org": "SLT"
       },
       {
-        "org": "HNB PLC"
-      },
-      {
-        "org": "Mobitel"
-      },
-      {
-        "org": "Union Assurance"
+        "org": "Ministry of Education"
       }
     ]
   },
   "transport": {
-    "article_count": 27,
-    "avg_sentiment": 0.108,
+    "article_count": 24,
+    "avg_sentiment": 0.12,
     "sentiment_label": "positive",
     "top_keywords": [
       {
@@ -362,10 +365,10 @@
         "keyword": "Regional Integration"
       },
       {
-        "keyword": "Economic Links"
+        "keyword": "Community Engagement"
       },
       {
-        "keyword": "Delft Island"
+        "keyword": "Fisheries Exports"
       }
     ],
     "top_organizations": [
@@ -385,59 +388,62 @@
         "org": "Sri Lanka Ports Authority"
       },
       {
-        "org": "Ceylon Railway Corporation"
+        "org": "John Keells Holdings"
       },
       {
         "org": "Palk Strait"
       },
       {
-        "org": "Sri Lanka Ports Authority"
+        "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "Sri Lanka Customs"
+        "org": "Ministry of Transport"
       },
       {
-        "org": "India"
+        "org": "Sri Lanka Railways"
       }
     ]
   },
   "healthcare": {
-    "article_count": 8,
-    "avg_sentiment": 0.108,
-    "sentiment_label": "positive",
+    "article_count": 9,
+    "avg_sentiment": 0.097,
+    "sentiment_label": "neutral",
     "top_keywords": [
       {
-        "keyword": "Primary Health Care"
+        "keyword": "Clinical waste transport lorries"
       },
       {
-        "keyword": "Non-Communicable Diseases"
+        "keyword": "Public Health Midwives"
       },
       {
-        "keyword": "Elderly Care"
+        "keyword": "Non-communicable diseases"
       },
       {
-        "keyword": "Palliative Care"
+        "keyword": "Refrigerated trucks"
       },
       {
-        "keyword": "Community-Level Health Services"
+        "keyword": "Primary health care"
       },
       {
-        "keyword": "Climate-Related Emergencies"
+        "keyword": "Community-level health services"
       },
       {
-        "keyword": "International Development Association"
+        "keyword": "Ragama Hospital"
       },
       {
-        "keyword": "World Bank Group"
+        "keyword": "Lady Ridgeway Hospital"
       },
       {
-        "keyword": "Non-Communicable Diseases"
+        "keyword": "Fleet management"
       },
       {
-        "keyword": "IDA Project"
+        "keyword": "Medical Supply Division"
       }
     ],
     "top_organizations": [
+      {
+        "org": "Cabinet of Ministers"
+      },
       {
         "org": "World Bank Group"
       },
@@ -445,56 +451,62 @@
         "org": "International Development Association"
       },
       {
-        "org": "Government of Sri Lanka"
+        "org": "Lady Ridgeway Hospital"
       },
       {
-        "org": "Health Ministry"
+        "org": "Ragama Hospital"
       },
       {
-        "org": "Nalinda Jayatissa"
+        "org": "Public Health Midwives"
       },
       {
-        "org": "Lankadeepa"
+        "org": "Primary Care Nurses"
       },
       {
-        "org": "Ada Derhaya"
+        "org": "Medical Supply Division"
+      },
+      {
+        "org": "Divisional Health Office"
+      },
+      {
+        "org": "Jaffna district"
       }
     ]
   },
   "tourism": {
     "article_count": 15,
-    "avg_sentiment": 0.163,
+    "avg_sentiment": 0.145,
     "sentiment_label": "positive",
     "top_keywords": [
       {
         "keyword": "Arugam Bay"
       },
       {
-        "keyword": "Visa System"
+        "keyword": "visa system"
       },
       {
-        "keyword": "Destination Promotion"
+        "keyword": "retail destination"
       },
       {
-        "keyword": "Retail Experience"
+        "keyword": "cumulative arrivals"
       },
       {
-        "keyword": "Mall Retail"
+        "keyword": "dollar incomes"
       },
       {
-        "keyword": "Cumulative Arrivals"
+        "keyword": "destination promotion"
       },
       {
-        "keyword": "Dollar Inflows"
+        "keyword": "retail environment"
       },
       {
-        "keyword": "Visa System Challenges"
+        "keyword": "retail experience"
       },
       {
-        "keyword": "Retail Environment"
+        "keyword": "retail space"
       },
       {
-        "keyword": "Mall Retail"
+        "keyword": "retail design"
       }
     ],
     "top_organizations": [
@@ -511,98 +523,101 @@
         "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "US Department of State"
+        "org": "John Keells Holdings"
       },
       {
-        "org": "Sri Lanka Immigration Department"
+        "org": "US Department of State"
       },
       {
         "org": "Arugam Bay"
       },
       {
-        "org": "Sri Lanka Tourism Development Authority"
+        "org": "Sri Lanka Immigration Department"
+      },
+      {
+        "org": "Tourism Development Authority of Sri Lanka"
       },
       {
         "org": "Government of Sri Lanka"
-      },
-      {
-        "org": "Department of Civil Aviation"
       }
     ]
   },
   "energy": {
-    "article_count": 13,
-    "avg_sentiment": 0.109,
+    "article_count": 14,
+    "avg_sentiment": 0.107,
     "sentiment_label": "positive",
     "top_keywords": [
       {
-        "keyword": "Renewable energy"
+        "keyword": "Renewables"
       },
       {
-        "keyword": "solar energy"
+        "keyword": "Grid Stability"
       },
       {
-        "keyword": "wind energy"
+        "keyword": "Battery Storage"
       },
       {
-        "keyword": "energy hub"
+        "keyword": "Fossil Fuels"
       },
       {
-        "keyword": "Mannar development"
+        "keyword": "Solar Projects"
       },
       {
-        "keyword": "electric vehicles"
+        "keyword": "Oil Production"
       },
       {
-        "keyword": "heat pumps"
+        "keyword": "Synchronous Condensers"
       },
       {
-        "keyword": "grid infrastructure"
+        "keyword": "Electric Vehicles"
       },
       {
-        "keyword": "Punarin energy city"
+        "keyword": "Clean Technologies"
       },
       {
-        "keyword": "inter-city express train"
+        "keyword": "Energy Crisis"
       }
     ],
     "top_organizations": [
       {
-        "org": "IEA"
+        "org": "Australian Energy Market Operator"
       },
       {
-        "org": "Mannar"
+        "org": "International Energy Agency"
       },
       {
-        "org": "National Shrine of Our Lady of Madhu"
+        "org": "Ferrari"
       },
       {
-        "org": "Reuters"
+        "org": "Pop Mart"
       },
       {
-        "org": "Ember"
+        "org": "World Energy Investment"
       },
       {
-        "org": "Thalaimannar"
+        "org": "Kasing Lung"
       },
       {
-        "org": "China"
+        "org": "How2Work"
       },
       {
-        "org": "Inflation Reduction Act"
+        "org": "Hong Kong’s toy factories"
+      },
+      {
+        "org": "Mattel"
+      },
+      {
+        "org": "Bandai"
       }
     ]
   },
   "construction": {
-    "article_count": 7,
-    "avg_sentiment": 0.091,
+    "article_count": 5,
+    "avg_sentiment": 0.087,
     "sentiment_label": "neutral",
     "top_keywords": [
       {
         "keyword": "MRP"
-      },
-      {
-        "keyword": "EXCON"
       },
       {
         "keyword": "Bharatmala"
@@ -611,27 +626,33 @@
         "keyword": "PM Gati Shakti"
       },
       {
-        "keyword": "Infrastructure Projects"
+        "keyword": "EXCON"
       },
       {
-        "keyword": "Sri Lankan Exports"
+        "keyword": "infrastructure revolution"
       },
       {
-        "keyword": "Consumer Protection Framework"
+        "keyword": "cement prices"
       },
       {
-        "keyword": "Cement Prices"
+        "keyword": "consumer protection framework"
       },
       {
-        "keyword": "Port Expansion"
+        "keyword": "port expansion"
       },
       {
-        "keyword": "Infrastructure Revolution"
+        "keyword": "infrastructure development"
+      },
+      {
+        "keyword": "CE market"
       }
     ],
     "top_organizations": [
       {
-        "org": "Consumer Affairs Authority"
+        "org": "CAA"
+      },
+      {
+        "org": "CII"
       },
       {
         "org": "LAUGFS Rubber"
@@ -640,13 +661,13 @@
         "org": "OTR Enterprise Solutions"
       },
       {
-        "org": "CII"
-      },
-      {
-        "org": "Confederation of Indian Industry"
-      },
-      {
         "org": "Chandrajit Banerjee"
+      },
+      {
+        "org": "Nalin Fernando"
+      },
+      {
+        "org": "Deepak Shetty"
       },
       {
         "org": "Mukundan"
@@ -655,79 +676,76 @@
         "org": "Bharatmala"
       },
       {
-        "org": "Mukundan"
-      },
-      {
-        "org": "Bharat Mehta"
+        "org": "Bharatmala"
       }
     ]
   },
   "manufacturing": {
-    "article_count": 11,
-    "avg_sentiment": 0.094,
-    "sentiment_label": "neutral",
+    "article_count": 9,
+    "avg_sentiment": 0.11,
+    "sentiment_label": "positive",
     "top_keywords": [
       {
-        "keyword": "Sustainability norms"
+        "keyword": "Apparel exports"
       },
       {
-        "keyword": "Eco-friendly dyes"
+        "keyword": "textile exports"
       },
       {
-        "keyword": "Digital platforms"
+        "keyword": "halal certification"
       },
       {
-        "keyword": "AI driven analytics"
+        "keyword": "supply chain diversification"
       },
       {
-        "keyword": "E-commerce platforms"
+        "keyword": "e-commerce platforms"
       },
       {
-        "keyword": "Halal standards"
+        "keyword": "digital payments"
       },
       {
-        "keyword": "Supply chain diversification"
+        "keyword": "regulatory compliance"
       },
       {
-        "keyword": "Policy monitoring"
+        "keyword": "export strategies"
       },
       {
-        "keyword": "Regulatory changes"
+        "keyword": "change readiness"
       },
       {
-        "keyword": "Cash reserves"
+        "keyword": "market diversification"
       }
     ],
     "top_organizations": [
       {
-        "org": "Ceylon Motor Traders’ Association"
+        "org": "Central Bank of Sri Lanka"
       },
       {
-        "org": "Society of Indian Automobile Manufacturers"
+        "org": "Sri Lanka’s Central Bank"
       },
       {
-        "org": "Hilton Colombo Residencies"
+        "org": "Sri Lanka’s Apparel Industry"
       },
       {
-        "org": "Ceylon Chamber of Commerce"
+        "org": "Reuters"
+      },
+      {
+        "org": "Sri Lanka’s Central Bank"
+      },
+      {
+        "org": "Sri Lanka’s Export Development Authority"
       },
       {
         "org": "Gulf Cooperation Council"
       },
       {
-        "org": "Central Bank of Sri Lanka"
+        "org": "Sri Lanka Customs"
       },
       {
-        "org": "Union Ballroom"
+        "org": "Sri Lanka’s Export Development Authority"
       },
       {
         "org": "Sri Lanka Tea Board"
-      },
-      {
-        "org": "Ministry of Industry and Investment Promotion"
-      },
-      {
-        "org": "CMTA"
       }
     ]
   }

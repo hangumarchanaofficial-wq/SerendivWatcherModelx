@@ -44,7 +44,10 @@ logger = logging.getLogger("SerendivWatcher")
 def run_step(name: str, script_rel_path: str) -> bool:
     """
     Execute a pipeline step as subprocess
-    Returns True if successful, False otherwise
+    Output is printed directly to console in real-time
+    
+    Returns:
+        True if successful, False otherwise
     """
     script_path = BASE_DIR / script_rel_path
     
@@ -55,33 +58,29 @@ def run_step(name: str, script_rel_path: str) -> bool:
     logger.info(f"{'='*80}")
     logger.info(f"Starting step: {name}")
     logger.info(f"{'='*80}")
-    logger.info(f"Running: {PYTHON} {script_path}")
+    logger.info(f"Running: {PYTHON} {script_path}\n")
 
     try:
+        # Let subprocess print directly to console (no output capture)
         result = subprocess.run(
             [PYTHON, str(script_path)],
             check=True,
-            capture_output=True,
-            text=True,
-            timeout=1800  # 30 minute timeout per step
+            timeout=1800  # 30 minute timeout
         )
-        logger.info(f"[{name}] completed successfully")
-        if result.stdout:
-            logger.debug(f"Output: {result.stdout[:500]}")
+        
+        logger.info(f"\n[{name}] completed successfully")
         return True
         
     except subprocess.TimeoutExpired:
-        logger.error(f"[{name}] TIMEOUT after 30 minutes")
+        logger.error(f"\n[{name}] TIMEOUT after 30 minutes")
         return False
         
     except subprocess.CalledProcessError as e:
-        logger.error(f"[{name}] FAILED with exit code {e.returncode}")
-        if e.stderr:
-            logger.error(f"Error output: {e.stderr[:500]}")
+        logger.error(f"\n[{name}] FAILED with exit code {e.returncode}")
         return False
         
     except Exception as e:
-        logger.error(f"[{name}] FAILED with unexpected error: {e}")
+        logger.error(f"\n[{name}] FAILED with unexpected error: {e}")
         return False
 
 
@@ -237,10 +236,7 @@ def main(
     """
     
     logger.info("\n" + "=" * 80)
-    logger.info("  ___                     _ _     __        __    _       _               ")
-    logger.info(" / __| ___ _ _ ___ _ _  __| (_)_ _\ \      / /_ _| |_ ___| |_  ___ _ _   ")
-    logger.info(" \__ \/ -_) '_/ -_) ' \/ _` | \ V /\ \ /\ / / _` |  _/ __| ' \/ -_) '_|  ")
-    logger.info(" |___/\___|_| \___|_||_\__,_|_|\_/  \_/\_/\__,_|\__\___|_||_\___|_|    ")
+    logger.info("SERENDIVWATCHER - INTELLIGENCE PLATFORM")
     logger.info("=" * 80)
     logger.info(f"Mode: {mode.upper()}")
     logger.info(f"Started: {datetime.now():%Y-%m-%d %H:%M:%S}")

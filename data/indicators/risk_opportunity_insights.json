@@ -125,7 +125,7 @@
       "title": "Govt. to re-tender Kollupitiya land for mixed development after cancelled lease",
       "url": "https://www.ft.lk/front-page/Govt-to-re-tender-Kollupitiya-land-for-mixed-development-after-cancelled-lease/44-785615",
       "sectors": [
-        "government"
+        "construction"
       ],
       "sentiment": 0.056,
       "severity": "high",
@@ -169,7 +169,7 @@
       "title": "Disaster-related spending: Supplementary allocations will suffice: Treasury",
       "url": "https://www.themorning.lk/articles/WHk9t3XjkVt95AEv4QED",
       "sectors": [
-        "finance"
+        "government"
       ],
       "sentiment": 0.082,
       "severity": "high",
@@ -180,7 +180,7 @@
       "title": "MIT and Microsoft to support data collection on damages caused by Cyclone Ditwah",
       "url": "https://www.ft.lk/front-page/MIT-and-Microsoft-to-support-data-collection-on-damages-caused-by-Cyclone-Ditwah/44-785529",
       "sectors": [
-        "general"
+        "technology"
       ],
       "sentiment": 0.084,
       "severity": "high",
@@ -191,7 +191,7 @@
       "title": "Over 5,700 houses destroyed in severe weather",
       "url": "https://www.themorning.lk/articles/7aoovzTWUyc4M3tmaUEr",
       "sectors": [
-        "construction"
+        "general"
       ],
       "sentiment": 0.091,
       "severity": "high",
@@ -282,50 +282,6 @@
       "url": "https://lmd.lk/sri-lankan-overseas-nov-2025/",
       "sectors": [
         "government"
-      ],
-      "sentiment": 0.384,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "LMD"
-    },
-    {
-      "title": "MICROCOSM",
-      "url": "https://lmd.lk/microcosm-dec-2025/",
-      "sectors": [
-        "government"
-      ],
-      "sentiment": 0.384,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "LMD"
-    },
-    {
-      "title": "GLOBAL EQUITIES",
-      "url": "https://lmd.lk/global-equities-dec-2025/",
-      "sectors": [
-        "technology"
-      ],
-      "sentiment": 0.384,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "LMD"
-    },
-    {
-      "title": "KEY ECONOMIC DATA",
-      "url": "https://lmd.lk/key-economic-data-dec-2025/",
-      "sectors": [
-        "government"
-      ],
-      "sentiment": 0.384,
-      "impact": "medium",
-      "type": "positive_sentiment",
-      "source": "LMD"
-    },
-    {
-      "title": "GLOBAL INNOVATION INDEX 2025",
-      "url": "https://lmd.lk/global-innovation-index-2025/",
-      "sectors": [
-        "technology"
       ],
       "sentiment": 0.384,
       "impact": "medium",
@@ -424,7 +380,7 @@
       "title": "The Sri Lanka Coffee Festival returns: Celebrating the Artistry and Essence of Coffee",
       "url": "https://economictimes.lk/index.php/2023/05/27/the-sri-lanka-coffee-festival-returns-celebrating-the-artistry-and-essence-of-coffee/",
       "sectors": [
-        "tourism"
+        "agriculture"
       ],
       "sentiment": 0.253,
       "impact": "low",
@@ -433,7 +389,7 @@
     }
   ],
   "total_risks": 21,
-  "total_opportunities": 19,
+  "total_opportunities": 15,
   "top_risks": [
     {
       "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
@@ -548,5 +504,5 @@
       "source": "LMD"
     }
   ],
-  "timestamp": "2025-12-13T23:16:14.504426"
+  "timestamp": "2025-12-14T01:50:52.351205"
 }

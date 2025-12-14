@@ -1,17 +1,17 @@
 {
   "timeline": [
     {
-      "date": "2025-12-13",
-      "avg_sentiment": 0.105,
-      "article_count": 286,
+      "date": "2025-12-14",
+      "avg_sentiment": 0.102,
+      "article_count": 280,
       "top_sectors": [
         [
           "finance",
-          83
+          78
         ],
         [
           "government",
-          43
+          48
         ],
         [
           "technology",

@@ -1,0 +1,242 @@
+[
+    {
+      "origin": "Colombo Port",
+      "destination": "Biyagama Export Zone",
+      "district_start": "Colombo",
+      "district_end": "Gampaha",
+      "time_live": "38 mins",
+      "time_normal": "45 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -8
+    },
+    {
+      "origin": "Colombo Port",
+      "destination": "Katunayake Free Trade Zone",
+      "district_start": "Colombo",
+      "district_end": "Puttalam",
+      "time_live": "1 hour 28 mins",
+      "time_normal": "1 hour 48 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -20
+    },
+    {
+      "origin": "Colombo Port",
+      "destination": "Bandaranaike Intl Airport",
+      "district_start": "Colombo",
+      "district_end": "Gampaha",
+      "time_live": "33 mins",
+      "time_normal": "34 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -1
+    },
+    {
+      "origin": "Hambantota Port",
+      "destination": "Mattala Intl Airport",
+      "district_start": "Hambantota",
+      "district_end": "Hambantota",
+      "time_live": "36 mins",
+      "time_normal": "34 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": 2
+    },
+    {
+      "origin": "Peliyagoda Logistics Park",
+      "destination": "Colombo Port",
+      "district_start": "Gampaha",
+      "district_end": "Colombo",
+      "time_live": "13 mins",
+      "time_normal": "19 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -6
+    },
+    {
+      "origin": "Peliyagoda Logistics Park",
+      "destination": "Kandy Distribution Center",
+      "district_start": "Gampaha",
+      "district_end": "Kandy",
+      "time_live": "2 hours 34 mins",
+      "time_normal": "3 hours 15 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -42
+    },
+    {
+      "origin": "Pettah Wholesale Market",
+      "destination": "Dambulla Economic Center",
+      "district_start": "Colombo",
+      "district_end": "Matale",
+      "time_live": "2 hours 54 mins",
+      "time_normal": "3 hours 30 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -37
+    },
+    {
+      "origin": "Seethawaka EPZ",
+      "destination": "Colombo Port",
+      "district_start": "Colombo",
+      "district_end": "Colombo",
+      "time_live": "1 hour 18 mins",
+      "time_normal": "1 hour 40 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -22
+    },
+    {
+      "origin": "Koggala EPZ",
+      "destination": "Hambantota Port",
+      "district_start": "Galle",
+      "district_end": "Hambantota",
+      "time_live": "1 hour 40 mins",
+      "time_normal": "1 hour 38 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": 2
+    },
+    {
+      "origin": "Trincomalee Harbor",
+      "destination": "Dambulla Economic Center",
+      "district_start": "Trincomalee",
+      "district_end": "Matale",
+      "time_live": "2 hours 15 mins",
+      "time_normal": "2 hours 19 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -4
+    },
+    {
+      "origin": "Jaffna Peninsula",
+      "destination": "Vavuniya Warehouses",
+      "district_start": "Jaffna",
+      "district_end": "Vavuniya",
+      "time_live": "2 hours 9 mins",
+      "time_normal": "2 hours 14 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -5
+    },
+    {
+      "origin": "Kurunegala Hub",
+      "destination": "Colombo Port",
+      "district_start": "Kurunegala",
+      "district_end": "Colombo",
+      "time_live": "1 hour 52 mins",
+      "time_normal": "2 hours 14 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -21
+    },
+    {
+      "origin": "Biyagama Export Zone",
+      "destination": "Colombo Port",
+      "district_start": "Gampaha",
+      "district_end": "Colombo",
+      "time_live": "36 mins",
+      "time_normal": "45 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -9
+    },
+    {
+      "origin": "Katunayake Free Trade Zone",
+      "destination": "Colombo Port",
+      "district_start": "Puttalam",
+      "district_end": "Colombo",
+      "time_live": "1 hour 28 mins",
+      "time_normal": "1 hour 49 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -21
+    },
+    {
+      "origin": "Bandaranaike Intl Airport",
+      "destination": "Colombo Port",
+      "district_start": "Gampaha",
+      "district_end": "Colombo",
+      "time_live": "37 mins",
+      "time_normal": "40 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -2
+    },
+    {
+      "origin": "Mattala Intl Airport",
+      "destination": "Hambantota Port",
+      "district_start": "Hambantota",
+      "district_end": "Hambantota",
+      "time_live": "29 mins",
+      "time_normal": "29 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": 0
+    },
+    {
+      "origin": "Colombo Port",
+      "destination": "Peliyagoda Logistics Park",
+      "district_start": "Colombo",
+      "district_end": "Gampaha",
+      "time_live": "13 mins",
+      "time_normal": "18 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -5
+    },
+    {
+      "origin": "Kandy Distribution Center",
+      "destination": "Peliyagoda Logistics Park",
+      "district_start": "Kandy",
+      "district_end": "Gampaha",
+      "time_live": "2 hours 31 mins",
+      "time_normal": "3 hours 16 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -46
+    },
+    {
+      "origin": "Dambulla Economic Center",
+      "destination": "Pettah Wholesale Market",
+      "district_start": "Matale",
+      "district_end": "Colombo",
+      "time_live": "3 hours 2 mins",
+      "time_normal": "3 hours 25 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -24
+    },
+    {
+      "origin": "Colombo Port",
+      "destination": "Seethawaka EPZ",
+      "district_start": "Colombo",
+      "district_end": "Colombo",
+      "time_live": "1 hour 15 mins",
+      "time_normal": "1 hour 40 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -25
+    },
+    {
+      "origin": "Hambantota Port",
+      "destination": "Koggala EPZ",
+      "district_start": "Hambantota",
+      "district_end": "Galle",
+      "time_live": "1 hour 45 mins",
+      "time_normal": "1 hour 45 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": 1
+    },
+    {
+      "origin": "Dambulla Economic Center",
+      "destination": "Trincomalee Harbor",
+      "district_start": "Matale",
+      "district_end": "Trincomalee",
+      "time_live": "2 hours 15 mins",
+      "time_normal": "2 hours 19 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -4
+    },
+    {
+      "origin": "Vavuniya Warehouses",
+      "destination": "Jaffna Peninsula",
+      "district_start": "Vavuniya",
+      "district_end": "Jaffna",
+      "time_live": "2 hours 16 mins",
+      "time_normal": "2 hours 23 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -7
+    },
+    {
+      "origin": "Colombo Port",
+      "destination": "Kurunegala Hub",
+      "district_start": "Colombo",
+      "district_end": "Kurunegala",
+      "time_live": "1 hour 48 mins",
+      "time_normal": "2 hours 16 mins",
+      "status": "🟢 ROAD CLEAR",
+      "delay_minutes": -28
+    }
+  ]

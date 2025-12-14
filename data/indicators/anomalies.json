@@ -4,8 +4,8 @@
       "title": "CFA awards spotlight SL’s capital-market trailblazers",
       "url": "https://www.dailymirror.lk/print/business/CFA-awards-spotlight-SLs-capital-market-trailblazers/215-312551",
       "sentiment": 0.432,
-      "z_score": 3.43,
-      "z_score_signed": 3.43,
+      "z_score": 3.67,
+      "z_score_signed": 3.67,
       "sectors": [
         "finance"
       ],
@@ -16,8 +16,8 @@
       "title": "SAMPATH BANK",
       "url": "https://lmd.lk/sampath-bank-131/",
       "sentiment": 0.408,
-      "z_score": 3.18,
-      "z_score_signed": 3.18,
+      "z_score": 3.41,
+      "z_score_signed": 3.41,
       "sectors": [
         "finance"
       ],
@@ -28,8 +28,8 @@
       "title": "Hemas listed in Forbes’ Top 200 Under A Billion in Asia for 2025",
       "url": "https://www.ft.lk/business/Hemas-listed-in-Forbes-Top-200-Under-A-Billion-in-Asia-for-2025/34-785521",
       "sentiment": 0.391,
-      "z_score": 3.0,
-      "z_score_signed": 3.0,
+      "z_score": 3.22,
+      "z_score_signed": 3.22,
       "sectors": [
         "technology"
       ],
@@ -40,8 +40,8 @@
       "title": "Emirates ends the year on high scooping 5 more global awards",
       "url": "https://economictimes.lk/index.php/2025/12/11/emirates-ends-the-year-on-high-scooping-5-more-global-awards/",
       "sentiment": 0.389,
-      "z_score": 2.98,
-      "z_score_signed": 2.98,
+      "z_score": 3.2,
+      "z_score_signed": 3.2,
       "sectors": [
         "transport"
       ],
@@ -52,8 +52,8 @@
       "title": "TOMORROW’S WORLD",
       "url": "https://lmd.lk/tomorrows-world-dec-2025/",
       "sentiment": 0.384,
-      "z_score": 2.93,
-      "z_score_signed": 2.93,
+      "z_score": 3.14,
+      "z_score_signed": 3.14,
       "sectors": [
         "government"
       ],
@@ -64,58 +64,10 @@
       "title": "SRI LANKAN OVERSEAS",
       "url": "https://lmd.lk/sri-lankan-overseas-nov-2025/",
       "sentiment": 0.384,
-      "z_score": 2.93,
-      "z_score_signed": 2.93,
+      "z_score": 3.14,
+      "z_score_signed": 3.14,
       "sectors": [
         "government"
-      ],
-      "source": "LMD",
-      "anomaly_type": "extremely_positive"
-    },
-    {
-      "title": "MICROCOSM",
-      "url": "https://lmd.lk/microcosm-dec-2025/",
-      "sentiment": 0.384,
-      "z_score": 2.93,
-      "z_score_signed": 2.93,
-      "sectors": [
-        "government"
-      ],
-      "source": "LMD",
-      "anomaly_type": "extremely_positive"
-    },
-    {
-      "title": "GLOBAL EQUITIES",
-      "url": "https://lmd.lk/global-equities-dec-2025/",
-      "sentiment": 0.384,
-      "z_score": 2.93,
-      "z_score_signed": 2.93,
-      "sectors": [
-        "technology"
-      ],
-      "source": "LMD",
-      "anomaly_type": "extremely_positive"
-    },
-    {
-      "title": "KEY ECONOMIC DATA",
-      "url": "https://lmd.lk/key-economic-data-dec-2025/",
-      "sentiment": 0.384,
-      "z_score": 2.93,
-      "z_score_signed": 2.93,
-      "sectors": [
-        "government"
-      ],
-      "source": "LMD",
-      "anomaly_type": "extremely_positive"
-    },
-    {
-      "title": "GLOBAL INNOVATION INDEX 2025",
-      "url": "https://lmd.lk/global-innovation-index-2025/",
-      "sentiment": 0.384,
-      "z_score": 2.93,
-      "z_score_signed": 2.93,
-      "sectors": [
-        "technology"
       ],
       "source": "LMD",
       "anomaly_type": "extremely_positive"
@@ -124,8 +76,8 @@
       "title": "Hemas Listed in Forbes’ Top 200 Under a Billion in Asia for 2025",
       "url": "https://economictimes.lk/index.php/2025/12/11/hemas-listed-in-forbes-top-200-under-a-billion-in-asia-for-2025/",
       "sentiment": 0.365,
-      "z_score": 2.73,
-      "z_score_signed": 2.73,
+      "z_score": 2.93,
+      "z_score_signed": 2.93,
       "sectors": [
         "technology"
       ],
@@ -136,8 +88,8 @@
       "title": "CROCODILE ELEVATES SHOPPING EXPERIENCE AT UPGRADED STORE AT ONE GALLE FACE MALL",
       "url": "https://lmd.lk/crocodile-elevates-shopping-experience-at-upgraded-store-at-one-galle-face-mall/",
       "sentiment": 0.362,
-      "z_score": 2.7,
-      "z_score_signed": 2.7,
+      "z_score": 2.89,
+      "z_score_signed": 2.89,
       "sectors": [
         "tourism"
       ],
@@ -145,23 +97,11 @@
       "anomaly_type": "extremely_positive"
     },
     {
-      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
-      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
-      "sentiment": -0.143,
-      "z_score": 2.62,
-      "z_score_signed": -2.62,
-      "sectors": [
-        "finance"
-      ],
-      "source": "EconomicTimes.lk",
-      "anomaly_type": "extremely_negative"
-    },
-    {
       "title": "NDB recognised at CMA Excellence awards",
       "url": "https://www.sundaytimes.lk/251130/business-times/ndb-recognised-at-cma-excellence-awards-622233.html",
       "sentiment": 0.353,
-      "z_score": 2.6,
-      "z_score_signed": 2.6,
+      "z_score": 2.79,
+      "z_score_signed": 2.79,
       "sectors": [
         "finance"
       ],
@@ -169,11 +109,23 @@
       "anomaly_type": "extremely_positive"
     },
     {
+      "title": "World Bank approves $700 mln for crisis-hit Sri Lanka",
+      "url": "https://economictimes.lk/index.php/2023/06/29/world-bank-approves-700-mln-for-crisis-hit-sri-lanka/",
+      "sentiment": -0.143,
+      "z_score": 2.73,
+      "z_score_signed": -2.73,
+      "sectors": [
+        "finance"
+      ],
+      "source": "EconomicTimes.lk",
+      "anomaly_type": "extremely_negative"
+    },
+    {
       "title": "Emirates ends the year on high scooping 5 more global awards",
       "url": "https://www.dailymirror.lk/business-news/Emirates-ends-the-year-on-high-scooping-5-more-global-awards/273-327695",
       "sentiment": 0.337,
-      "z_score": 2.44,
-      "z_score_signed": 2.44,
+      "z_score": 2.62,
+      "z_score_signed": 2.62,
       "sectors": [
         "transport"
       ],
@@ -184,8 +136,8 @@
       "title": "Citrus Leisure, Indira Cancer Trust to help critically-ill children",
       "url": "https://www.sundaytimes.lk/251130/business-times/citrus-leisure-indira-cancer-trust-to-help-critically-ill-children-622217.html",
       "sentiment": 0.308,
-      "z_score": 2.13,
-      "z_score_signed": 2.13,
+      "z_score": 2.29,
+      "z_score_signed": 2.29,
       "sectors": [
         "healthcare"
       ],
@@ -196,16 +148,28 @@
       "title": "Bay of Bengal countries mark World Fisheries Day",
       "url": "https://www.sundaytimes.lk/251130/business-times/bay-of-bengal-countries-mark-world-fisheries-day-622229.html",
       "sentiment": 0.306,
-      "z_score": 2.11,
-      "z_score_signed": 2.11,
+      "z_score": 2.27,
+      "z_score_signed": 2.27,
       "sectors": [
         "agriculture"
       ],
       "source": "SundayTimes",
       "anomaly_type": "extremely_positive"
+    },
+    {
+      "title": "Govt. says early warnings saved lives despite claims of inaction",
+      "url": "https://www.themorning.lk/articles/pk0kxFssDlQH6sPeEH50",
+      "sentiment": -0.083,
+      "z_score": 2.07,
+      "z_score_signed": -2.07,
+      "sectors": [
+        "government"
+      ],
+      "source": "TheMorning",
+      "anomaly_type": "extremely_negative"
     }
   ],
-  "total_anomalies": 17,
-  "mean_sentiment": 0.106,
-  "std_sentiment": 0.095
+  "total_anomalies": 14,
+  "mean_sentiment": 0.102,
+  "std_sentiment": 0.09
 }

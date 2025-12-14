@@ -1,5 +1,114 @@
 {
-  "sector_velocities": [],
-  "fastest_improving": [],
-  "fastest_declining": []
+  "timestamp": "2025-12-14T07:20:56.696154",
+  "sector_velocities": [
+    {
+      "sector": "government",
+      "current_sentiment": 0.082,
+      "previous_sentiment": 0.052,
+      "velocity": 0.03,
+      "trend": "increasing"
+    },
+    {
+      "sector": "construction",
+      "current_sentiment": 0.087,
+      "previous_sentiment": 0.078,
+      "velocity": 0.009,
+      "trend": "stable"
+    },
+    {
+      "sector": "manufacturing",
+      "current_sentiment": 0.11,
+      "previous_sentiment": 0.105,
+      "velocity": 0.005,
+      "trend": "stable"
+    },
+    {
+      "sector": "transport",
+      "current_sentiment": 0.12,
+      "previous_sentiment": 0.119,
+      "velocity": 0.001,
+      "trend": "stable"
+    },
+    {
+      "sector": "finance",
+      "current_sentiment": 0.093,
+      "previous_sentiment": 0.115,
+      "velocity": -0.022,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "agriculture",
+      "current_sentiment": 0.092,
+      "previous_sentiment": 0.117,
+      "velocity": -0.025,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "general",
+      "current_sentiment": 0.089,
+      "previous_sentiment": 0.117,
+      "velocity": -0.028,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "technology",
+      "current_sentiment": 0.129,
+      "previous_sentiment": 0.17,
+      "velocity": -0.041,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "energy",
+      "current_sentiment": 0.107,
+      "previous_sentiment": 0.151,
+      "velocity": -0.044,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "healthcare",
+      "current_sentiment": 0.097,
+      "previous_sentiment": 0.142,
+      "velocity": -0.045,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "tourism",
+      "current_sentiment": 0.145,
+      "previous_sentiment": 0.191,
+      "velocity": -0.046,
+      "trend": "decreasing"
+    }
+  ],
+  "fastest_improving": [
+    {
+      "sector": "government",
+      "current_sentiment": 0.082,
+      "previous_sentiment": 0.052,
+      "velocity": 0.03,
+      "trend": "increasing"
+    }
+  ],
+  "fastest_declining": [
+    {
+      "sector": "general",
+      "current_sentiment": 0.089,
+      "previous_sentiment": 0.117,
+      "velocity": -0.028,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "agriculture",
+      "current_sentiment": 0.092,
+      "previous_sentiment": 0.117,
+      "velocity": -0.025,
+      "trend": "decreasing"
+    },
+    {
+      "sector": "finance",
+      "current_sentiment": 0.093,
+      "previous_sentiment": 0.115,
+      "velocity": -0.022,
+      "trend": "decreasing"
+    }
+  ]
 }

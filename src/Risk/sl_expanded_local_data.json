@@ -1,0 +1,24 @@
+{
+    "timestamp": "2025-12-13 23:44:01.294575",
+    "finance_sector": {
+        "usd_selling": 0.0,
+        "usd_buying": 0.0,
+        "source_bank": "Unknown",
+        "note": "Rates stabilized around 311 LKR"
+    },
+    "economic_pulse": {
+        "tourism": "Normal",
+        "construction": "Neutral",
+        "logistics_forecast": "Standard"
+    },
+    "business_sentiment": {
+        "stock_market": "\ud83d\udfe2 BULLISH (+2.04%)",
+        "aspi_index": "22,034.32 (Dec 9 Trend)",
+        "key_drivers": "Construction & Banking Stocks"
+    },
+    "operational_risk": {
+        "grid_status": "\ud83d\udfe1 WATCHFUL",
+        "fuel_price_diesel": "Diesel Available (Rs 277)",
+        "weather_impact": "Cyclone aftermath affecting road network"
+    }
+}
